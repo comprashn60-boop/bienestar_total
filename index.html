@@ -315,7 +315,16 @@
           </div>
         </div>
 
-        <button id="success-close-btn" class="mt-7 bg-primary hover:bg-primary-dark text-white font-heading font-bold text-sm px-8 py-3 rounded-full transition-colors">
+        <p class="text-slate-500 text-xs mt-5">Te estamos redirigiendo a WhatsApp para confirmar tu pedido. Si no se abrió automáticamente, usa el botón de abajo.</p>
+
+        <a id="whatsapp-redirect-link" href="#" target="_blank" rel="noopener"
+           class="mt-3 inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-heading font-bold text-sm px-8 py-3 rounded-full transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.39a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.13-.98-.32-1.69-.62-2.97-1.28-4.91-4.27-5.06-4.47-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.52.25.6.86 2.08.93 2.23.08.15.13.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.06 1.14 1.02 2.1 1.33 2.39 1.48.29.15.46.13.63-.08.17-.2.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.13.07.75-.18 1.45z"/></svg>
+          <span>Continuar en WhatsApp</span>
+        </a>
+        <br>
+
+        <button id="success-close-btn" class="mt-3 text-slate-500 hover:text-dark font-semibold text-sm px-8 py-2 rounded-full transition-colors underline">
           Seguir Comprando
         </button>
       </div>
@@ -424,6 +433,9 @@ const products = [
     ]
   }
 ];
+
+/* Número de WhatsApp Business (solo dígitos, con código de país) donde llegan los pedidos */
+const WHATSAPP_NUMBER = "50487353593";
 
 /* Descuentos por cantidad: 1 = normal, 2 = -10%, 3 = -20% */
 const QTY_TIERS = [
@@ -668,15 +680,38 @@ form.addEventListener("submit", (e) => {
   const unitTotal = currentProduct.price * tier.qty;
   const finalTotal = unitTotal * (1 - tier.discount);
 
+  const customerName = nameEl.value.trim();
+  const customerPhone = phoneInput.value.trim();
+  const customerLocation = `${municipalitySelect.value}, ${departmentSelect.value}`;
+  const customerAddress = addressEl.value.trim();
+  const customerReference = referenceEl.value.trim();
+
   document.getElementById("success-product").textContent = `${currentProduct.title} (x${tier.qty})`;
-  document.getElementById("success-name").textContent = nameEl.value.trim();
-  document.getElementById("success-phone").textContent = phoneInput.value.trim();
-  document.getElementById("success-location").textContent = `${municipalitySelect.value}, ${departmentSelect.value}`;
+  document.getElementById("success-name").textContent = customerName;
+  document.getElementById("success-phone").textContent = customerPhone;
+  document.getElementById("success-location").textContent = customerLocation;
   document.getElementById("success-total").textContent = formatL(finalTotal);
 
   viewPurchase.classList.add("hidden");
   viewSuccess.classList.remove("hidden");
   document.getElementById("modal-panel").scrollTop = 0;
+
+  /* Redacta el pedido y redirige automáticamente a WhatsApp Business */
+  const orderMessage =
+    `🛒 *Nuevo Pedido - Pago Contra Entrega*\n\n` +
+    `*Producto:* ${currentProduct.title}\n` +
+    `*Cantidad:* ${tier.qty}\n` +
+    `*Total a pagar:* ${formatL(finalTotal)}\n\n` +
+    `*Nombre:* ${customerName}\n` +
+    `*Teléfono:* ${customerPhone}\n` +
+    `*Departamento:* ${departmentSelect.value}\n` +
+    `*Municipio:* ${municipalitySelect.value}\n` +
+    `*Dirección exacta:* ${customerAddress}\n` +
+    `*Punto de referencia:* ${customerReference}`;
+
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(orderMessage)}`;
+  document.getElementById("whatsapp-redirect-link").href = whatsappUrl;
+  window.open(whatsappUrl, "_blank");
 });
 </script>
 </body>
