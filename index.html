@@ -1,808 +1,674 @@
 <!DOCTYPE html>
-<html lang="es" class="light scroll-smooth">
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienestar Total - Catálogo de Salud & Vitalidad Orgánica</title>
-    <meta name="description" content="Descubre productos ergonómicos, suplementos orgánicos y accesorios de fitness diseñados para tu salud corporal y bienestar diario.">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#006b55",
-                        "on-primary": "#ffffff",
-                        "primary-container": "#27dab0",
-                        "on-primary-container": "#005b47",
-                        "secondary": "#4d6169",
-                        "on-secondary": "#ffffff",
-                        "secondary-container": "#d0e6ef",
-                        "tertiary": "#5a5f5e",
-                        "surface": "#f9f9ff",
-                        "on-surface": "#111c2c",
-                        "surface-variant": "#d8e3fa",
-                        "on-surface-variant": "#3b4a44",
-                        "background": "#f9f9ff",
-                        "on-background": "#111c2c",
-                        "surface-container-low": "#f0f3ff",
-                        "surface-container-highest": "#d8e3fa",
-                        "outline": "#6b7a74",
-                        "outline-variant": "#bacac2"
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif'],
-                    },
-                    borderRadius: {
-                        'xl': '1rem',
-                        '2xl': '1.5rem',
-                        'card': '24px'
-                    }
-                }
-            }
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bienestar Total — Catálogo | Pago Contra Entrega Honduras</title>
+<meta name="description" content="Catálogo de productos con envío a todo Honduras y pago contra entrega. Compra fácil, rápida y segura.">
 
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#0d9464',
+          'primary-dark': '#0a744f',
+          accent: '#f97316',
+          dark: '#0f172a'
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          heading: ['Montserrat', 'sans-serif']
         }
-        .icon-filled {
-            font-variation-settings: 'FILL' 1;
-        }
-        .soft-shadow {
-            box-shadow: 0 4px 20px rgba(77, 97, 105, 0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .soft-shadow:hover {
-            box-shadow: 0 12px 32px rgba(0, 107, 85, 0.12);
-            transform: translateY(-4px);
-        }
-        .glass-nav {
-            background: rgba(249, 249, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        /* Custom scrollbars */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f0f3ff;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #bacac2;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #006b55;
-        }
-    </style>
+      }
+    }
+  }
+</script>
+
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .font-heading { font-family: 'Montserrat', sans-serif; }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+  .modal-overlay {
+    transition: opacity .25s ease;
+  }
+  .modal-panel {
+    transition: transform .3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity .25s ease;
+  }
+  .qty-card.selected {
+    border-color: #0d9464;
+    background-color: #ecfdf5;
+    box-shadow: 0 0 0 2px #0d9464;
+  }
+  .card-hover { transition: all .3s ease; }
+  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -10px rgba(0,0,0,.15); }
+
+  .pulse-cta {
+    animation: pulseCta 2.2s infinite;
+  }
+  @keyframes pulseCta {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,.5); }
+    50% { box-shadow: 0 0 0 10px rgba(249,115,22,0); }
+  }
+
+  input:invalid.touched, select:invalid.touched {
+    border-color: #ef4444;
+  }
+</style>
 </head>
-<body class="bg-background text-on-background font-sans antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<body class="bg-slate-50 text-dark antialiased">
 
-    <!-- Header Navigation -->
-    <header class="sticky top-0 z-40 glass-nav border-b border-outline-variant/30 transition-all duration-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-            
-            <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container group-hover:scale-105 transition-transform">
-                    <span class="material-symbols-outlined icon-filled text-2xl">spa</span>
-                </div>
-                <div>
-                    <span class="font-heading font-extrabold text-xl text-primary tracking-tight block leading-none">BIENESTAR TOTAL</span>
-                    <span class="text-[10px] font-semibold text-secondary tracking-widest uppercase">Salud & Vitalidad</span>
-                </div>
-            </a>
+<!-- CINTA SUPERIOR PROMOCIONAL -->
+<div class="bg-dark text-white text-center text-[11px] sm:text-sm font-semibold py-2 px-3 tracking-wide">
+  🚚 Envíos a todo Honduras &nbsp;|&nbsp; 💵 Pago Contra Entrega
+</div>
 
-            <!-- Search Bar (Desktop) -->
-            <div class="hidden md:flex flex-1 max-w-md mx-6">
-                <div class="relative w-full">
-                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary">search</span>
-                    <input type="text" id="search-input" 
-                        placeholder="Buscar corrector, suplemento, ejercitador..." 
-                        class="w-full h-11 pl-12 pr-4 bg-surface-container-low border border-outline-variant/50 rounded-full text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-container/30 transition-all">
-                    <button id="clear-search" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-secondary hover:text-primary">
-                        <span class="material-symbols-outlined text-lg">close</span>
-                    </button>
-                </div>
-            </div>
+<!-- HEADER -->
+<header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
+    <a href="#" class="flex items-center gap-2.5">
+      <div class="w-11 h-11 rounded-xl bg-primary flex items-center justify-center text-white font-heading font-black text-lg shrink-0">
+        BT
+      </div>
+      <div class="leading-tight">
+        <p class="font-heading font-extrabold text-lg sm:text-xl text-dark">Bienestar Total</p>
+        <p class="text-[10px] sm:text-xs text-primary font-semibold uppercase tracking-widest">Catálogo Oficial Honduras</p>
+      </div>
+    </a>
+    <a href="#catalogo" class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
+      Ver Catálogo
+    </a>
+  </div>
 
-            <!-- Actions (Cart & WhatsApp) -->
-            <div class="flex items-center gap-3">
-                <!-- Mobile Search Toggle -->
-                <button id="mobile-search-toggle" class="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors">
-                    <span class="material-symbols-outlined">search</span>
-                </button>
+  <!-- BARRA DE CONFIANZA -->
+  <div class="border-t border-slate-100 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 grid grid-cols-3 gap-2 text-center">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-[10px] sm:text-xs font-semibold text-slate-600">
+        <span class="text-base">🚀</span><span>Envío Rápido</span>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-[10px] sm:text-xs font-semibold text-slate-600 border-x border-slate-200">
+        <span class="text-base">🛡️</span><span>Garantía de Calidad</span>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-[10px] sm:text-xs font-semibold text-slate-600">
+        <span class="text-base">🔒</span><span>Pago 100% Seguro</span>
+      </div>
+    </div>
+  </div>
+</header>
 
-                <!-- Shopping Cart Trigger -->
-                <button id="cart-toggle-btn" class="relative w-11 h-11 rounded-full bg-surface-container-low border border-outline-variant/40 flex items-center justify-center text-on-surface hover:bg-primary-container/30 transition-all group">
-                    <span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">shopping_cart</span>
-                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-primary text-on-primary font-bold text-[11px] w-5 h-5 rounded-full flex items-center justify-center shadow-sm">0</span>
-                </button>
+<main>
+  <!-- HERO -->
+  <section class="bg-gradient-to-b from-primary/10 to-slate-50 px-4 sm:px-6 py-10 sm:py-14 text-center">
+    <h1 class="font-heading font-black text-2xl sm:text-4xl text-dark mb-3 leading-tight">
+      Elige tu producto y <span class="text-primary">paga cuando lo recibas</span>
+    </h1>
+    <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
+      Sin tarjetas, sin adelantos. Ordena hoy y te lo llevamos hasta la puerta de tu casa en cualquier parte de Honduras.
+    </p>
+  </section>
 
-                <!-- WhatsApp Direct CTA -->
-                <a href="https://wa.me/5215555555555?text=Hola%20Bienestar%20Total,%20me%20gustaría%20recibir%20información%20del%20catálogo" 
-                   target="_blank" rel="noopener"
-                   class="hidden sm:flex items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all shadow-sm">
-                    <span class="material-symbols-outlined text-lg">chat</span>
-                    <span>WhatsApp</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Mobile Search Dropdown -->
-        <div id="mobile-search-bar" class="hidden md:hidden px-4 pb-4 border-t border-outline-variant/20 pt-3">
-            <div class="relative">
-                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary">search</span>
-                <input type="text" id="mobile-search-input" 
-                    placeholder="Buscar productos en el catálogo..." 
-                    class="w-full h-11 pl-12 pr-4 bg-surface-container-low border border-outline-variant/50 rounded-full text-sm focus:outline-none focus:border-primary">
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="flex-1">
-
-        <!-- Hero Section -->
-        <section class="relative py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#F4F9F7] overflow-hidden border-b border-outline-variant/30">
-            <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-                <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1600&q=80');"></div>
-            </div>
-            
-            <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
-                <span class="inline-flex items-center gap-1.5 py-1.5 px-4 bg-surface-variant text-on-surface-variant rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
-                    <span class="material-symbols-outlined text-sm text-primary">eco</span>
-                    Cuidado Corporal & Vitalidad
-                </span>
-                
-                <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-on-background mb-6 leading-tight">
-                    Hoy es ese día para iniciar a <span class="text-primary underline decoration-primary-container decoration-4 underline-offset-4">cuidar de ti</span>.
-                </h1>
-                
-                <p class="text-lg sm:text-xl text-secondary mb-8 max-w-2xl font-normal leading-relaxed">
-                    Descubre productos ergonómicos y naturales diseñados para mejorar tu postura, tonificar tu cuerpo y fortalecer tu salud diaria.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
-                    <a href="#catalogo" class="bg-primary text-on-primary px-8 py-4 rounded-full text-sm font-bold hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
-                        <span>Explorar Catálogo</span>
-                        <span class="material-symbols-outlined text-lg">arrow_downward</span>
-                    </a>
-                    <a href="https://wa.me/5215555555555?text=Hola,%20deseo%20asesoría%20para%20elegir%20mis%20productos" target="_blank"
-                       class="bg-surface border-2 border-outline-variant text-on-surface hover:border-primary hover:text-primary px-8 py-4 rounded-full text-sm font-bold transition-all flex items-center justify-center gap-2">
-                        <span class="material-symbols-outlined text-lg">support_agent</span>
-                        <span>Asesoría Personalizada</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Catalog Section -->
-        <section id="catalogo" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            
-            <!-- Section Header -->
-            <div class="text-center mb-10">
-                <h2 class="font-heading text-2xl sm:text-3xl font-bold text-on-background mb-3">Nuestra Colección Seleccionada</h2>
-                <p class="text-secondary max-w-xl mx-auto text-sm sm:text-base">Productos de alta calidad testeados para tu recuperación, postura y rendimiento orgánico.</p>
-            </div>
-
-            <!-- Category Filters -->
-            <div class="flex flex-wrap items-center justify-center gap-2.5 mb-12" id="category-filters">
-                <button data-category="all" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all bg-primary-container text-on-primary-container shadow-sm">
-                    Todos
-                </button>
-                <button data-category="Salud Postural" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all bg-surface-container-low text-on-surface-variant border border-outline-variant/40 hover:bg-surface-variant">
-                    Salud Postural
-                </button>
-                <button data-category="Fortalecimiento Pélvico" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all bg-surface-container-low text-on-surface-variant border border-outline-variant/40 hover:bg-surface-variant">
-                    Fortalecimiento Pélvico
-                </button>
-                <button data-category="Fitness en Casa" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all bg-surface-container-low text-on-surface-variant border border-outline-variant/40 hover:bg-surface-variant">
-                    Fitness en Casa
-                </button>
-                <button data-category="Suplementación" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all bg-surface-container-low text-on-surface-variant border border-outline-variant/40 hover:bg-surface-variant">
-                    Suplementación
-                </button>
-            </div>
-
-            <!-- Product Grid -->
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-                <!-- Product items populated dynamically by JS -->
-            </div>
-
-            <!-- Empty Search State -->
-            <div id="empty-state" class="hidden text-center py-16">
-                <div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mx-auto mb-4 text-secondary">
-                    <span class="material-symbols-outlined text-3xl">search_off</span>
-                </div>
-                <h3 class="font-heading text-lg font-bold text-on-background mb-1">No encontramos productos</h3>
-                <p class="text-secondary text-sm max-w-sm mx-auto mb-4">Intenta buscando con otra palabra clave o selecciona una categoría diferente.</p>
-                <button id="reset-filters-btn" class="bg-primary text-on-primary px-6 py-2 rounded-full text-sm font-semibold">Ver todos los productos</button>
-            </div>
-        </section>
-
-        <!-- Features Banner -->
-        <section class="bg-surface-container-low border-y border-outline-variant/30 py-12 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="flex items-start gap-4 p-4 rounded-2xl bg-surface border border-outline-variant/30">
-                    <div class="w-12 h-12 rounded-xl bg-primary-container/40 text-primary flex items-center justify-center shrink-0">
-                        <span class="material-symbols-outlined text-2xl">verified</span>
-                    </div>
-                    <div>
-                        <h4 class="font-heading font-bold text-on-background text-base mb-1">Calidad Garantizada</h4>
-                        <p class="text-secondary text-xs leading-relaxed">Materiales ergonómicos e ingredientes de grado médico aprobados.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 p-4 rounded-2xl bg-surface border border-outline-variant/30">
-                    <div class="w-12 h-12 rounded-xl bg-primary-container/40 text-primary flex items-center justify-center shrink-0">
-                        <span class="material-symbols-outlined text-2xl">local_shipping</span>
-                    </div>
-                    <div>
-                        <h4 class="font-heading font-bold text-on-background text-base mb-1">Envíos Rápidos</h4>
-                        <p class="text-secondary text-xs leading-relaxed">Despachos seguros con seguimiento en línea a todo el país.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 p-4 rounded-2xl bg-surface border border-outline-variant/30">
-                    <div class="w-12 h-12 rounded-xl bg-primary-container/40 text-primary flex items-center justify-center shrink-0">
-                        <span class="material-symbols-outlined text-2xl">chat_bubble</span>
-                    </div>
-                    <div>
-                        <h4 class="font-heading font-bold text-on-background text-base mb-1">Atención WhatsApp Directa</h4>
-                        <p class="text-secondary text-xs leading-relaxed">Realiza tus consultas y pedidos de forma inmediata y personalizada.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-surface-container-low border-t border-outline-variant/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left">
-                <span class="font-heading font-extrabold text-xl text-primary block mb-1">BIENESTAR TOTAL</span>
-                <p class="text-secondary text-xs">© 2026 Bienestar Total. Todos los derechos reservados. Salud y Vitalidad Orgánica.</p>
-            </div>
-            <nav class="flex flex-wrap justify-center gap-6 text-xs font-semibold text-secondary">
-                <a href="#" class="hover:text-primary transition-colors">Políticas de Privacidad</a>
-                <a href="#" class="hover:text-primary transition-colors">Términos de Servicio</a>
-                <a href="#" class="hover:text-primary transition-colors">Preguntas Frecuentes</a>
-                <a href="https://wa.me/5215555555555" target="_blank" class="hover:text-primary transition-colors">Soporte por WhatsApp</a>
-            </nav>
-        </div>
-    </footer>
-
-    <!-- CART SLIDE-OVER DRAWER -->
-    <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300">
-        <div id="cart-drawer" class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-surface shadow-2xl flex flex-col translate-x-full transition-transform duration-300 ease-in-out">
-            <!-- Header -->
-            <div class="p-6 border-b border-outline-variant/30 flex items-center justify-between bg-surface-container-low">
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary">shopping_bag</span>
-                    <h3 class="font-heading font-bold text-lg text-on-background">Tu Carrito de Compras</h3>
-                </div>
-                <button id="close-cart-btn" class="w-8 h-8 rounded-full flex items-center justify-center text-secondary hover:text-on-background hover:bg-surface-container-highest transition-all">
-                    <span class="material-symbols-outlined text-xl">close</span>
-                </button>
-            </div>
-
-            <!-- Cart Items List -->
-            <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
-                <!-- Dynamically rendered -->
-            </div>
-
-            <!-- Footer Summary -->
-            <div class="p-6 border-t border-outline-variant/30 bg-surface-container-low space-y-4">
-                <div class="space-y-2 text-sm">
-                    <div class="flex justify-between text-secondary">
-                        <span>Subtotal</span>
-                        <span id="cart-subtotal" class="font-semibold text-on-background">$0.00</span>
-                    </div>
-                    <div class="flex justify-between text-secondary">
-                        <span>Envío</span>
-                        <span class="text-primary font-bold text-xs uppercase bg-primary-container/30 px-2 py-0.5 rounded">Gratis por WhatsApp</span>
-                    </div>
-                    <div class="flex justify-between font-heading font-bold text-lg text-on-background pt-2 border-t border-outline-variant/20">
-                        <span>Total Estimado</span>
-                        <span id="cart-total" class="text-primary">$0.00</span>
-                    </div>
-                </div>
-
-                <button id="whatsapp-checkout-btn" class="w-full bg-primary text-on-primary py-4 rounded-full font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
-                    <span class="material-symbols-outlined">chat</span>
-                    <span>Finalizar Pedido por WhatsApp</span>
-                </button>
-            </div>
-        </div>
+  <!-- CATALOGO -->
+  <section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+    <div class="text-center mb-8 sm:mb-10">
+      <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-dark">Nuestro Catálogo</h2>
+      <p class="text-slate-500 text-sm mt-1">Productos seleccionados, con envío gratis y pago contra entrega</p>
     </div>
 
-    <!-- PRODUCT QUICK VIEW MODAL -->
-    <div id="product-modal-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
-        <div id="product-modal" class="bg-surface rounded-card max-w-2xl w-full overflow-hidden shadow-2xl border border-outline-variant/30 scale-95 transition-transform duration-300 max-h-[90vh] flex flex-col md:flex-row">
-            <!-- Modal image -->
-            <div class="md:w-1/2 bg-surface-container-low relative h-64 md:h-auto overflow-hidden">
-                <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
-                <span id="modal-tag" class="absolute top-4 left-4 bg-[#F4F9F7] text-on-primary-container text-xs font-semibold px-3 py-1 rounded-full shadow-sm border border-primary-container/20"></span>
-            </div>
-            <!-- Modal details -->
-            <div class="md:w-1/2 p-6 flex flex-col justify-between overflow-y-auto">
-                <div>
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 id="modal-title" class="font-heading font-bold text-xl text-on-background"></h3>
-                        <button id="close-modal-btn" class="text-secondary hover:text-on-background">
-                            <span class="material-symbols-outlined">close</span>
-                        </button>
-                    </div>
-                    <p id="modal-price" class="font-heading font-bold text-2xl text-primary mb-4"></p>
-                    <p id="modal-desc" class="text-secondary text-sm mb-6 leading-relaxed"></p>
-                    
-                    <h4 class="font-semibold text-xs text-on-surface-variant uppercase tracking-wider mb-2">Beneficios Clave:</h4>
-                    <ul id="modal-benefits" class="space-y-2 mb-6">
-                        <!-- List items -->
-                    </ul>
-                </div>
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
+  </section>
 
-                <div class="space-y-3 pt-4 border-t border-outline-variant/30">
-                    <button id="modal-add-cart-btn" class="w-full bg-primary-container text-on-primary-container py-3 rounded-full font-bold text-sm hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2">
-                        <span class="material-symbols-outlined">shopping_cart</span>
-                        <span>Añadir al Carrito</span>
-                    </button>
-                    <a id="modal-whatsapp-btn" href="#" target="_blank" class="w-full bg-surface-container-highest text-primary py-3 rounded-full font-bold text-sm hover:bg-surface-variant transition-colors flex items-center justify-center gap-2 border border-outline-variant text-center">
-                        <span class="material-symbols-outlined text-lg">chat</span>
-                        <span>Comprar Directo por WhatsApp</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+  <!-- BENEFICIOS -->
+  <section class="bg-white border-y border-slate-200 py-10 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+      <div>
+        <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3 text-2xl">💵</div>
+        <h3 class="font-heading font-bold text-dark mb-1">Pago Contra Entrega</h3>
+        <p class="text-slate-500 text-xs">Paga en efectivo cuando el paquete llegue a tus manos.</p>
+      </div>
+      <div>
+        <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3 text-2xl">🚚</div>
+        <h3 class="font-heading font-bold text-dark mb-1">Envíos a Todo el País</h3>
+        <p class="text-slate-500 text-xs">Cubrimos los 18 departamentos de Honduras.</p>
+      </div>
+      <div>
+        <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3 text-2xl">✅</div>
+        <h3 class="font-heading font-bold text-dark mb-1">Garantía de Satisfacción</h3>
+        <p class="text-slate-500 text-xs">Si no te gusta, te ayudamos con el cambio.</p>
+      </div>
     </div>
+  </section>
+</main>
 
-    <!-- TOAST NOTIFICATION CONTAINER -->
-    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+<!-- FOOTER -->
+<footer class="bg-dark text-slate-300 py-8 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto text-center">
+    <p class="font-heading font-extrabold text-white text-lg mb-1">Bienestar Total</p>
+    <p class="text-xs text-slate-400">© 2026 Bienestar Total Honduras. Todos los derechos reservados.</p>
+  </div>
+</footer>
 
-    <!-- JavaScript Application Logic -->
-    <script>
-        // Products Database
-        const products = [
-            {
-                id: 1,
-                title: "Corrector de Postura Ergonómico",
-                category: "Salud Postural",
-                price: 25.99,
-                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
-                description: "Soporte activo con diseño transpirable para aliviar el dolor de espalda y mejorar la alineación corporal durante tu jornada diaria.",
-                benefits: ["Alivio activo de dolor lumbar", "Alineación espinal ergonómica", "Material lavable y transpirable"]
-            },
-            {
-                id: 2,
-                title: "Ejercitador Pélvico Kegel",
-                category: "Fortalecimiento Pélvico",
-                price: 19.50,
-                image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
-                description: "Dispositivo ergonómico de resistencia progresiva para fortalecer el suelo pélvico y mejorar la estabilidad central del cuerpo.",
-                benefits: ["Fortalece el suelo pélvico", "Silicona médica hipoalergénica", "Niveles de resistencia ajustables"]
-            },
-            {
-                id: 3,
-                title: "Cuerda de Saltar con Contador Digital",
-                category: "Fitness en Casa",
-                price: 12.00,
-                image: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80",
-                description: "Cuerda de entrenamiento inteligente con sensores de alta precisión para contar saltos, medir tiempo y monitorear calorías quemadas.",
-                benefits: ["Monitoreo de calorías en tiempo real", "Rodamientos de alta velocidad sin enredos", "Mangos ergonómicos antideslizantes"]
-            },
-            {
-                id: 4,
-                title: "Suplementos Físicos de Vitalidad",
-                category: "Suplementación",
-                price: 35.00,
-                image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
-                description: "Fórmula botánica con extractos orgánicos y adaptógenos que potencian la energía diaria, recuperación celular y vitalidad integral.",
-                benefits: ["Energía y recuperación física", "Ingredientes 100% orgánicos", "Sin azúcares añadidos ni conservantes"]
-            },
-            {
-                id: 5,
-                title: "Set de Bandas de Resistencia Premium",
-                category: "Fitness en Casa",
-                price: 15.99,
-                image: "https://images.unsplash.com/photo-1598289431512-b97b0917affc?auto=format&fit=crop&w=800&q=80",
-                description: "5 bandas de látex 100% natural con distintos niveles de tensión para tonificación muscular efectiva sin impacto articular.",
-                benefits: ["5 niveles de resistencia progresiva", "Ideal para movilidad y tonificación", "Incluye bolsa portátil de transporte"]
-            },
-            {
-                id: 6,
-                title: "Rodillo de Masaje Miofascial Deep-Tissue",
-                category: "Salud Postural",
-                price: 22.50,
-                image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
-                description: "Rodillo de alta densidad para liberación de nudos musculares, descompresión de rigidez en espalda y flexibilidad activa.",
-                benefits: ["Descompresión muscular profunda", "Textura ergonómica de punto de presión", "Estructura ligera de alta durabilidad"]
-            },
-            {
-                id: 7,
-                title: "Proteína Orgánica Plant-Based (Vainilla)",
-                category: "Suplementación",
-                price: 42.00,
-                image: "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=800&q=80",
-                description: "Superalimento proteico a base de plantas con aminoácidos completos, digestión ligera y máxima biodisponibilidad.",
-                benefits: ["24g de proteína vegetal pura", "Enzimas digestivas naturales", "Sin gluten, lácteos ni soya"]
-            },
-            {
-                id: 8,
-                title: "Cojín Ergonómico Lumbar Memory Foam",
-                category: "Salud Postural",
-                price: 29.99,
-                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
-                description: "Cojín viscoelástico de alta densidad adaptativo para sillas de oficina o vehículo, preservando la curvatura natural lumbar.",
-                benefits: ["Soporte continuo para largas jornadas", "Funda de malla removible y lavable", "Espuma termosensible con memoria"]
-            }
-        ];
+<!-- ===================== MODAL DE COMPRA ===================== -->
+<div id="modal-overlay" class="modal-overlay hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 flex items-start sm:items-center justify-center p-0 sm:p-4 overflow-y-auto">
+  <div id="modal-panel" class="modal-panel opacity-0 translate-y-6 sm:scale-95 bg-white w-full sm:max-w-3xl sm:rounded-2xl shadow-2xl relative my-0 sm:my-8 max-h-none sm:max-h-[92vh] flex flex-col overflow-hidden">
 
-        // App State
-        let state = {
-            cart: [],
-            currentCategory: 'all',
-            searchQuery: ''
-        };
+    <!-- close -->
+    <button id="modal-close-btn" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-white/90 shadow flex items-center justify-center text-slate-500 hover:text-dark hover:bg-slate-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
 
-        // DOM Elements
-        const productGrid = document.getElementById('product-grid');
-        const emptyState = document.getElementById('empty-state');
-        const categoryFilters = document.getElementById('category-filters');
-        const searchInput = document.getElementById('search-input');
-        const mobileSearchInput = document.getElementById('mobile-search-input');
-        const clearSearchBtn = document.getElementById('clear-search');
-        const mobileSearchToggle = document.getElementById('mobile-search-toggle');
-        const mobileSearchBar = document.getElementById('mobile-search-bar');
-        
-        const cartToggleBtn = document.getElementById('cart-toggle-btn');
-        const cartBadge = document.getElementById('cart-badge');
-        const cartDrawerOverlay = document.getElementById('cart-drawer-overlay');
-        const cartDrawer = document.getElementById('cart-drawer');
-        const closeCartBtn = document.getElementById('close-cart-btn');
-        const cartItemsContainer = document.getElementById('cart-items-container');
-        const cartSubtotal = document.getElementById('cart-subtotal');
-        const cartTotal = document.getElementById('cart-total');
-        const whatsappCheckoutBtn = document.getElementById('whatsapp-checkout-btn');
+    <div class="overflow-y-auto">
 
-        const productModalOverlay = document.getElementById('product-modal-overlay');
-        const productModal = document.getElementById('product-modal');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const modalImg = document.getElementById('modal-img');
-        const modalTag = document.getElementById('modal-tag');
-        const modalTitle = document.getElementById('modal-title');
-        const modalPrice = document.getElementById('modal-price');
-        const modalDesc = document.getElementById('modal-desc');
-        const modalBenefits = document.getElementById('modal-benefits');
-        const modalAddCartBtn = document.getElementById('modal-add-cart-btn');
-        const modalWhatsappBtn = document.getElementById('modal-whatsapp-btn');
-        let currentModalProductId = null;
+      <!-- ============ VISTA: FORMULARIO DE COMPRA ============ -->
+      <div id="view-purchase">
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <!-- Galeria -->
+          <div class="bg-slate-100 p-5 sm:p-6">
+            <div class="relative rounded-xl overflow-hidden bg-white aspect-square mb-3">
+              <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover">
+              <span id="modal-badge" class="absolute top-3 left-3 bg-accent text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wide"></span>
+            </div>
+            <div id="modal-thumbs" class="grid grid-cols-4 gap-2"></div>
 
-        // Render Products Grid
-        function renderProducts() {
-            const filtered = products.filter(p => {
-                const matchesCategory = state.currentCategory === 'all' || p.category === state.currentCategory;
-                const matchesSearch = p.title.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
-                                      p.description.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
-                                      p.category.toLowerCase().includes(state.searchQuery.toLowerCase());
-                return matchesCategory && matchesSearch;
-            });
+            <!-- Beneficios -->
+            <div class="mt-5">
+              <h4 class="font-heading font-bold text-sm text-dark mb-2">Beneficios clave</h4>
+              <ul id="modal-benefits" class="space-y-2"></ul>
+            </div>
+          </div>
 
-            if (filtered.length === 0) {
-                productGrid.innerHTML = '';
-                emptyState.classList.remove('hidden');
-                return;
-            }
+          <!-- Formulario -->
+          <div class="p-5 sm:p-6">
+            <h2 id="modal-title" class="font-heading font-extrabold text-xl text-dark mb-1"></h2>
+            <div class="flex items-baseline gap-2 mb-4">
+              <span id="modal-original-price" class="text-slate-400 line-through text-sm"></span>
+              <span id="modal-unit-price" class="text-primary font-heading font-extrabold text-2xl"></span>
+              <span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Envío Gratis</span>
+            </div>
 
-            emptyState.classList.add('hidden');
-            productGrid.innerHTML = filtered.map(p => `
-                <div class="bg-surface rounded-card soft-shadow overflow-hidden flex flex-col group border border-outline-variant/30" data-id="${p.id}">
-                    <div class="relative h-64 overflow-hidden bg-surface-container-low cursor-pointer" onclick="openProductModal(${p.id})">
-                        <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-[#F4F9F7] text-on-primary-container px-3 py-1 rounded-full text-xs font-semibold shadow-sm backdrop-blur-sm border border-primary-container/20">
-                                ${p.category}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-1 justify-between">
-                        <div>
-                            <h3 class="font-heading font-semibold text-lg text-on-background mb-2 cursor-pointer hover:text-primary transition-colors" onclick="openProductModal(${p.id})">
-                                ${p.title}
-                            </h3>
-                            <ul class="mb-4 space-y-1.5">
-                                ${p.benefits.slice(0, 2).map(b => `
-                                    <li class="flex items-start gap-2 text-xs text-secondary">
-                                        <span class="material-symbols-outlined text-primary text-sm shrink-0">check_circle</span>
-                                        <span>${b}</span>
-                                    </li>
-                                `).join('')}
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="flex items-center justify-between pt-4 border-t border-outline-variant/30 mb-4">
-                                <div>
-                                    <p class="text-[11px] font-medium text-secondary uppercase tracking-wider">Precio</p>
-                                    <p class="font-heading font-bold text-xl text-on-background">$${p.price.toFixed(2)}</p>
-                                </div>
-                                <button onclick="addToCart(${p.id})" class="bg-primary-container text-on-primary-container w-11 h-11 rounded-full flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all shadow-sm group-hover:scale-105" title="Añadir al carrito">
-                                    <span class="material-symbols-outlined text-xl">shopping_cart</span>
-                                </button>
-                            </div>
-                            <a href="https://wa.me/5215555555555?text=${encodeURIComponent(`Hola Bienestar Total, me interesa pedir: ${p.title} ($${p.price.toFixed(2)})`)}" 
-                               target="_blank" rel="noopener"
-                               class="w-full bg-surface-container-highest text-primary font-semibold text-xs py-3 rounded-full flex items-center justify-center gap-2 hover:bg-surface-variant transition-colors border border-outline-variant/60">
-                                <span class="material-symbols-outlined text-base">chat</span>
-                                <span>Pedir por WhatsApp</span>
-                            </a>
-                        </div>
-                    </div>
+            <!-- Selector de cantidad -->
+            <p class="font-heading font-bold text-sm text-dark mb-2">Elige tu cantidad</p>
+            <div id="qty-selector" class="grid grid-cols-3 gap-2 mb-6"></div>
+
+            <form id="order-form" novalidate class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Nombre Completo *</label>
+                <input required type="text" id="field-name" placeholder="Ej. María Fernández"
+                  class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
+                <p class="error-msg hidden text-[11px] text-red-500 mt-1">Ingresa tu nombre completo.</p>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Teléfono / WhatsApp *</label>
+                <input required type="tel" id="field-phone" placeholder="Ej. 9988-7766" maxlength="9"
+                  class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
+                <p id="phone-error" class="error-msg hidden text-[11px] text-red-500 mt-1">Ingresa un número válido de 8 dígitos.</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold text-slate-600 mb-1">Departamento *</label>
+                  <select required id="field-department" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
+                    <option value="" disabled selected>Selecciona...</option>
+                  </select>
+                  <p class="error-msg hidden text-[11px] text-red-500 mt-1">Selecciona tu departamento.</p>
                 </div>
-            `).join('');
-        }
+                <div>
+                  <label class="block text-xs font-bold text-slate-600 mb-1">Municipio *</label>
+                  <select required id="field-municipality" disabled class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm bg-white disabled:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
+                    <option value="" disabled selected>Elige depto. primero</option>
+                  </select>
+                  <p class="error-msg hidden text-[11px] text-red-500 mt-1">Selecciona tu municipio.</p>
+                </div>
+              </div>
 
-        // Cart Operations
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Dirección Exacta *</label>
+                <textarea required id="field-address" rows="2" placeholder="Barrio, colonia, calle, número de casa..."
+                  class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary resize-none"></textarea>
+                <p class="error-msg hidden text-[11px] text-red-500 mt-1">Ingresa tu dirección exacta.</p>
+              </div>
 
-            const existing = state.cart.find(item => item.id === productId);
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                state.cart.push({ ...product, quantity: 1 });
-            }
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Punto de Referencia *</label>
+                <input required type="text" id="field-reference" placeholder="Ej. Frente a la iglesia católica, casa color celeste"
+                  class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
+                <p class="error-msg hidden text-[11px] text-red-500 mt-1">Este campo es obligatorio para la entrega.</p>
+              </div>
 
-            updateCartUI();
-            showToast(`¡${product.title} añadido al carrito!`);
-        }
+              <!-- Resumen de la orden -->
+              <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-1.5 text-sm">
+                <div class="flex justify-between text-slate-600">
+                  <span id="summary-qty-label">1 unidad</span>
+                  <span id="summary-unit-total">L. 0.00</span>
+                </div>
+                <div id="summary-discount-row" class="hidden flex justify-between text-primary font-semibold">
+                  <span>Descuento aplicado</span>
+                  <span id="summary-discount">- L. 0.00</span>
+                </div>
+                <div class="flex justify-between text-slate-600">
+                  <span>Envío</span>
+                  <span class="text-primary font-bold">GRATIS</span>
+                </div>
+                <div class="flex justify-between font-heading font-extrabold text-base text-dark pt-2 border-t border-slate-200">
+                  <span>Total a pagar</span>
+                  <span id="summary-total" class="text-primary">L. 0.00</span>
+                </div>
+              </div>
 
-        function updateCartQuantity(productId, delta) {
-            const item = state.cart.find(i => i.id === productId);
-            if (!item) return;
+              <button type="submit" id="submit-order-btn" class="pulse-cta w-full bg-accent hover:bg-orange-600 text-white font-heading font-extrabold text-sm sm:text-base py-4 rounded-xl transition-colors shadow-lg shadow-accent/30 flex items-center justify-center gap-2">
+                <span>CONFIRMAR PEDIDO (PAGO CONTRA ENTREGA)</span>
+              </button>
+              <p class="text-center text-[11px] text-slate-400">🔒 Tus datos están seguros. No se realiza ningún cobro en línea.</p>
+            </form>
+          </div>
+        </div>
+      </div>
 
-            item.quantity += delta;
-            if (item.quantity <= 0) {
-                state.cart = state.cart.filter(i => i.id !== productId);
-            }
-            updateCartUI();
-        }
+      <!-- ============ VISTA: CONFIRMACION / EXITO ============ -->
+      <div id="view-success" class="hidden p-6 sm:p-10 text-center">
+        <div class="w-20 h-20 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+        </div>
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-dark mb-2">¡Gracias por tu compra!</h2>
+        <p class="text-slate-600 text-sm sm:text-base max-w-md mx-auto mb-6">
+          Su orden ha sido procesada. En breve nos comunicamos con usted para confirmar la entrega.
+        </p>
 
-        function removeFromCart(productId) {
-            state.cart = state.cart.filter(i => i.id !== productId);
-            updateCartUI();
-        }
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6 max-w-sm mx-auto text-left space-y-3">
+          <h3 class="font-heading font-bold text-sm text-dark uppercase tracking-wide mb-1">Resumen del Pedido</h3>
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-500">Producto</span>
+            <span id="success-product" class="font-semibold text-dark text-right"></span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-500">Nombre</span>
+            <span id="success-name" class="font-semibold text-dark text-right"></span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-500">Teléfono</span>
+            <span id="success-phone" class="font-semibold text-dark text-right"></span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-500">Ubicación</span>
+            <span id="success-location" class="font-semibold text-dark text-right"></span>
+          </div>
+          <div class="flex justify-between text-base pt-2 border-t border-slate-200">
+            <span class="font-heading font-bold text-dark">Total a Pagar</span>
+            <span id="success-total" class="font-heading font-extrabold text-primary"></span>
+          </div>
+        </div>
 
-        function updateCartUI() {
-            // Count badge
-            const totalCount = state.cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartBadge.textContent = totalCount;
+        <button id="success-close-btn" class="mt-7 bg-primary hover:bg-primary-dark text-white font-heading font-bold text-sm px-8 py-3 rounded-full transition-colors">
+          Seguir Comprando
+        </button>
+      </div>
 
-            // Render drawer items
-            if (state.cart.length === 0) {
-                cartItemsContainer.innerHTML = `
-                    <div class="text-center py-12">
-                        <span class="material-symbols-outlined text-4xl text-secondary mb-2">shopping_bag</span>
-                        <p class="font-heading font-semibold text-on-background text-base">Tu carrito está vacío</p>
-                        <p class="text-secondary text-xs mt-1">Explora el catálogo y agrega tus productos favoritos.</p>
-                    </div>
-                `;
-                whatsappCheckoutBtn.disabled = true;
-            } else {
-                whatsappCheckoutBtn.disabled = false;
-                cartItemsContainer.innerHTML = state.cart.map(item => `
-                    <div class="flex items-center gap-4 p-3 bg-surface rounded-2xl border border-outline-variant/30">
-                        <img src="${item.image}" alt="${item.title}" class="w-16 h-16 rounded-xl object-cover bg-surface-container-low shrink-0">
-                        <div class="flex-1 min-w-0">
-                            <h4 class="font-heading font-semibold text-xs text-on-background truncate">${item.title}</h4>
-                            <p class="text-xs font-bold text-primary mb-2">$${item.price.toFixed(2)}</p>
-                            <div class="flex items-center gap-2">
-                                <button onclick="updateCartQuantity(${item.id}, -1)" class="w-6 h-6 rounded-full bg-surface-container-low flex items-center justify-center text-secondary hover:bg-surface-variant">
-                                    <span class="material-symbols-outlined text-sm">remove</span>
-                                </button>
-                                <span class="text-xs font-bold w-4 text-center">${item.quantity}</span>
-                                <button onclick="updateCartQuantity(${item.id}, 1)" class="w-6 h-6 rounded-full bg-surface-container-low flex items-center justify-center text-secondary hover:bg-surface-variant">
-                                    <span class="material-symbols-outlined text-sm">add</span>
-                                </button>
-                            </div>
-                        </div>
-                        <button onclick="removeFromCart(${item.id})" class="text-secondary hover:text-red-600 p-1">
-                            <span class="material-symbols-outlined text-lg">delete</span>
-                        </button>
-                    </div>
-                `).join('');
-            }
+    </div>
+  </div>
+</div>
 
-            // Totals
-            const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-            cartTotal.textContent = `$${subtotal.toFixed(2)}`;
-        }
+<script>
+/* =========================================================
+   DATOS: DEPARTAMENTOS Y MUNICIPIOS DE HONDURAS
+========================================================= */
+const HONDURAS = {
+  "Atlántida": ["La Ceiba","El Porvenir","Esparta","Jutiapa","La Masica","San Francisco","Tela","Arizona"],
+  "Colón": ["Trujillo","Balfate","Bonito Oriental","Iriona","Limón","Sabá","Santa Fe","Santa Rosa de Aguán","Sonaguera","Tocoa"],
+  "Comayagua": ["Comayagua","Ajuterique","El Rosario","Esquías","Humuya","La Libertad","La Trinidad","Lamaní","Lejamaní","Meámbar","Minas de Oro","Ojos de Agua","San Jerónimo","San José de Comayagua","San José del Potrero","San Luis","San Sebastián","Siguatepeque","Villa de San Antonio","Las Lajas","Taulabé"],
+  "Copán": ["Santa Rosa de Copán","Cabañas","Concepción","Copán Ruinas","Corquín","Cucuyagua","Dolores","Dulce Nombre","El Paraíso","Florida","La Jigua","La Unión","Nueva Arcadia","San Agustín","San Antonio","San Jerónimo","San José","San Juan de Opoa","San Nicolás","San Pedro de Copán","Santa Rita","Trinidad de Copán","Veracruz"],
+  "Cortés": ["San Pedro Sula","Choloma","La Lima","Omoa","Pimienta","Potrerillos","Puerto Cortés","San Antonio de Cortés","San Francisco de Yojoa","San Manuel","Santa Cruz de Yojoa","Villanueva"],
+  "El Paraíso": ["Yuscarán","Alauca","Danlí","El Paraíso","Güinope","Jacaleapa","Liure","Morocelí","Oropolí","Potrerillos","San Antonio de Flores","San Lucas","San Matías","Soledad","Teupasenti","Texiguat","Vado Ancho","Yauyupe","Trojes"],
+  "Francisco Morazán": ["Distrito Central (Tegucigalpa)","Alubarén","Cedros","Curarén","El Porvenir","Guaimaca","Lepaterique","Maraita","Marale","Nueva Armenia","Ojojona","Orica","Reitoca","Sabanagrande","San Antonio de Oriente","San Buenaventura","San Ignacio","San Juan de Flores","San Miguelito","Santa Ana","Santa Lucía","Talanga","Tatumbla","Valle de Ángeles","Vallecillo","Villa de San Francisco"],
+  "Gracias a Dios": ["Puerto Lempira","Brus Laguna","Ahuas","Juan Francisco Bulnes","Ramón Villeda Morales","Wampusirpi"],
+  "Intibucá": ["La Esperanza","Camasca","Colomoncagua","Concepción","Dolores","Intibucá","Jesús de Otoro","Magdalena","Masaguara","San Antonio","San Isidro","San Juan","San Marcos de la Sierra","Santa Lucía","Yamaranguila","San Francisco de Opalaca"],
+  "Islas de la Bahía": ["Roatán","Guanaja","José Santos Guardiola","Utila"],
+  "La Paz": ["La Paz","Aguanqueterique","Cabañas","Cane","Chinacla","Guajiquiro","Lauterique","Marcala","Mercedes de Oriente","Opatoro","San Antonio del Norte","San José","San Juan","San Pedro de Tutule","Santa Ana","Santa Elena","Santa María","Santiago de Puringla","Yarula"],
+  "Lempira": ["Gracias","Belén","Candelaria","Cololaca","Erandique","Gualcince","Guarita","La Campa","La Iguala","Las Flores","La Unión","La Virtud","Lepaera","Mapulaca","Piraera","San Andrés","San Francisco","San Juan Guarita","San Manuel Colohete","San Rafael","San Sebastián","Santa Cruz","Talgua","Tambla","Tomalá","Valladolid","Virginia","San Marcos de Caiquín"],
+  "Ocotepeque": ["Nueva Ocotepeque","Belén Gualcho","Concepción","Dolores Merendón","Fraternidad","La Encarnación","La Labor","Lucerna","Mercedes","San Fernando","San Francisco del Valle","San Jorge","San Marcos","Santa Fe","Sensenti","Sinuapa"],
+  "Olancho": ["Juticalpa","Campamento","Catacamas","Concordia","Dulce Nombre de Culmí","El Rosario","Esquipulas del Norte","Gualaco","Guarizama","Guata","Guayape","Jano","La Unión","Mangulile","Manto","Salamá","San Esteban","Santa María del Real","Silca","Yocón","Patuca"],
+  "Santa Bárbara": ["Santa Bárbara","Arada","Atima","Azacualpa","Ceguaca","Concepción del Norte","Concepción del Sur","Chinda","El Níspero","Gualala","Ilama","Macuelizo","Naranjito","Nuevo Celilac","Petoa","Protección","Quimistán","San Francisco de Ojuera","San José de Colinas","San Luis","San Marcos","San Nicolás","San Pedro Zacapa","San Vicente Centenario","Santa Rita","Trinidad","Nueva Frontera"],
+  "Valle": ["Nacaome","Alianza","Amapala","Aramecina","Caridad","Goascorán","Langue","San Francisco de Coray","San Lorenzo"],
+  "Yoro": ["Yoro","Arenal","El Negrito","El Progreso","Jocón","Morazán","Olanchito","Santa Rita","Sulaco","Victoria","Yorito"]
+};
 
-        // WhatsApp Checkout Link Generation
-        function checkoutViaWhatsApp() {
-            if (state.cart.length === 0) return;
+/* =========================================================
+   PRODUCTOS
+========================================================= */
+const products = [
+  {
+    id: 1,
+    title: "Faja Reductora Térmica Colombiana",
+    badge: "Más Vendido",
+    originalPrice: 890,
+    price: 549,
+    images: [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80"
+    ],
+    benefits: [
+      "Moldea la figura al instante",
+      "Tejido térmico transpirable",
+      "Reduce hasta 2 tallas visualmente",
+      "Cómoda para uso diario"
+    ]
+  },
+  {
+    id: 2,
+    title: "Set de 10 Ollas Antiadherentes Premium",
+    badge: "Más Vendido",
+    originalPrice: 2990,
+    price: 1790,
+    images: [
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1598289431512-b97b0917affc?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
+    ],
+    benefits: [
+      "Recubrimiento antiadherente sin PFOA",
+      "Distribución uniforme del calor",
+      "Aptas para todo tipo de cocina",
+      "Mangos ergonómicos resistentes al calor"
+    ]
+  },
+  {
+    id: 3,
+    title: "Masajeador Eléctrico de Cuello y Espalda",
+    badge: "Nuevo",
+    originalPrice: 1590,
+    price: 990,
+    images: [
+      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80"
+    ],
+    benefits: [
+      "Alivia tensión muscular profunda",
+      "3 niveles de intensidad ajustables",
+      "Batería recargable inalámbrica",
+      "Diseño ergonómico tipo collar"
+    ]
+  },
+  {
+    id: 4,
+    title: "Plancha de Cabello Cerámica Profesional",
+    badge: "Oferta",
+    originalPrice: 1290,
+    price: 749,
+    images: [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80"
+    ],
+    benefits: [
+      "Placas cerámicas de calentamiento rápido",
+      "Protege el cabello del daño térmico",
+      "Resultado liso profesional en minutos",
+      "Cable giratorio de larga duración"
+    ]
+  }
+];
 
-            let text = "Hola Bienestar Total, me gustaría realizar el pedido de los siguientes productos:\n\n";
-            state.cart.forEach((item, index) => {
-                text += `${index + 1}. *${item.title}* x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
-            });
+/* Descuentos por cantidad: 1 = normal, 2 = -10%, 3 = -20% */
+const QTY_TIERS = [
+  { qty: 1, label: "1 unidad", discount: 0 },
+  { qty: 2, label: "2 unidades", discount: 0.10 },
+  { qty: 3, label: "3 unidades", discount: 0.20 }
+];
 
-            const total = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            text += `\n*Total Estimado:* $${total.toFixed(2)}\n\n¿Me indican los pasos para realizar el pago y envío?`;
+let currentProduct = null;
+let currentQtyIndex = 0;
 
-            const url = `https://wa.me/5215555555555?text=${encodeURIComponent(text)}`;
-            window.open(url, '_blank');
-        }
+function formatL(n) {
+  return "L. " + n.toLocaleString("es-HN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
 
-        // Modal Logic
-        function openProductModal(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
+/* =========================================================
+   RENDER: GRID DE PRODUCTOS
+========================================================= */
+const grid = document.getElementById("product-grid");
+grid.innerHTML = products.map(p => `
+  <div class="card-hover bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col cursor-pointer" onclick="openModal(${p.id})">
+    <div class="relative aspect-square bg-slate-100 overflow-hidden">
+      <img src="${p.images[0]}" alt="${p.title}" class="w-full h-full object-cover">
+      <span class="absolute top-3 left-3 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">${p.badge}</span>
+    </div>
+    <div class="p-4 flex flex-col flex-1">
+      <h3 class="font-heading font-bold text-sm sm:text-base text-dark mb-2 leading-snug flex-1">${p.title}</h3>
+      <div class="flex items-baseline gap-2 mb-1">
+        <span class="text-slate-400 line-through text-xs">${formatL(p.originalPrice)}</span>
+        <span class="text-primary font-heading font-extrabold text-lg">${formatL(p.price)}</span>
+      </div>
+      <span class="inline-block w-fit bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase mb-3">Envío Gratis</span>
+      <button class="w-full bg-accent hover:bg-orange-600 text-white font-heading font-bold text-xs sm:text-sm py-3 rounded-xl transition-colors">
+        COMPRAR CONTRA ENTREGA
+      </button>
+    </div>
+  </div>
+`).join("");
 
-            currentModalProductId = productId;
-            modalImg.src = product.image;
-            modalImg.alt = product.title;
-            modalTag.textContent = product.category;
-            modalTitle.textContent = product.title;
-            modalPrice.textContent = `$${product.price.toFixed(2)}`;
-            modalDesc.textContent = product.description;
-            
-            modalBenefits.innerHTML = product.benefits.map(b => `
-                <li class="flex items-center gap-2 text-xs text-secondary">
-                    <span class="material-symbols-outlined text-primary text-sm">check_circle</span>
-                    <span>${b}</span>
-                </li>
-            `).join('');
+/* =========================================================
+   SELECT DE DEPARTAMENTOS
+========================================================= */
+const departmentSelect = document.getElementById("field-department");
+const municipalitySelect = document.getElementById("field-municipality");
 
-            modalWhatsappBtn.href = `https://wa.me/5215555555555?text=${encodeURIComponent(`Hola Bienestar Total, me interesa comprar: ${product.title} ($${product.price.toFixed(2)})`)}`;
+Object.keys(HONDURAS).forEach(dept => {
+  const opt = document.createElement("option");
+  opt.value = dept;
+  opt.textContent = dept;
+  departmentSelect.appendChild(opt);
+});
 
-            productModalOverlay.classList.remove('hidden');
-            setTimeout(() => {
-                productModalOverlay.classList.remove('opacity-0');
-                productModal.classList.remove('scale-95');
-            }, 10);
-        }
+departmentSelect.addEventListener("change", () => {
+  const dept = departmentSelect.value;
+  municipalitySelect.innerHTML = '<option value="" disabled selected>Selecciona...</option>';
+  if (dept && HONDURAS[dept]) {
+    municipalitySelect.disabled = false;
+    HONDURAS[dept].forEach(m => {
+      const opt = document.createElement("option");
+      opt.value = m;
+      opt.textContent = m;
+      municipalitySelect.appendChild(opt);
+    });
+  } else {
+    municipalitySelect.disabled = true;
+  }
+});
 
-        function closeProductModal() {
-            productModalOverlay.classList.add('opacity-0');
-            productModal.classList.add('scale-95');
-            setTimeout(() => {
-                productModalOverlay.classList.add('hidden');
-            }, 300);
-        }
+/* =========================================================
+   MODAL: ABRIR / CERRAR
+========================================================= */
+const overlay = document.getElementById("modal-overlay");
+const panel = document.getElementById("modal-panel");
+const viewPurchase = document.getElementById("view-purchase");
+const viewSuccess = document.getElementById("view-success");
 
-        // Cart Drawer Toggles
-        function openCartDrawer() {
-            cartDrawerOverlay.classList.remove('hidden');
-            setTimeout(() => {
-                cartDrawerOverlay.classList.remove('opacity-0');
-                cartDrawer.classList.remove('translate-x-full');
-            }, 10);
-        }
+function openModal(productId) {
+  currentProduct = products.find(p => p.id === productId);
+  if (!currentProduct) return;
+  currentQtyIndex = 0;
 
-        function closeCartDrawer() {
-            cartDrawerOverlay.classList.add('opacity-0');
-            cartDrawer.classList.add('translate-x-full');
-            setTimeout(() => {
-                cartDrawerOverlay.classList.add('hidden');
-            }, 300);
-        }
+  document.getElementById("modal-title").textContent = currentProduct.title;
+  document.getElementById("modal-badge").textContent = currentProduct.badge;
+  document.getElementById("modal-main-img").src = currentProduct.images[0];
+  document.getElementById("modal-main-img").alt = currentProduct.title;
+  document.getElementById("modal-original-price").textContent = formatL(currentProduct.originalPrice);
+  document.getElementById("modal-unit-price").textContent = formatL(currentProduct.price);
 
-        // Toast Feedback
-        function showToast(message) {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = 'bg-on-surface text-surface px-4 py-3 rounded-2xl shadow-xl text-xs font-semibold flex items-center gap-2 transition-all transform translate-y-4 opacity-0 pointer-events-auto border border-outline-variant/30';
-            toast.innerHTML = `
-                <span class="material-symbols-outlined text-primary-container text-base">check_circle</span>
-                <span>${message}</span>
-            `;
-            container.appendChild(toast);
+  document.getElementById("modal-thumbs").innerHTML = currentProduct.images.map((img, i) => `
+    <button onclick="setMainImage('${img}')" class="aspect-square rounded-lg overflow-hidden border-2 ${i === 0 ? 'border-primary' : 'border-transparent'}">
+      <img src="${img}" class="w-full h-full object-cover">
+    </button>
+  `).join("");
 
-            setTimeout(() => {
-                toast.classList.remove('translate-y-4', 'opacity-0');
-            }, 10);
+  document.getElementById("modal-benefits").innerHTML = currentProduct.benefits.map(b => `
+    <li class="flex items-start gap-2 text-sm text-slate-600">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+      <span>${b}</span>
+    </li>
+  `).join("");
 
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-4');
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-        }
+  renderQtySelector();
+  updateOrderSummary();
+  resetForm();
 
-        // Event Listeners Initialization
-        document.addEventListener('DOMContentLoaded', () => {
-            renderProducts();
-            updateCartUI();
+  viewPurchase.classList.remove("hidden");
+  viewSuccess.classList.add("hidden");
 
-            // Filters
-            categoryFilters.addEventListener('click', (e) => {
-                const btn = e.target.closest('.filter-btn');
-                if (!btn) return;
+  overlay.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+  requestAnimationFrame(() => {
+    overlay.classList.remove("opacity-0");
+    panel.classList.remove("opacity-0", "translate-y-6", "sm:scale-95");
+  });
+}
 
-                document.querySelectorAll('.filter-btn').forEach(b => {
-                    b.className = 'filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all bg-surface-container-low text-on-surface-variant border border-outline-variant/40 hover:bg-surface-variant';
-                });
-                btn.className = 'filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all bg-primary-container text-on-primary-container shadow-sm';
+function setMainImage(src) {
+  document.getElementById("modal-main-img").src = src;
+}
 
-                state.currentCategory = btn.dataset.category;
-                renderProducts();
-            });
+function closeModal() {
+  overlay.classList.add("opacity-0");
+  panel.classList.add("opacity-0", "translate-y-6", "sm:scale-95");
+  document.body.style.overflow = "";
+  setTimeout(() => overlay.classList.add("hidden"), 250);
+}
 
-            // Search
-            const handleSearch = (val) => {
-                state.searchQuery = val;
-                if (val.trim() !== '') {
-                    clearSearchBtn.classList.remove('hidden');
-                } else {
-                    clearSearchBtn.classList.add('hidden');
-                }
-                renderProducts();
-            };
+document.getElementById("modal-close-btn").addEventListener("click", closeModal);
+overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
+document.getElementById("success-close-btn").addEventListener("click", closeModal);
 
-            searchInput.addEventListener('input', (e) => handleSearch(e.target.value));
-            mobileSearchInput.addEventListener('input', (e) => handleSearch(e.target.value));
+/* =========================================================
+   SELECTOR DE CANTIDAD
+========================================================= */
+function renderQtySelector() {
+  const container = document.getElementById("qty-selector");
+  container.innerHTML = QTY_TIERS.map((tier, i) => {
+    const unitTotal = currentProduct.price * tier.qty;
+    const finalTotal = unitTotal * (1 - tier.discount);
+    return `
+      <button type="button" onclick="selectQty(${i})" data-idx="${i}"
+        class="qty-card ${i === 0 ? 'selected' : ''} border-2 border-slate-200 rounded-xl p-2.5 text-center transition-all">
+        <p class="font-heading font-extrabold text-sm text-dark">${tier.qty}</p>
+        <p class="text-[10px] text-slate-500 mb-1">${tier.qty === 1 ? 'unidad' : 'unidades'}</p>
+        ${tier.discount > 0 ? `<p class="text-[10px] font-bold text-primary">-${tier.discount * 100}%</p>` : `<p class="text-[10px] text-slate-400">Normal</p>`}
+        <p class="text-xs font-bold text-dark mt-1">${formatL(finalTotal)}</p>
+      </button>
+    `;
+  }).join("");
+}
 
-            clearSearchBtn.addEventListener('click', () => {
-                searchInput.value = '';
-                mobileSearchInput.value = '';
-                handleSearch('');
-            });
+function selectQty(index) {
+  currentQtyIndex = index;
+  document.querySelectorAll(".qty-card").forEach((el, i) => {
+    el.classList.toggle("selected", i === index);
+  });
+  updateOrderSummary();
+}
 
-            mobileSearchToggle.addEventListener('click', () => {
-                mobileSearchBar.classList.toggle('hidden');
-            });
+function updateOrderSummary() {
+  if (!currentProduct) return;
+  const tier = QTY_TIERS[currentQtyIndex];
+  const unitTotal = currentProduct.price * tier.qty;
+  const discountAmount = unitTotal * tier.discount;
+  const finalTotal = unitTotal - discountAmount;
 
-            document.getElementById('reset-filters-btn').addEventListener('click', () => {
-                state.searchQuery = '';
-                state.currentCategory = 'all';
-                searchInput.value = '';
-                mobileSearchInput.value = '';
-                clearSearchBtn.classList.add('hidden');
-                
-                document.querySelectorAll('.filter-btn').forEach(b => {
-                    if (b.dataset.category === 'all') {
-                        b.className = 'filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all bg-primary-container text-on-primary-container shadow-sm';
-                    } else {
-                        b.className = 'filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all bg-surface-container-low text-on-surface-variant border border-outline-variant/40 hover:bg-surface-variant';
-                    }
-                });
-                renderProducts();
-            });
+  document.getElementById("summary-qty-label").textContent = `${tier.label} x ${formatL(currentProduct.price)}`;
+  document.getElementById("summary-unit-total").textContent = formatL(unitTotal);
 
-            // Cart Drawer
-            cartToggleBtn.addEventListener('click', openCartDrawer);
-            closeCartBtn.addEventListener('click', closeCartDrawer);
-            cartDrawerOverlay.addEventListener('click', (e) => {
-                if (e.target === cartDrawerOverlay) closeCartDrawer();
-            });
-            whatsappCheckoutBtn.addEventListener('click', checkoutViaWhatsApp);
+  const discountRow = document.getElementById("summary-discount-row");
+  if (tier.discount > 0) {
+    discountRow.classList.remove("hidden");
+    document.getElementById("summary-discount").textContent = "- " + formatL(discountAmount);
+  } else {
+    discountRow.classList.add("hidden");
+  }
 
-            // Modal
-            closeModalBtn.addEventListener('click', closeProductModal);
-            productModalOverlay.addEventListener('click', (e) => {
-                if (e.target === productModalOverlay) closeProductModal();
-            });
+  document.getElementById("summary-total").textContent = formatL(finalTotal);
+}
 
-            modalAddCartBtn.addEventListener('click', () => {
-                if (currentModalProductId) {
-                    addToCart(currentModalProductId);
-                    closeProductModal();
-                }
-            });
-        });
-    </script>
+/* =========================================================
+   FORMULARIO: VALIDACION Y ENVIO
+========================================================= */
+const form = document.getElementById("order-form");
+const phoneInput = document.getElementById("field-phone");
+
+phoneInput.addEventListener("input", () => {
+  let digits = phoneInput.value.replace(/\D/g, "").slice(0, 8);
+  if (digits.length > 4) {
+    phoneInput.value = digits.slice(0, 4) + "-" + digits.slice(4);
+  } else {
+    phoneInput.value = digits;
+  }
+});
+
+function resetForm() {
+  form.reset();
+  municipalitySelect.innerHTML = '<option value="" disabled selected>Elige depto. primero</option>';
+  municipalitySelect.disabled = true;
+  form.querySelectorAll("input, select, textarea").forEach(el => el.classList.remove("touched"));
+  form.querySelectorAll(".error-msg").forEach(el => el.classList.add("hidden"));
+}
+
+function isPhoneValid(value) {
+  return /^\d{8}$/.test(value.replace(/\D/g, ""));
+}
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const nameEl = document.getElementById("field-name");
+  const addressEl = document.getElementById("field-address");
+  const referenceEl = document.getElementById("field-reference");
+
+  let valid = true;
+  const fieldsToCheck = [
+    { el: nameEl, ok: nameEl.value.trim().length > 2 },
+    { el: phoneInput, ok: isPhoneValid(phoneInput.value) },
+    { el: departmentSelect, ok: !!departmentSelect.value },
+    { el: municipalitySelect, ok: !!municipalitySelect.value },
+    { el: addressEl, ok: addressEl.value.trim().length > 4 },
+    { el: referenceEl, ok: referenceEl.value.trim().length > 2 }
+  ];
+
+  fieldsToCheck.forEach(({ el, ok }) => {
+    el.classList.add("touched");
+    const errorMsg = el.closest("div").querySelector(".error-msg");
+    if (!ok) {
+      valid = false;
+      el.classList.add("border-red-500");
+      if (errorMsg) errorMsg.classList.remove("hidden");
+    } else {
+      el.classList.remove("border-red-500");
+      if (errorMsg) errorMsg.classList.add("hidden");
+    }
+  });
+
+  if (!valid) return;
+
+  const tier = QTY_TIERS[currentQtyIndex];
+  const unitTotal = currentProduct.price * tier.qty;
+  const finalTotal = unitTotal * (1 - tier.discount);
+
+  document.getElementById("success-product").textContent = `${currentProduct.title} (x${tier.qty})`;
+  document.getElementById("success-name").textContent = nameEl.value.trim();
+  document.getElementById("success-phone").textContent = phoneInput.value.trim();
+  document.getElementById("success-location").textContent = `${municipalitySelect.value}, ${departmentSelect.value}`;
+  document.getElementById("success-total").textContent = formatL(finalTotal);
+
+  viewPurchase.classList.add("hidden");
+  viewSuccess.classList.remove("hidden");
+  document.getElementById("modal-panel").scrollTop = 0;
+});
+</script>
 </body>
 </html>
