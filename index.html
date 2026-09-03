@@ -187,6 +187,7 @@
           <!-- Formulario -->
           <div class="p-5 sm:p-6">
             <h2 id="modal-title" class="font-heading font-extrabold text-xl text-dark mb-1"></h2>
+            <p id="modal-description" class="text-slate-500 text-sm mb-3"></p>
             <div class="flex items-baseline gap-2 mb-4">
               <span id="modal-original-price" class="text-slate-400 line-through text-sm"></span>
               <span id="modal-unit-price" class="text-primary font-heading font-extrabold text-2xl"></span>
@@ -389,20 +390,19 @@ const products = [
   },
   {
     id: 3,
-    title: "Masajeador Eléctrico de Cuello y Espalda",
-    badge: "Nuevo",
-    originalPrice: 1590,
-    price: 990,
+    title: "Producto Multifunción con Bandas de Resistencia (2 Bandas de Pedal + 2 Bandas de Brazos GRATIS)",
+    badge: "Promoción",
+    originalPrice: 1290,
+    price: 760,
+    description: "Entrena brazos, piernas y cuerpo completo desde casa. Ideal para fortalecer, tonificar y mejorar la resistencia de forma práctica y sencilla.",
     images: [
-      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80"
+      "./images/bandas-resistencia.jpg"
     ],
     benefits: [
-      "Alivia tensión muscular profunda",
-      "3 niveles de intensidad ajustables",
-      "Batería recargable inalámbrica",
-      "Diseño ergonómico tipo collar"
+      "Envío Gratis a nivel nacional",
+      "Pago contra entrega en efectivo",
+      "Incluye 2 Bandas de Pedal + 2 Bandas de Brazos GRATIS",
+      "Ideal para tonificar brazos, piernas y espalda"
     ]
   },
   {
@@ -506,6 +506,7 @@ function openModal(productId) {
   currentQtyIndex = 0;
 
   document.getElementById("modal-title").textContent = currentProduct.title;
+  document.getElementById("modal-description").textContent = currentProduct.description || "";
   document.getElementById("modal-badge").textContent = currentProduct.badge;
   document.getElementById("modal-main-img").src = currentProduct.images[0];
   document.getElementById("modal-main-img").alt = currentProduct.title;
