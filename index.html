@@ -122,7 +122,23 @@
       <p class="text-slate-500 text-sm mt-1">Productos seleccionados, con envío gratis y pago contra entrega</p>
     </div>
 
-    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
+    <!-- CATEGORIA: FITNESS -->
+    <div class="mb-12 sm:mb-16">
+      <h3 class="font-heading font-extrabold text-lg sm:text-xl text-dark uppercase tracking-wide mb-5 pl-3 border-l-4 border-primary">Fitness</h3>
+      <div id="product-grid-fitness" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
+    </div>
+
+    <!-- CATEGORIA: SUPLEMENTOS -->
+    <div class="mb-12 sm:mb-16">
+      <h3 class="font-heading font-extrabold text-lg sm:text-xl text-dark uppercase tracking-wide mb-5 pl-3 border-l-4 border-primary">Suplementos</h3>
+      <div id="product-grid-suplementos" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
+    </div>
+
+    <!-- CATEGORIA: BIENESTAR CORPORAL -->
+    <div>
+      <h3 class="font-heading font-extrabold text-lg sm:text-xl text-dark uppercase tracking-wide mb-5 pl-3 border-l-4 border-primary">Bienestar Corporal</h3>
+      <div id="product-grid-bienestar-corporal" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
+    </div>
   </section>
 
   <!-- BENEFICIOS -->
@@ -370,6 +386,7 @@ const products = [
   {
     id: 1,
     title: "Faja Reductora Térmica Colombiana",
+    category: "FITNESS",
     badge: "Más Vendido",
     originalPrice: 890,
     price: 549,
@@ -384,6 +401,7 @@ const products = [
   {
     id: 3,
     title: "Producto Multifunción con Bandas de Resistencia (2 Bandas de Pedal + 2 Bandas de Brazos GRATIS)",
+    category: "FITNESS",
     badge: "Promoción",
     originalPrice: 1290,
     price: 760,
@@ -396,20 +414,6 @@ const products = [
       "Ideal para tonificar brazos, piernas y espalda"
     ]
   },
-  {
-    id: 4,
-    title: "Plancha de Cabello Cerámica Profesional",
-    badge: "Oferta",
-    originalPrice: 1290,
-    price: 749,
-    imagen: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
-    benefits: [
-      "Placas cerámicas de calentamiento rápido",
-      "Protege el cabello del daño térmico",
-      "Resultado liso profesional en minutos",
-      "Cable giratorio de larga duración"
-    ]
-  }
 ];
 
 /* Número de WhatsApp Business (solo dígitos, con código de país) donde llegan los pedidos */
@@ -430,10 +434,10 @@ function formatL(n) {
 }
 
 /* =========================================================
-   RENDER: GRID DE PRODUCTOS
+   RENDER: PRODUCTOS AGRUPADOS POR CATEGORIA
 ========================================================= */
-const grid = document.getElementById("product-grid");
-grid.innerHTML = products.map(p => `
+function renderProductCard(p) {
+  return `
   <div class="card-hover bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col cursor-pointer" onclick="openModal(${p.id})">
     <div class="relative aspect-square bg-slate-100 overflow-hidden">
       <img src="${p.imagen}" alt="${p.title}" class="w-full h-full object-cover cursor-zoom-in" onclick="event.stopPropagation(); openLightbox('${p.imagen}', '${p.title.replace(/'/g, "\\'")}')">
@@ -451,7 +455,28 @@ grid.innerHTML = products.map(p => `
       </button>
     </div>
   </div>
-`).join("");
+`;
+}
+
+function renderCategory(category, containerId) {
+  const container = document.getElementById(containerId);
+  const items = products.filter(p => p.category === category);
+
+  if (items.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full border-2 border-dashed border-slate-200 rounded-2xl py-10 px-6 text-center">
+        <p class="font-heading font-bold text-sm text-slate-400 uppercase tracking-wide">Próximamente nuevos productos</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = items.map(renderProductCard).join("");
+}
+
+renderCategory("FITNESS", "product-grid-fitness");
+renderCategory("SUPLEMENTOS", "product-grid-suplementos");
+renderCategory("BIENESTAR CORPORAL", "product-grid-bienestar-corporal");
 
 /* =========================================================
    SELECT DE DEPARTAMENTOS
