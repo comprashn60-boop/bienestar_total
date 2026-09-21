@@ -41,22 +41,6 @@ const products = [
     ]
   },
   {
-    id: 3,
-    title: "Producto Multifunción con Bandas de Resistencia (2 Bandas de Pedal + 2 Bandas de Brazos GRATIS)",
-    category: "FITNESS",
-    badge: "Promoción",
-    originalPrice: 1290,
-    price: 760,
-    description: "Entrena brazos, piernas y cuerpo completo desde casa. Ideal para fortalecer, tonificar y mejorar la resistencia de forma práctica y sencilla.",
-    imagen: "images/bandas-resistencia-1.jpg",
-    benefits: [
-      "Envío Gratis a nivel nacional",
-      "Pago contra entrega en efectivo",
-      "Incluye 2 Bandas de Pedal + 2 Bandas de Brazos GRATIS",
-      "Ideal para tonificar brazos, piernas y espalda"
-    ]
-  },
-  {
     id: 5,
     title: "2 Bandas para Entrenar (1 Banda de Pedal + 1 Banda para Brazos)",
     category: "FITNESS",
