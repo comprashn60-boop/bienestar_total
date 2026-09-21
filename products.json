@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "title": "Faja Reductora Térmica Colombiana",
+    "category": "Cuidado Personal",
+    "badge": "Más Vendido",
+    "originalPrice": 890,
+    "price": 549,
+    "rating": 4.6,
+    "description": "Moldea tu figura al instante con tejido térmico transpirable, ideal para uso diario bajo la ropa o durante el ejercicio.",
+    "images": [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80"
+    ],
+    "benefits": [
+      "Moldea la figura al instante",
+      "Tejido térmico transpirable",
+      "Reduce hasta 2 tallas visualmente",
+      "Cómoda para uso diario"
+    ],
+    "reviews": [
+      { "name": "Karla M.", "rating": 5, "comment": "Llegó rápido y se nota la diferencia desde el primer día de uso.", "photo": null },
+      { "name": "Doris R.", "rating": 5, "comment": "Buena calidad de tela, no pica y es cómoda para todo el día.", "photo": null },
+      { "name": "Ana L.", "rating": 4, "comment": "Me quedó un poco floja pero el material es bueno.", "photo": null }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Set de 10 Ollas Antiadherentes Premium",
+    "category": "Cocina",
+    "badge": "Más Vendido",
+    "originalPrice": 2990,
+    "price": 1790,
+    "rating": 4.8,
+    "description": "Recubrimiento antiadherente libre de PFOA con distribución uniforme del calor, perfecto para toda la familia.",
+    "images": [
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1598289431512-b97b0917affc?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=800&q=80"
+    ],
+    "benefits": [
+      "Recubrimiento antiadherente sin PFOA",
+      "Distribución uniforme del calor",
+      "Aptas para todo tipo de cocina",
+      "Mangos ergonómicos resistentes al calor"
+    ],
+    "reviews": [
+      { "name": "Sandra P.", "rating": 5, "comment": "Excelente calidad, nada se pega y son fáciles de limpiar.", "photo": null },
+      { "name": "Mirian G.", "rating": 5, "comment": "Superó mis expectativas, el juego completo vino bien empacado.", "photo": null },
+      { "name": "Fátima C.", "rating": 4, "comment": "Muy buenas ollas, tardó un poco la entrega pero valió la pena.", "photo": null }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Producto Multifunción con Bandas de Resistencia (2 Bandas de Pedal + 2 Bandas de Brazos GRATIS)",
+    "category": "Fitness",
+    "badge": "Promoción",
+    "originalPrice": 1290,
+    "price": 760,
+    "rating": 4.7,
+    "description": "Entrena brazos, piernas y cuerpo completo desde casa. Ideal para fortalecer, tonificar y mejorar la resistencia de forma práctica y sencilla.",
+    "images": [
+      "images/bandas-resistencia-1.jpg",
+      "images/bandas-resistencia-2.jpg",
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=800&q=80"
+    ],
+    "benefits": [
+      "Envío Gratis a nivel nacional",
+      "Pago contra entrega en efectivo",
+      "Incluye 2 Bandas de Pedal + 2 Bandas de Brazos GRATIS",
+      "Ideal para tonificar brazos, piernas y espalda"
+    ],
+    "reviews": [
+      { "name": "Wendy A.", "rating": 5, "comment": "Muy completo el set, se siente resistente y de buena calidad.", "photo": null },
+      { "name": "Josué M.", "rating": 4, "comment": "Buen producto para entrenar en casa, cumple lo que promete.", "photo": null },
+      { "name": "Rosa H.", "rating": 5, "comment": "Llegó completo con las 4 bandas, muy contenta con la compra.", "photo": null }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Plancha de Cabello Cerámica Profesional",
+    "category": "Belleza",
+    "badge": "Oferta",
+    "originalPrice": 1290,
+    "price": 749,
+    "rating": 4.5,
+    "description": "Placas cerámicas de calentamiento rápido que protegen el cabello del daño térmico, para un resultado liso profesional en minutos.",
+    "images": [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80"
+    ],
+    "benefits": [
+      "Placas cerámicas de calentamiento rápido",
+      "Protege el cabello del daño térmico",
+      "Resultado liso profesional en minutos",
+      "Cable giratorio de larga duración"
+    ],
+    "reviews": [
+      { "name": "Yesenia T.", "rating": 5, "comment": "Deja el cabello muy liso y calienta rapidísimo.", "photo": null },
+      { "name": "Claudia N.", "rating": 4, "comment": "Buena plancha por el precio, el cable es flexible.", "photo": null },
+      { "name": "Melissa O.", "rating": 5, "comment": "La uso a diario y sigue funcionando perfecto.", "photo": null }
+    ]
+  }
+]
