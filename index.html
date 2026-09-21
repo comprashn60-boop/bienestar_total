@@ -175,8 +175,6 @@
               <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover">
               <span id="modal-badge" class="absolute top-3 left-3 bg-accent text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wide"></span>
             </div>
-            <div id="modal-thumbs" class="grid grid-cols-4 gap-2"></div>
-
             <!-- Beneficios -->
             <div class="mt-5">
               <h4 class="font-heading font-bold text-sm text-dark mb-2">Beneficios clave</h4>
@@ -367,11 +365,7 @@ const products = [
     badge: "Más Vendido",
     originalPrice: 890,
     price: 549,
-    images: [
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80"
-    ],
+    imagen: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
     benefits: [
       "Moldea la figura al instante",
       "Tejido térmico transpirable",
@@ -385,11 +379,7 @@ const products = [
     badge: "Más Vendido",
     originalPrice: 2990,
     price: 1790,
-    images: [
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1598289431512-b97b0917affc?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
-    ],
+    imagen: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
     benefits: [
       "Recubrimiento antiadherente sin PFOA",
       "Distribución uniforme del calor",
@@ -404,10 +394,7 @@ const products = [
     originalPrice: 1290,
     price: 760,
     description: "Entrena brazos, piernas y cuerpo completo desde casa. Ideal para fortalecer, tonificar y mejorar la resistencia de forma práctica y sencilla.",
-    images: [
-      "images/bandas-resistencia-1.jpg",
-      "images/bandas-resistencia-2.jpg"
-    ],
+    imagen: "images/bandas-resistencia-1.jpg",
     benefits: [
       "Envío Gratis a nivel nacional",
       "Pago contra entrega en efectivo",
@@ -421,11 +408,7 @@ const products = [
     badge: "Oferta",
     originalPrice: 1290,
     price: 749,
-    images: [
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80"
-    ],
+    imagen: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
     benefits: [
       "Placas cerámicas de calentamiento rápido",
       "Protege el cabello del daño térmico",
@@ -459,7 +442,7 @@ const grid = document.getElementById("product-grid");
 grid.innerHTML = products.map(p => `
   <div class="card-hover bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col cursor-pointer" onclick="openModal(${p.id})">
     <div class="relative aspect-square bg-slate-100 overflow-hidden">
-      <img src="${p.images[0]}" alt="${p.title}" class="w-full h-full object-cover">
+      <img src="${p.imagen}" alt="${p.title}" class="w-full h-full object-cover">
       <span class="absolute top-3 left-3 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">${p.badge}</span>
     </div>
     <div class="p-4 flex flex-col flex-1">
@@ -521,16 +504,10 @@ function openModal(productId) {
   document.getElementById("modal-title").textContent = currentProduct.title;
   document.getElementById("modal-description").textContent = currentProduct.description || "";
   document.getElementById("modal-badge").textContent = currentProduct.badge;
-  document.getElementById("modal-main-img").src = currentProduct.images[0];
+  document.getElementById("modal-main-img").src = currentProduct.imagen;
   document.getElementById("modal-main-img").alt = currentProduct.title;
   document.getElementById("modal-original-price").textContent = formatL(currentProduct.originalPrice);
   document.getElementById("modal-unit-price").textContent = formatL(currentProduct.price);
-
-  document.getElementById("modal-thumbs").innerHTML = currentProduct.images.map((img, i) => `
-    <button onclick="setMainImage('${img}')" class="aspect-square rounded-lg overflow-hidden border-2 ${i === 0 ? 'border-primary' : 'border-transparent'}">
-      <img src="${img}" class="w-full h-full object-cover">
-    </button>
-  `).join("");
 
   document.getElementById("modal-benefits").innerHTML = currentProduct.benefits.map(b => `
     <li class="flex items-start gap-2 text-sm text-slate-600">
@@ -552,10 +529,6 @@ function openModal(productId) {
     overlay.classList.remove("opacity-0");
     panel.classList.remove("opacity-0", "translate-y-6", "sm:scale-95");
   });
-}
-
-function setMainImage(src) {
-  document.getElementById("modal-main-img").src = src;
 }
 
 function closeModal() {
