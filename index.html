@@ -37,7 +37,7 @@
   ::-webkit-scrollbar-track { background: #f1f5f9; }
   ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
-  .modal-overlay {
+  .modal-overlay, .lightbox-overlay {
     transition: opacity .25s ease;
   }
   .modal-panel {
@@ -172,7 +172,7 @@
           <!-- Galeria -->
           <div class="bg-slate-100 p-5 sm:p-6">
             <div class="relative rounded-xl overflow-hidden bg-white aspect-square mb-3">
-              <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover">
+              <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover cursor-zoom-in" onclick="openLightbox(currentProduct.imagen, currentProduct.title)">
               <span id="modal-badge" class="absolute top-3 left-3 bg-accent text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wide"></span>
             </div>
             <!-- Beneficios -->
@@ -331,6 +331,14 @@
   </div>
 </div>
 
+<!-- ===================== LIGHTBOX: IMAGEN AMPLIADA ===================== -->
+<div id="lightbox-overlay" class="lightbox-overlay hidden fixed inset-0 z-[60] bg-black/90 opacity-0 flex items-center justify-center p-4 sm:p-8" onclick="closeLightbox()">
+  <button id="lightbox-close-btn" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white" onclick="closeLightbox()">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+  </button>
+  <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg" onclick="event.stopPropagation()">
+</div>
+
 <script>
 /* =========================================================
    DATOS: DEPARTAMENTOS Y MUNICIPIOS DE HONDURAS
@@ -442,7 +450,7 @@ const grid = document.getElementById("product-grid");
 grid.innerHTML = products.map(p => `
   <div class="card-hover bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col cursor-pointer" onclick="openModal(${p.id})">
     <div class="relative aspect-square bg-slate-100 overflow-hidden">
-      <img src="${p.imagen}" alt="${p.title}" class="w-full h-full object-cover">
+      <img src="${p.imagen}" alt="${p.title}" class="w-full h-full object-cover cursor-zoom-in" onclick="event.stopPropagation(); openLightbox('${p.imagen}', '${p.title.replace(/'/g, "\\'")}')">
       <span class="absolute top-3 left-3 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">${p.badge}</span>
     </div>
     <div class="p-4 flex flex-col flex-1">
@@ -540,6 +548,28 @@ function closeModal() {
 
 document.getElementById("modal-close-btn").addEventListener("click", closeModal);
 overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
+
+/* =========================================================
+   LIGHTBOX: IMAGEN AMPLIADA
+========================================================= */
+const lightboxOverlay = document.getElementById("lightbox-overlay");
+const lightboxImg = document.getElementById("lightbox-img");
+
+function openLightbox(src, alt) {
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || "";
+  lightboxOverlay.classList.remove("hidden");
+  requestAnimationFrame(() => lightboxOverlay.classList.remove("opacity-0"));
+}
+
+function closeLightbox() {
+  lightboxOverlay.classList.add("opacity-0");
+  setTimeout(() => lightboxOverlay.classList.add("hidden"), 200);
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !lightboxOverlay.classList.contains("hidden")) closeLightbox();
+});
 document.getElementById("success-close-btn").addEventListener("click", closeModal);
 
 /* =========================================================
