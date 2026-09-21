@@ -37,7 +37,7 @@
   ::-webkit-scrollbar-track { background: #f1f5f9; }
   ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
-  .modal-overlay {
+  .modal-overlay, .lightbox-overlay {
     transition: opacity .25s ease;
   }
   .modal-panel {
@@ -172,11 +172,9 @@
           <!-- Galeria -->
           <div class="bg-slate-100 p-5 sm:p-6">
             <div class="relative rounded-xl overflow-hidden bg-white aspect-square mb-3">
-              <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover">
+              <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover cursor-zoom-in" onclick="openLightbox(currentProduct.imagen, currentProduct.title)">
               <span id="modal-badge" class="absolute top-3 left-3 bg-accent text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wide"></span>
             </div>
-            <div id="modal-thumbs" class="grid grid-cols-4 gap-2"></div>
-
             <!-- Beneficios -->
             <div class="mt-5">
               <h4 class="font-heading font-bold text-sm text-dark mb-2">Beneficios clave</h4>
@@ -333,6 +331,14 @@
   </div>
 </div>
 
+<!-- ===================== LIGHTBOX: IMAGEN AMPLIADA ===================== -->
+<div id="lightbox-overlay" class="lightbox-overlay hidden fixed inset-0 z-[60] bg-black/90 opacity-0 flex items-center justify-center p-4 sm:p-8" onclick="closeLightbox()">
+  <button id="lightbox-close-btn" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white" onclick="closeLightbox()">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+  </button>
+  <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg" onclick="event.stopPropagation()">
+</div>
+
 <script>
 /* =========================================================
    DATOS: DEPARTAMENTOS Y MUNICIPIOS DE HONDURAS
@@ -367,34 +373,12 @@ const products = [
     badge: "Más Vendido",
     originalPrice: 890,
     price: 549,
-    images: [
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80"
-    ],
+    imagen: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
     benefits: [
       "Moldea la figura al instante",
       "Tejido térmico transpirable",
       "Reduce hasta 2 tallas visualmente",
       "Cómoda para uso diario"
-    ]
-  },
-  {
-    id: 2,
-    title: "Set de 10 Ollas Antiadherentes Premium",
-    badge: "Más Vendido",
-    originalPrice: 2990,
-    price: 1790,
-    images: [
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1598289431512-b97b0917affc?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
-    ],
-    benefits: [
-      "Recubrimiento antiadherente sin PFOA",
-      "Distribución uniforme del calor",
-      "Aptas para todo tipo de cocina",
-      "Mangos ergonómicos resistentes al calor"
     ]
   },
   {
@@ -404,10 +388,7 @@ const products = [
     originalPrice: 1290,
     price: 760,
     description: "Entrena brazos, piernas y cuerpo completo desde casa. Ideal para fortalecer, tonificar y mejorar la resistencia de forma práctica y sencilla.",
-    images: [
-      "images/bandas-resistencia-1.jpg",
-      "images/bandas-resistencia-2.jpg"
-    ],
+    imagen: "images/bandas-resistencia-1.jpg",
     benefits: [
       "Envío Gratis a nivel nacional",
       "Pago contra entrega en efectivo",
@@ -421,11 +402,7 @@ const products = [
     badge: "Oferta",
     originalPrice: 1290,
     price: 749,
-    images: [
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80"
-    ],
+    imagen: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
     benefits: [
       "Placas cerámicas de calentamiento rápido",
       "Protege el cabello del daño térmico",
@@ -459,7 +436,7 @@ const grid = document.getElementById("product-grid");
 grid.innerHTML = products.map(p => `
   <div class="card-hover bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col cursor-pointer" onclick="openModal(${p.id})">
     <div class="relative aspect-square bg-slate-100 overflow-hidden">
-      <img src="${p.images[0]}" alt="${p.title}" class="w-full h-full object-cover">
+      <img src="${p.imagen}" alt="${p.title}" class="w-full h-full object-cover cursor-zoom-in" onclick="event.stopPropagation(); openLightbox('${p.imagen}', '${p.title.replace(/'/g, "\\'")}')">
       <span class="absolute top-3 left-3 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">${p.badge}</span>
     </div>
     <div class="p-4 flex flex-col flex-1">
@@ -521,16 +498,10 @@ function openModal(productId) {
   document.getElementById("modal-title").textContent = currentProduct.title;
   document.getElementById("modal-description").textContent = currentProduct.description || "";
   document.getElementById("modal-badge").textContent = currentProduct.badge;
-  document.getElementById("modal-main-img").src = currentProduct.images[0];
+  document.getElementById("modal-main-img").src = currentProduct.imagen;
   document.getElementById("modal-main-img").alt = currentProduct.title;
   document.getElementById("modal-original-price").textContent = formatL(currentProduct.originalPrice);
   document.getElementById("modal-unit-price").textContent = formatL(currentProduct.price);
-
-  document.getElementById("modal-thumbs").innerHTML = currentProduct.images.map((img, i) => `
-    <button onclick="setMainImage('${img}')" class="aspect-square rounded-lg overflow-hidden border-2 ${i === 0 ? 'border-primary' : 'border-transparent'}">
-      <img src="${img}" class="w-full h-full object-cover">
-    </button>
-  `).join("");
 
   document.getElementById("modal-benefits").innerHTML = currentProduct.benefits.map(b => `
     <li class="flex items-start gap-2 text-sm text-slate-600">
@@ -554,10 +525,6 @@ function openModal(productId) {
   });
 }
 
-function setMainImage(src) {
-  document.getElementById("modal-main-img").src = src;
-}
-
 function closeModal() {
   overlay.classList.add("opacity-0");
   panel.classList.add("opacity-0", "translate-y-6", "sm:scale-95");
@@ -567,6 +534,28 @@ function closeModal() {
 
 document.getElementById("modal-close-btn").addEventListener("click", closeModal);
 overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
+
+/* =========================================================
+   LIGHTBOX: IMAGEN AMPLIADA
+========================================================= */
+const lightboxOverlay = document.getElementById("lightbox-overlay");
+const lightboxImg = document.getElementById("lightbox-img");
+
+function openLightbox(src, alt) {
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || "";
+  lightboxOverlay.classList.remove("hidden");
+  requestAnimationFrame(() => lightboxOverlay.classList.remove("opacity-0"));
+}
+
+function closeLightbox() {
+  lightboxOverlay.classList.add("opacity-0");
+  setTimeout(() => lightboxOverlay.classList.add("hidden"), 200);
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !lightboxOverlay.classList.contains("hidden")) closeLightbox();
+});
 document.getElementById("success-close-btn").addEventListener("click", closeModal);
 
 /* =========================================================
