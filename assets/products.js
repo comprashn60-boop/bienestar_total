@@ -55,6 +55,22 @@ const products = [
       "Incluye 2 Bandas de Pedal + 2 Bandas de Brazos GRATIS",
       "Ideal para tonificar brazos, piernas y espalda"
     ]
+  },
+  {
+    id: 5,
+    title: "2 Bandas para Entrenar (1 Banda de Pedal + 1 Banda para Brazos)",
+    category: "FITNESS",
+    badge: "Oferta",
+    originalPrice: 850,
+    price: 500,
+    description: "Entrena ahorra tiempo: tonifica y fortalece brazos, abdomen, glúteos y piernas desde casa y donde quieras.",
+    imagen: "images/2-bandas-entrenar.webp",
+    benefits: [
+      "Incluye 1 banda de pedal + 1 banda para brazos",
+      "Tonifica y fortalece brazos, abdomen, glúteos y piernas",
+      "Ligera, portátil y fácil de usar",
+      "Envío Gratis y pago contra entrega"
+    ]
   }
 ];
 
