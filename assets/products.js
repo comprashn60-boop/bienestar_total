@@ -55,6 +55,38 @@ const products = [
       "Ligera, portátil y fácil de usar",
       "Envío Gratis y pago contra entrega"
     ]
+  },
+  {
+    id: 6,
+    title: "Alfombra para Ejercicios (Yoga, Pilates y Fitness)",
+    category: "FITNESS",
+    badge: "Oferta",
+    originalPrice: 750,
+    price: 570,
+    description: "Tu espacio, tu bienestar. Ideal para yoga, pilates, fitness y estiramientos, en casa o en el gimnasio.",
+    imagen: "images/alfombra-yoga-ejercicios-1.webp",
+    benefits: [
+      "Ideal para yoga, pilates, fitness y estiramientos",
+      "Material de alta calidad: suave, resistente y duradera",
+      "Superficie antideslizante para mayor estabilidad",
+      "Ligera y portátil, incluye cinta de transporte"
+    ]
+  },
+  {
+    id: 7,
+    title: "Masajeador Recargable para Cólicos Menstruales",
+    category: "BIENESTAR CORPORAL",
+    badge: "Oferta",
+    originalPrice: 950,
+    price: 700,
+    description: "Alivio, comodidad y bienestar en tus días difíciles. Terapia de calor y vibración en un diseño ligero y portátil.",
+    imagen: "images/masajeador-colicos-menstruales-1.webp",
+    benefits: [
+      "3 niveles de calor y vibración",
+      "Recargable y práctico",
+      "Reduce la tensión y mejora la circulación",
+      "Ligero, cómodo y portátil para usar en casa o donde quieras"
+    ]
   }
 ];
 
