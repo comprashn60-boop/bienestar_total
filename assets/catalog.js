@@ -184,13 +184,13 @@ function renderQtySelector() {
   const container = document.getElementById("qty-selector");
   container.innerHTML = QTY_TIERS.map((tier, i) => {
     const unitTotal = currentProduct.price * tier.qty;
-    const finalTotal = unitTotal * (1 - tier.discount);
+    const finalTotal = unitTotal - (tier.discountAmount || 0);
     return `
       <button type="button" onclick="selectQty(${i})" data-idx="${i}"
         class="qty-card ${i === 0 ? 'selected' : ''} border-2 border-slate-200 rounded-xl p-2.5 text-center transition-all">
         <p class="font-heading font-extrabold text-sm text-dark">${tier.qty}</p>
         <p class="text-[10px] text-slate-500 mb-1">${tier.qty === 1 ? 'unidad' : 'unidades'}</p>
-        ${tier.discount > 0 ? `<p class="text-[10px] font-bold text-primary">-${tier.discount * 100}%</p>` : `<p class="text-[10px] text-slate-400">Normal</p>`}
+        ${tier.discountAmount > 0 ? `<p class="text-[10px] font-bold text-primary">-${formatL(tier.discountAmount)}</p>` : `<p class="text-[10px] text-slate-400">Normal</p>`}
         <p class="text-xs font-bold text-dark mt-1">${formatL(finalTotal)}</p>
       </button>
     `;
@@ -209,14 +209,14 @@ function updateOrderSummary() {
   if (!currentProduct) return;
   const tier = QTY_TIERS[currentQtyIndex];
   const unitTotal = currentProduct.price * tier.qty;
-  const discountAmount = unitTotal * tier.discount;
+  const discountAmount = tier.discountAmount || 0;
   const finalTotal = unitTotal - discountAmount;
 
   document.getElementById("summary-qty-label").textContent = `${tier.label} x ${formatL(currentProduct.price)}`;
   document.getElementById("summary-unit-total").textContent = formatL(unitTotal);
 
   const discountRow = document.getElementById("summary-discount-row");
-  if (tier.discount > 0) {
+  if (discountAmount > 0) {
     discountRow.classList.remove("hidden");
     document.getElementById("summary-discount").textContent = "- " + formatL(discountAmount);
   } else {
@@ -275,7 +275,7 @@ function handleOrderSubmit(e) {
 
   const tier = QTY_TIERS[currentQtyIndex];
   const unitTotal = currentProduct.price * tier.qty;
-  const finalTotal = unitTotal * (1 - tier.discount);
+  const finalTotal = unitTotal - (tier.discountAmount || 0);
 
   const customerName = nameEl.value.trim();
   const customerPhone = phoneInput.value.trim();

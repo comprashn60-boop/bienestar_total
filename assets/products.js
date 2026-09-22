@@ -93,11 +93,10 @@ const products = [
 /* Número de WhatsApp Business (solo dígitos, con código de país) donde llegan los pedidos */
 const WHATSAPP_NUMBER = "50487353593";
 
-/* Descuentos por cantidad: 1 = normal, 2 = -10%, 3 = -20% */
+/* Descuentos por cantidad: 1 = normal, 2 = L.200 de descuento fijo */
 const QTY_TIERS = [
-  { qty: 1, label: "1 unidad", discount: 0 },
-  { qty: 2, label: "2 unidades", discount: 0.10 },
-  { qty: 3, label: "3 unidades", discount: 0.20 }
+  { qty: 1, label: "1 unidad", discountAmount: 0 },
+  { qty: 2, label: "2 unidades", discountAmount: 200 }
 ];
 
 function formatL(n) {
