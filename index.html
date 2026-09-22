@@ -11,58 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          primary: '#0d9464',
-          'primary-dark': '#0a744f',
-          accent: '#f97316',
-          dark: '#0f172a'
-        },
-        fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-          heading: ['Montserrat', 'sans-serif']
-        }
-      }
-    }
-  }
-</script>
-
-<style>
-  body { font-family: 'Inter', sans-serif; }
-  .font-heading { font-family: 'Montserrat', sans-serif; }
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #f1f5f9; }
-  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-
-  .modal-overlay, .lightbox-overlay {
-    transition: opacity .25s ease;
-  }
-  .modal-panel {
-    transition: transform .3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity .25s ease;
-  }
-  .qty-card.selected {
-    border-color: #0d9464;
-    background-color: #ecfdf5;
-    box-shadow: 0 0 0 2px #0d9464;
-  }
-  .card-hover { transition: all .3s ease; }
-  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -10px rgba(0,0,0,.15); }
-
-  .pulse-cta {
-    animation: pulseCta 2.2s infinite;
-  }
-  @keyframes pulseCta {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,.5); }
-    50% { box-shadow: 0 0 0 10px rgba(249,115,22,0); }
-  }
-
-  input:invalid.touched, select:invalid.touched {
-    border-color: #ef4444;
-  }
-</style>
+<script src="assets/tailwind-config.js"></script>
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 <body class="bg-slate-50 text-dark antialiased">
 
@@ -74,7 +24,7 @@
 <!-- HEADER -->
 <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
-    <a href="#" class="flex items-center gap-2.5">
+    <a href="/" class="flex items-center gap-2.5">
       <div class="w-11 h-11 rounded-xl bg-primary flex items-center justify-center text-white font-heading font-black text-lg shrink-0">
         BT
       </div>
@@ -83,10 +33,21 @@
         <p class="text-[10px] sm:text-xs text-primary font-semibold uppercase tracking-widest">Catálogo Oficial Honduras</p>
       </div>
     </a>
-    <a href="#catalogo" class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
-      Ver Catálogo
+    <a href="https://wa.me/50487353593?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20sus%20productos" target="_blank" rel="noopener"
+      class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
+      WhatsApp
     </a>
   </div>
+
+  <!-- BARRA DE CATEGORIAS -->
+  <nav class="border-t border-slate-100 bg-white">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 flex items-center justify-center gap-1 overflow-x-auto">
+      <a href="/" class="category-nav-link active">Inicio</a>
+      <a href="/fitness" class="category-nav-link">Fitness</a>
+      <a href="/suplementos" class="category-nav-link">Suplementos</a>
+      <a href="/bienestar-corporal" class="category-nav-link">Bienestar Corporal</a>
+    </div>
+  </nav>
 
   <!-- BARRA DE CONFIANZA -->
   <div class="border-t border-slate-100 bg-slate-50">
@@ -115,16 +76,41 @@
     </p>
   </section>
 
-  <!-- CATALOGO -->
-  <section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+  <!-- CATEGORIAS -->
+  <section id="categorias" class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
     <div class="text-center mb-8 sm:mb-10">
-      <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-dark">Nuestro Catálogo</h2>
-      <p class="text-slate-500 text-sm mt-1">Productos seleccionados, con envío gratis y pago contra entrega</p>
+      <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-dark">Explora por Categoría</h2>
+      <p class="text-slate-500 text-sm mt-1">Elige la categoría que buscas y encuentra tu producto ideal</p>
     </div>
 
-    <div id="category-filters" class="flex flex-wrap justify-center gap-2 mb-8"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
+      <a href="/fitness" class="card-hover group bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col p-6 sm:p-8 text-center">
+        <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4 text-3xl">🏋️</div>
+        <h3 class="font-heading font-extrabold text-lg text-dark mb-2 uppercase tracking-wide">Fitness</h3>
+        <p class="text-slate-500 text-sm mb-5 flex-1">Fajas, bandas de resistencia y accesorios para entrenar en casa.</p>
+        <span class="inline-flex items-center justify-center gap-1 text-primary font-bold text-sm">
+          Ver productos <span aria-hidden="true">→</span>
+        </span>
+      </a>
 
-    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
+      <a href="/suplementos" class="card-hover group bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col p-6 sm:p-8 text-center">
+        <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4 text-3xl">💊</div>
+        <h3 class="font-heading font-extrabold text-lg text-dark mb-2 uppercase tracking-wide">Suplementos</h3>
+        <p class="text-slate-500 text-sm mb-5 flex-1">Próximamente nuevos productos para tu nutrición y energía diaria.</p>
+        <span class="inline-flex items-center justify-center gap-1 text-primary font-bold text-sm">
+          Ver categoría <span aria-hidden="true">→</span>
+        </span>
+      </a>
+
+      <a href="/bienestar-corporal" class="card-hover group bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col p-6 sm:p-8 text-center">
+        <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4 text-3xl">🧘</div>
+        <h3 class="font-heading font-extrabold text-lg text-dark mb-2 uppercase tracking-wide">Bienestar Corporal</h3>
+        <p class="text-slate-500 text-sm mb-5 flex-1">Próximamente nuevos productos para tu cuidado y relajación.</p>
+        <span class="inline-flex items-center justify-center gap-1 text-primary font-bold text-sm">
+          Ver categoría <span aria-hidden="true">→</span>
+        </span>
+      </a>
+    </div>
   </section>
 
   <!-- BENEFICIOS -->
@@ -150,622 +136,20 @@
 </main>
 
 <!-- FOOTER -->
-<footer class="bg-dark text-slate-300 py-8 px-4 sm:px-6">
-  <div class="max-w-7xl mx-auto text-center">
-    <p class="font-heading font-extrabold text-white text-lg mb-1">Bienestar Total</p>
-    <p class="text-xs text-slate-400">© 2026 Bienestar Total Honduras. Todos los derechos reservados.</p>
+<footer class="bg-dark text-slate-300 py-10 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto flex flex-col items-center gap-6 text-center">
+    <div>
+      <p class="font-heading font-extrabold text-white text-lg mb-1">Bienestar Total</p>
+      <p class="text-xs text-slate-400">© 2026 Bienestar Total Honduras. Todos los derechos reservados.</p>
+    </div>
+    <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold uppercase tracking-wide">
+      <a href="/" class="hover:text-white transition-colors">Inicio</a>
+      <a href="/fitness" class="hover:text-white transition-colors">Fitness</a>
+      <a href="/suplementos" class="hover:text-white transition-colors">Suplementos</a>
+      <a href="/bienestar-corporal" class="hover:text-white transition-colors">Bienestar Corporal</a>
+    </nav>
   </div>
 </footer>
 
-<!-- ===================== MODAL DE COMPRA ===================== -->
-<div id="modal-overlay" class="modal-overlay hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 flex items-start sm:items-center justify-center p-0 sm:p-4 overflow-y-auto">
-  <div id="modal-panel" class="modal-panel opacity-0 translate-y-6 sm:scale-95 bg-white w-full sm:max-w-3xl sm:rounded-2xl shadow-2xl relative my-0 sm:my-8 max-h-none sm:max-h-[92vh] flex flex-col overflow-hidden">
-
-    <!-- close -->
-    <button id="modal-close-btn" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-white/90 shadow flex items-center justify-center text-slate-500 hover:text-dark hover:bg-slate-100">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-    </button>
-
-    <div class="overflow-y-auto">
-
-      <!-- ============ VISTA: FORMULARIO DE COMPRA ============ -->
-      <div id="view-purchase">
-        <div class="grid grid-cols-1 md:grid-cols-2">
-          <!-- Galeria -->
-          <div class="bg-slate-100 p-5 sm:p-6">
-            <div class="relative rounded-xl overflow-hidden bg-white aspect-square mb-3">
-              <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover cursor-zoom-in" onclick="openLightbox(currentProduct.imagen, currentProduct.title)">
-              <span id="modal-badge" class="absolute top-3 left-3 bg-accent text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wide"></span>
-            </div>
-            <!-- Beneficios -->
-            <div class="mt-5">
-              <h4 class="font-heading font-bold text-sm text-dark mb-2">Beneficios clave</h4>
-              <ul id="modal-benefits" class="space-y-2"></ul>
-            </div>
-          </div>
-
-          <!-- Formulario -->
-          <div class="p-5 sm:p-6">
-            <h2 id="modal-title" class="font-heading font-extrabold text-xl text-dark mb-1"></h2>
-            <p id="modal-description" class="text-slate-500 text-sm mb-3"></p>
-            <div class="flex items-baseline gap-2 mb-4">
-              <span id="modal-original-price" class="text-slate-400 line-through text-sm"></span>
-              <span id="modal-unit-price" class="text-primary font-heading font-extrabold text-2xl"></span>
-              <span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Envío Gratis</span>
-            </div>
-
-            <!-- Selector de cantidad -->
-            <p class="font-heading font-bold text-sm text-dark mb-2">Elige tu cantidad</p>
-            <div id="qty-selector" class="grid grid-cols-3 gap-2 mb-6"></div>
-
-            <form id="order-form" novalidate class="space-y-4">
-              <div>
-                <label class="block text-xs font-bold text-slate-600 mb-1">Nombre Completo *</label>
-                <input required type="text" id="field-name" placeholder="Ej. María Fernández"
-                  class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
-                <p class="error-msg hidden text-[11px] text-red-500 mt-1">Ingresa tu nombre completo.</p>
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold text-slate-600 mb-1">Teléfono / WhatsApp *</label>
-                <input required type="tel" id="field-phone" placeholder="Ej. 9988-7766" maxlength="9"
-                  class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
-                <p id="phone-error" class="error-msg hidden text-[11px] text-red-500 mt-1">Ingresa un número válido de 8 dígitos.</p>
-              </div>
-
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-xs font-bold text-slate-600 mb-1">Departamento *</label>
-                  <select required id="field-department" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
-                    <option value="" disabled selected>Selecciona...</option>
-                  </select>
-                  <p class="error-msg hidden text-[11px] text-red-500 mt-1">Selecciona tu departamento.</p>
-                </div>
-                <div>
-                  <label class="block text-xs font-bold text-slate-600 mb-1">Municipio *</label>
-                  <select required id="field-municipality" disabled class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm bg-white disabled:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
-                    <option value="" disabled selected>Elige depto. primero</option>
-                  </select>
-                  <p class="error-msg hidden text-[11px] text-red-500 mt-1">Selecciona tu municipio.</p>
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold text-slate-600 mb-1">Dirección Exacta *</label>
-                <textarea required id="field-address" rows="2" placeholder="Barrio, colonia, calle, número de casa..."
-                  class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary resize-none"></textarea>
-                <p class="error-msg hidden text-[11px] text-red-500 mt-1">Ingresa tu dirección exacta.</p>
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold text-slate-600 mb-1">Punto de Referencia *</label>
-                <input required type="text" id="field-reference" placeholder="Ej. Frente a la iglesia católica, casa color celeste"
-                  class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
-                <p class="error-msg hidden text-[11px] text-red-500 mt-1">Este campo es obligatorio para la entrega.</p>
-              </div>
-
-              <!-- Aviso destacado: Pago Contra Entrega en Efectivo -->
-              <div class="bg-primary/10 border-2 border-primary rounded-xl p-4 flex items-start gap-3">
-                <span class="text-2xl leading-none">💵</span>
-                <p class="text-sm font-bold text-primary-dark leading-snug">
-                  PAGO CONTRA ENTREGA EN EFECTIVO: Pagas en efectivo al mensajero únicamente cuando recibas tu pedido en la puerta de tu casa.
-                </p>
-              </div>
-
-              <!-- Resumen de la orden -->
-              <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-1.5 text-sm">
-                <div class="flex justify-between text-slate-600">
-                  <span id="summary-qty-label">1 unidad</span>
-                  <span id="summary-unit-total">L. 0.00</span>
-                </div>
-                <div id="summary-discount-row" class="hidden flex justify-between text-primary font-semibold">
-                  <span>Descuento aplicado</span>
-                  <span id="summary-discount">- L. 0.00</span>
-                </div>
-                <div class="flex justify-between text-slate-600">
-                  <span>Envío</span>
-                  <span class="text-primary font-bold">GRATIS</span>
-                </div>
-                <div class="flex justify-between font-heading font-extrabold text-base text-dark pt-2 border-t border-slate-200">
-                  <span>Total a pagar</span>
-                  <span id="summary-total" class="text-primary">L. 0.00</span>
-                </div>
-              </div>
-
-              <button type="submit" id="submit-order-btn" class="pulse-cta w-full bg-accent hover:bg-orange-600 text-white font-heading font-extrabold text-sm sm:text-base py-4 rounded-xl transition-colors shadow-lg shadow-accent/30 flex items-center justify-center gap-2">
-                <span>CONFIRMAR Y PAGAR AL RECIBIR (EFECTIVO)</span>
-              </button>
-              <p class="text-center text-[11px] text-slate-400">🔒 Tus datos están seguros. No se realiza ningún cobro en línea.</p>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <!-- ============ VISTA: CONFIRMACION / EXITO ============ -->
-      <div id="view-success" class="hidden p-6 sm:p-10 text-center">
-        <div class="w-20 h-20 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-5">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-        </div>
-        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-dark mb-2">¡Gracias por tu compra!</h2>
-        <p class="text-slate-600 text-sm sm:text-base max-w-md mx-auto mb-6">
-          Su orden ha sido procesada. En breve nos comunicamos con usted para confirmar la entrega.
-        </p>
-
-        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6 max-w-sm mx-auto text-left space-y-3">
-          <h3 class="font-heading font-bold text-sm text-dark uppercase tracking-wide mb-1">Resumen del Pedido</h3>
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-500">Producto</span>
-            <span id="success-product" class="font-semibold text-dark text-right"></span>
-          </div>
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-500">Nombre</span>
-            <span id="success-name" class="font-semibold text-dark text-right"></span>
-          </div>
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-500">Teléfono</span>
-            <span id="success-phone" class="font-semibold text-dark text-right"></span>
-          </div>
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-500">Ubicación</span>
-            <span id="success-location" class="font-semibold text-dark text-right"></span>
-          </div>
-          <div class="flex justify-between text-base pt-2 border-t border-slate-200">
-            <span class="font-heading font-bold text-dark">Total a Pagar</span>
-            <span id="success-total" class="font-heading font-extrabold text-primary"></span>
-          </div>
-        </div>
-
-        <p class="text-slate-500 text-xs mt-5">Te estamos redirigiendo a WhatsApp para confirmar tu pedido. Si no se abrió automáticamente, usa el botón de abajo.</p>
-
-        <a id="whatsapp-redirect-link" href="#" target="_blank" rel="noopener"
-           class="mt-3 inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-heading font-bold text-sm px-8 py-3 rounded-full transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.39a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.13-.98-.32-1.69-.62-2.97-1.28-4.91-4.27-5.06-4.47-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.52.25.6.86 2.08.93 2.23.08.15.13.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.06 1.14 1.02 2.1 1.33 2.39 1.48.29.15.46.13.63-.08.17-.2.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.13.07.75-.18 1.45z"/></svg>
-          <span>Continuar en WhatsApp</span>
-        </a>
-        <br>
-
-        <button id="success-close-btn" class="mt-3 text-slate-500 hover:text-dark font-semibold text-sm px-8 py-2 rounded-full transition-colors underline">
-          Seguir Comprando
-        </button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ===================== LIGHTBOX: IMAGEN AMPLIADA ===================== -->
-<div id="lightbox-overlay" class="lightbox-overlay hidden fixed inset-0 z-[60] bg-black/90 opacity-0 flex items-center justify-center p-4 sm:p-8" onclick="closeLightbox()">
-  <button id="lightbox-close-btn" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white" onclick="closeLightbox()">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-  </button>
-  <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg" onclick="event.stopPropagation()">
-</div>
-
-<script>
-/* =========================================================
-   DATOS: DEPARTAMENTOS Y MUNICIPIOS DE HONDURAS
-========================================================= */
-const HONDURAS = {
-  "Atlántida": ["La Ceiba","El Porvenir","Esparta","Jutiapa","La Masica","San Francisco","Tela","Arizona"],
-  "Colón": ["Trujillo","Balfate","Bonito Oriental","Iriona","Limón","Sabá","Santa Fe","Santa Rosa de Aguán","Sonaguera","Tocoa"],
-  "Comayagua": ["Comayagua","Ajuterique","El Rosario","Esquías","Humuya","La Libertad","La Trinidad","Lamaní","Lejamaní","Meámbar","Minas de Oro","Ojos de Agua","San Jerónimo","San José de Comayagua","San José del Potrero","San Luis","San Sebastián","Siguatepeque","Villa de San Antonio","Las Lajas","Taulabé"],
-  "Copán": ["Santa Rosa de Copán","Cabañas","Concepción","Copán Ruinas","Corquín","Cucuyagua","Dolores","Dulce Nombre","El Paraíso","Florida","La Jigua","La Unión","Nueva Arcadia","San Agustín","San Antonio","San Jerónimo","San José","San Juan de Opoa","San Nicolás","San Pedro de Copán","Santa Rita","Trinidad de Copán","Veracruz"],
-  "Cortés": ["San Pedro Sula","Choloma","La Lima","Omoa","Pimienta","Potrerillos","Puerto Cortés","San Antonio de Cortés","San Francisco de Yojoa","San Manuel","Santa Cruz de Yojoa","Villanueva"],
-  "El Paraíso": ["Yuscarán","Alauca","Danlí","El Paraíso","Güinope","Jacaleapa","Liure","Morocelí","Oropolí","Potrerillos","San Antonio de Flores","San Lucas","San Matías","Soledad","Teupasenti","Texiguat","Vado Ancho","Yauyupe","Trojes"],
-  "Francisco Morazán": ["Distrito Central (Tegucigalpa)","Alubarén","Cedros","Curarén","El Porvenir","Guaimaca","Lepaterique","Maraita","Marale","Nueva Armenia","Ojojona","Orica","Reitoca","Sabanagrande","San Antonio de Oriente","San Buenaventura","San Ignacio","San Juan de Flores","San Miguelito","Santa Ana","Santa Lucía","Talanga","Tatumbla","Valle de Ángeles","Vallecillo","Villa de San Francisco"],
-  "Gracias a Dios": ["Puerto Lempira","Brus Laguna","Ahuas","Juan Francisco Bulnes","Ramón Villeda Morales","Wampusirpi"],
-  "Intibucá": ["La Esperanza","Camasca","Colomoncagua","Concepción","Dolores","Intibucá","Jesús de Otoro","Magdalena","Masaguara","San Antonio","San Isidro","San Juan","San Marcos de la Sierra","Santa Lucía","Yamaranguila","San Francisco de Opalaca"],
-  "Islas de la Bahía": ["Roatán","Guanaja","José Santos Guardiola","Utila"],
-  "La Paz": ["La Paz","Aguanqueterique","Cabañas","Cane","Chinacla","Guajiquiro","Lauterique","Marcala","Mercedes de Oriente","Opatoro","San Antonio del Norte","San José","San Juan","San Pedro de Tutule","Santa Ana","Santa Elena","Santa María","Santiago de Puringla","Yarula"],
-  "Lempira": ["Gracias","Belén","Candelaria","Cololaca","Erandique","Gualcince","Guarita","La Campa","La Iguala","Las Flores","La Unión","La Virtud","Lepaera","Mapulaca","Piraera","San Andrés","San Francisco","San Juan Guarita","San Manuel Colohete","San Rafael","San Sebastián","Santa Cruz","Talgua","Tambla","Tomalá","Valladolid","Virginia","San Marcos de Caiquín"],
-  "Ocotepeque": ["Nueva Ocotepeque","Belén Gualcho","Concepción","Dolores Merendón","Fraternidad","La Encarnación","La Labor","Lucerna","Mercedes","San Fernando","San Francisco del Valle","San Jorge","San Marcos","Santa Fe","Sensenti","Sinuapa"],
-  "Olancho": ["Juticalpa","Campamento","Catacamas","Concordia","Dulce Nombre de Culmí","El Rosario","Esquipulas del Norte","Gualaco","Guarizama","Guata","Guayape","Jano","La Unión","Mangulile","Manto","Salamá","San Esteban","Santa María del Real","Silca","Yocón","Patuca"],
-  "Santa Bárbara": ["Santa Bárbara","Arada","Atima","Azacualpa","Ceguaca","Concepción del Norte","Concepción del Sur","Chinda","El Níspero","Gualala","Ilama","Macuelizo","Naranjito","Nuevo Celilac","Petoa","Protección","Quimistán","San Francisco de Ojuera","San José de Colinas","San Luis","San Marcos","San Nicolás","San Pedro Zacapa","San Vicente Centenario","Santa Rita","Trinidad","Nueva Frontera"],
-  "Valle": ["Nacaome","Alianza","Amapala","Aramecina","Caridad","Goascorán","Langue","San Francisco de Coray","San Lorenzo"],
-  "Yoro": ["Yoro","Arenal","El Negrito","El Progreso","Jocón","Morazán","Olanchito","Santa Rita","Sulaco","Victoria","Yorito"]
-};
-
-/* =========================================================
-   PRODUCTOS
-========================================================= */
-const products = [
-  {
-    id: 1,
-    title: "Faja Reductora Térmica Colombiana",
-    badge: "Más Vendido",
-    category: "Bienestar Corporal",
-    originalPrice: 890,
-    price: 549,
-    imagen: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
-    benefits: [
-      "Moldea la figura al instante",
-      "Tejido térmico transpirable",
-      "Reduce hasta 2 tallas visualmente",
-      "Cómoda para uso diario"
-    ]
-  },
-  {
-    id: 3,
-    title: "Producto Multifunción con Bandas de Resistencia (2 Bandas de Pedal + 2 Bandas de Brazos GRATIS)",
-    badge: "Promoción",
-    category: "Fitness",
-    originalPrice: 1290,
-    price: 760,
-    description: "Entrena brazos, piernas y cuerpo completo desde casa. Ideal para fortalecer, tonificar y mejorar la resistencia de forma práctica y sencilla.",
-    imagen: "images/bandas-resistencia-1.jpg",
-    benefits: [
-      "Envío Gratis a nivel nacional",
-      "Pago contra entrega en efectivo",
-      "Incluye 2 Bandas de Pedal + 2 Bandas de Brazos GRATIS",
-      "Ideal para tonificar brazos, piernas y espalda"
-    ]
-  },
-  {
-    id: 4,
-    title: "Plancha de Cabello Cerámica Profesional",
-    badge: "Oferta",
-    category: "Belleza",
-    originalPrice: 1290,
-    price: 749,
-    imagen: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
-    benefits: [
-      "Placas cerámicas de calentamiento rápido",
-      "Protege el cabello del daño térmico",
-      "Resultado liso profesional en minutos",
-      "Cable giratorio de larga duración"
-    ]
-  },
-  {
-    id: 5,
-    title: "Alfombra para Ejercicios (Yoga, Pilates y Fitness)",
-    badge: "Oferta",
-    category: "Fitness",
-    originalPrice: 750,
-    price: 570,
-    description: "Tu espacio, tu bienestar. Ideal para yoga, pilates, fitness y estiramientos, en casa o en el gimnasio.",
-    imagen: "images/alfombra-yoga-ejercicios-1.webp",
-    benefits: [
-      "Ideal para yoga, pilates, fitness y estiramientos",
-      "Material de alta calidad: suave, resistente y duradera",
-      "Superficie antideslizante para mayor estabilidad",
-      "Ligera y portátil, incluye cinta de transporte"
-    ]
-  },
-  {
-    id: 6,
-    title: "Masajeador Recargable para Cólicos Menstruales",
-    badge: "Oferta",
-    category: "Bienestar Corporal",
-    originalPrice: 950,
-    price: 700,
-    description: "Alivio, comodidad y bienestar en tus días difíciles. Terapia de calor y vibración en un diseño ligero y portátil.",
-    imagen: "images/masajeador-colicos-menstruales-1.webp",
-    benefits: [
-      "3 niveles de calor y vibración",
-      "Recargable y práctico",
-      "Reduce la tensión y mejora la circulación",
-      "Ligero, cómodo y portátil para usar en casa o donde quieras"
-    ]
-  }
-];
-
-/* Número de WhatsApp Business (solo dígitos, con código de país) donde llegan los pedidos */
-const WHATSAPP_NUMBER = "50487353593";
-
-/* Descuentos por cantidad: 1 = normal, 2 = -10%, 3 = -20% */
-const QTY_TIERS = [
-  { qty: 1, label: "1 unidad", discount: 0 },
-  { qty: 2, label: "2 unidades", discount: 0.10 },
-  { qty: 3, label: "3 unidades", discount: 0.20 }
-];
-
-let currentProduct = null;
-let currentQtyIndex = 0;
-
-function formatL(n) {
-  return "L. " + n.toLocaleString("es-HN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
-
-/* =========================================================
-   RENDER: FILTROS DE CATEGORÍA + GRID DE PRODUCTOS
-========================================================= */
-const CATEGORIES = ["Todos", ...new Set(products.map(p => p.category).filter(Boolean))];
-let currentCategory = "Todos";
-
-const filtersContainer = document.getElementById("category-filters");
-const grid = document.getElementById("product-grid");
-
-function renderFilters() {
-  filtersContainer.innerHTML = CATEGORIES.map(cat => `
-    <button type="button" onclick="selectCategory('${cat.replace(/'/g, "\\'")}')"
-      class="category-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold border-2 transition-colors ${cat === currentCategory ? 'bg-primary border-primary text-white' : 'bg-white border-slate-200 text-slate-600 hover:border-primary/50'}">
-      ${cat}
-    </button>
-  `).join("");
-}
-
-function selectCategory(cat) {
-  currentCategory = cat;
-  renderFilters();
-  renderGrid();
-}
-
-function renderGrid() {
-  const filtered = currentCategory === "Todos" ? products : products.filter(p => p.category === currentCategory);
-  grid.innerHTML = filtered.map(p => `
-    <div class="card-hover bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col cursor-pointer" onclick="openModal(${p.id})">
-      <div class="relative aspect-square bg-slate-100 overflow-hidden">
-        <img src="${p.imagen}" alt="${p.title}" class="w-full h-full object-cover cursor-zoom-in" onclick="event.stopPropagation(); openLightbox('${p.imagen}', '${p.title.replace(/'/g, "\\'")}')">
-        <span class="absolute top-3 left-3 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">${p.badge}</span>
-      </div>
-      <div class="p-4 flex flex-col flex-1">
-        <h3 class="font-heading font-bold text-sm sm:text-base text-dark mb-2 leading-snug flex-1">${p.title}</h3>
-        <div class="flex items-baseline gap-2 mb-1">
-          <span class="text-slate-400 line-through text-xs">${formatL(p.originalPrice)}</span>
-          <span class="text-primary font-heading font-extrabold text-lg">${formatL(p.price)}</span>
-        </div>
-        <span class="inline-block w-fit bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase mb-3">Envío Gratis</span>
-        <button class="w-full bg-accent hover:bg-orange-600 text-white font-heading font-bold text-xs sm:text-sm py-3 rounded-xl transition-colors">
-          COMPRAR CONTRA ENTREGA
-        </button>
-      </div>
-    </div>
-  `).join("");
-}
-
-renderFilters();
-renderGrid();
-
-/* =========================================================
-   SELECT DE DEPARTAMENTOS
-========================================================= */
-const departmentSelect = document.getElementById("field-department");
-const municipalitySelect = document.getElementById("field-municipality");
-
-Object.keys(HONDURAS).forEach(dept => {
-  const opt = document.createElement("option");
-  opt.value = dept;
-  opt.textContent = dept;
-  departmentSelect.appendChild(opt);
-});
-
-departmentSelect.addEventListener("change", () => {
-  const dept = departmentSelect.value;
-  municipalitySelect.innerHTML = '<option value="" disabled selected>Selecciona...</option>';
-  if (dept && HONDURAS[dept]) {
-    municipalitySelect.disabled = false;
-    HONDURAS[dept].forEach(m => {
-      const opt = document.createElement("option");
-      opt.value = m;
-      opt.textContent = m;
-      municipalitySelect.appendChild(opt);
-    });
-  } else {
-    municipalitySelect.disabled = true;
-  }
-});
-
-/* =========================================================
-   MODAL: ABRIR / CERRAR
-========================================================= */
-const overlay = document.getElementById("modal-overlay");
-const panel = document.getElementById("modal-panel");
-const viewPurchase = document.getElementById("view-purchase");
-const viewSuccess = document.getElementById("view-success");
-
-function openModal(productId) {
-  currentProduct = products.find(p => p.id === productId);
-  if (!currentProduct) return;
-  currentQtyIndex = 0;
-
-  document.getElementById("modal-title").textContent = currentProduct.title;
-  document.getElementById("modal-description").textContent = currentProduct.description || "";
-  document.getElementById("modal-badge").textContent = currentProduct.badge;
-  document.getElementById("modal-main-img").src = currentProduct.imagen;
-  document.getElementById("modal-main-img").alt = currentProduct.title;
-  document.getElementById("modal-original-price").textContent = formatL(currentProduct.originalPrice);
-  document.getElementById("modal-unit-price").textContent = formatL(currentProduct.price);
-
-  document.getElementById("modal-benefits").innerHTML = currentProduct.benefits.map(b => `
-    <li class="flex items-start gap-2 text-sm text-slate-600">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-      <span>${b}</span>
-    </li>
-  `).join("");
-
-  renderQtySelector();
-  updateOrderSummary();
-  resetForm();
-
-  viewPurchase.classList.remove("hidden");
-  viewSuccess.classList.add("hidden");
-
-  overlay.classList.remove("hidden");
-  document.body.style.overflow = "hidden";
-  requestAnimationFrame(() => {
-    overlay.classList.remove("opacity-0");
-    panel.classList.remove("opacity-0", "translate-y-6", "sm:scale-95");
-  });
-}
-
-function closeModal() {
-  overlay.classList.add("opacity-0");
-  panel.classList.add("opacity-0", "translate-y-6", "sm:scale-95");
-  document.body.style.overflow = "";
-  setTimeout(() => overlay.classList.add("hidden"), 250);
-}
-
-document.getElementById("modal-close-btn").addEventListener("click", closeModal);
-overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
-
-/* =========================================================
-   LIGHTBOX: IMAGEN AMPLIADA
-========================================================= */
-const lightboxOverlay = document.getElementById("lightbox-overlay");
-const lightboxImg = document.getElementById("lightbox-img");
-
-function openLightbox(src, alt) {
-  lightboxImg.src = src;
-  lightboxImg.alt = alt || "";
-  lightboxOverlay.classList.remove("hidden");
-  requestAnimationFrame(() => lightboxOverlay.classList.remove("opacity-0"));
-}
-
-function closeLightbox() {
-  lightboxOverlay.classList.add("opacity-0");
-  setTimeout(() => lightboxOverlay.classList.add("hidden"), 200);
-}
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && !lightboxOverlay.classList.contains("hidden")) closeLightbox();
-});
-document.getElementById("success-close-btn").addEventListener("click", closeModal);
-
-/* =========================================================
-   SELECTOR DE CANTIDAD
-========================================================= */
-function renderQtySelector() {
-  const container = document.getElementById("qty-selector");
-  container.innerHTML = QTY_TIERS.map((tier, i) => {
-    const unitTotal = currentProduct.price * tier.qty;
-    const finalTotal = unitTotal * (1 - tier.discount);
-    return `
-      <button type="button" onclick="selectQty(${i})" data-idx="${i}"
-        class="qty-card ${i === 0 ? 'selected' : ''} border-2 border-slate-200 rounded-xl p-2.5 text-center transition-all">
-        <p class="font-heading font-extrabold text-sm text-dark">${tier.qty}</p>
-        <p class="text-[10px] text-slate-500 mb-1">${tier.qty === 1 ? 'unidad' : 'unidades'}</p>
-        ${tier.discount > 0 ? `<p class="text-[10px] font-bold text-primary">-${tier.discount * 100}%</p>` : `<p class="text-[10px] text-slate-400">Normal</p>`}
-        <p class="text-xs font-bold text-dark mt-1">${formatL(finalTotal)}</p>
-      </button>
-    `;
-  }).join("");
-}
-
-function selectQty(index) {
-  currentQtyIndex = index;
-  document.querySelectorAll(".qty-card").forEach((el, i) => {
-    el.classList.toggle("selected", i === index);
-  });
-  updateOrderSummary();
-}
-
-function updateOrderSummary() {
-  if (!currentProduct) return;
-  const tier = QTY_TIERS[currentQtyIndex];
-  const unitTotal = currentProduct.price * tier.qty;
-  const discountAmount = unitTotal * tier.discount;
-  const finalTotal = unitTotal - discountAmount;
-
-  document.getElementById("summary-qty-label").textContent = `${tier.label} x ${formatL(currentProduct.price)}`;
-  document.getElementById("summary-unit-total").textContent = formatL(unitTotal);
-
-  const discountRow = document.getElementById("summary-discount-row");
-  if (tier.discount > 0) {
-    discountRow.classList.remove("hidden");
-    document.getElementById("summary-discount").textContent = "- " + formatL(discountAmount);
-  } else {
-    discountRow.classList.add("hidden");
-  }
-
-  document.getElementById("summary-total").textContent = formatL(finalTotal);
-}
-
-/* =========================================================
-   FORMULARIO: VALIDACION Y ENVIO
-========================================================= */
-const form = document.getElementById("order-form");
-const phoneInput = document.getElementById("field-phone");
-
-phoneInput.addEventListener("input", () => {
-  let digits = phoneInput.value.replace(/\D/g, "").slice(0, 8);
-  if (digits.length > 4) {
-    phoneInput.value = digits.slice(0, 4) + "-" + digits.slice(4);
-  } else {
-    phoneInput.value = digits;
-  }
-});
-
-function resetForm() {
-  form.reset();
-  municipalitySelect.innerHTML = '<option value="" disabled selected>Elige depto. primero</option>';
-  municipalitySelect.disabled = true;
-  form.querySelectorAll("input, select, textarea").forEach(el => el.classList.remove("touched"));
-  form.querySelectorAll(".error-msg").forEach(el => el.classList.add("hidden"));
-}
-
-function isPhoneValid(value) {
-  return /^\d{8}$/.test(value.replace(/\D/g, ""));
-}
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const nameEl = document.getElementById("field-name");
-  const addressEl = document.getElementById("field-address");
-  const referenceEl = document.getElementById("field-reference");
-
-  let valid = true;
-  const fieldsToCheck = [
-    { el: nameEl, ok: nameEl.value.trim().length > 2 },
-    { el: phoneInput, ok: isPhoneValid(phoneInput.value) },
-    { el: departmentSelect, ok: !!departmentSelect.value },
-    { el: municipalitySelect, ok: !!municipalitySelect.value },
-    { el: addressEl, ok: addressEl.value.trim().length > 4 },
-    { el: referenceEl, ok: referenceEl.value.trim().length > 2 }
-  ];
-
-  fieldsToCheck.forEach(({ el, ok }) => {
-    el.classList.add("touched");
-    const errorMsg = el.closest("div").querySelector(".error-msg");
-    if (!ok) {
-      valid = false;
-      el.classList.add("border-red-500");
-      if (errorMsg) errorMsg.classList.remove("hidden");
-    } else {
-      el.classList.remove("border-red-500");
-      if (errorMsg) errorMsg.classList.add("hidden");
-    }
-  });
-
-  if (!valid) return;
-
-  const tier = QTY_TIERS[currentQtyIndex];
-  const unitTotal = currentProduct.price * tier.qty;
-  const finalTotal = unitTotal * (1 - tier.discount);
-
-  const customerName = nameEl.value.trim();
-  const customerPhone = phoneInput.value.trim();
-  const customerLocation = `${municipalitySelect.value}, ${departmentSelect.value}`;
-  const customerAddress = addressEl.value.trim();
-  const customerReference = referenceEl.value.trim();
-
-  document.getElementById("success-product").textContent = `${currentProduct.title} (x${tier.qty})`;
-  document.getElementById("success-name").textContent = customerName;
-  document.getElementById("success-phone").textContent = customerPhone;
-  document.getElementById("success-location").textContent = customerLocation;
-  document.getElementById("success-total").textContent = formatL(finalTotal);
-
-  viewPurchase.classList.add("hidden");
-  viewSuccess.classList.remove("hidden");
-  document.getElementById("modal-panel").scrollTop = 0;
-
-  /* Redacta el pedido y redirige automáticamente a WhatsApp Business */
-  const orderMessage =
-    `🛒 *Nuevo Pedido - Pago Contra Entrega*\n\n` +
-    `*Producto:* ${currentProduct.title}\n` +
-    `*Cantidad:* ${tier.qty}\n` +
-    `*Total a pagar:* ${formatL(finalTotal)}\n\n` +
-    `*Nombre:* ${customerName}\n` +
-    `*Teléfono:* ${customerPhone}\n` +
-    `*Departamento:* ${departmentSelect.value}\n` +
-    `*Municipio:* ${municipalitySelect.value}\n` +
-    `*Dirección exacta:* ${customerAddress}\n` +
-    `*Punto de referencia:* ${customerReference}`;
-
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(orderMessage)}`;
-  document.getElementById("whatsapp-redirect-link").href = whatsappUrl;
-  window.open(whatsappUrl, "_blank");
-});
-</script>
 </body>
 </html>
