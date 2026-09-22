@@ -122,6 +122,8 @@
       <p class="text-slate-500 text-sm mt-1">Productos seleccionados, con envío gratis y pago contra entrega</p>
     </div>
 
+    <div id="category-filters" class="flex flex-wrap justify-center gap-2 mb-8"></div>
+
     <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
   </section>
 
@@ -371,6 +373,7 @@ const products = [
     id: 1,
     title: "Faja Reductora Térmica Colombiana",
     badge: "Más Vendido",
+    category: "Bienestar Corporal",
     originalPrice: 890,
     price: 549,
     imagen: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
@@ -385,6 +388,7 @@ const products = [
     id: 3,
     title: "Producto Multifunción con Bandas de Resistencia (2 Bandas de Pedal + 2 Bandas de Brazos GRATIS)",
     badge: "Promoción",
+    category: "Fitness",
     originalPrice: 1290,
     price: 760,
     description: "Entrena brazos, piernas y cuerpo completo desde casa. Ideal para fortalecer, tonificar y mejorar la resistencia de forma práctica y sencilla.",
@@ -400,6 +404,7 @@ const products = [
     id: 4,
     title: "Plancha de Cabello Cerámica Profesional",
     badge: "Oferta",
+    category: "Belleza",
     originalPrice: 1290,
     price: 749,
     imagen: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
@@ -414,6 +419,7 @@ const products = [
     id: 5,
     title: "Alfombra para Ejercicios (Yoga, Pilates y Fitness)",
     badge: "Oferta",
+    category: "Fitness",
     originalPrice: 750,
     price: 570,
     description: "Tu espacio, tu bienestar. Ideal para yoga, pilates, fitness y estiramientos, en casa o en el gimnasio.",
@@ -429,6 +435,7 @@ const products = [
     id: 6,
     title: "Masajeador Recargable para Cólicos Menstruales",
     badge: "Oferta",
+    category: "Bienestar Corporal",
     originalPrice: 950,
     price: 700,
     description: "Alivio, comodidad y bienestar en tus días difíciles. Terapia de calor y vibración en un diseño ligero y portátil.",
@@ -460,28 +467,54 @@ function formatL(n) {
 }
 
 /* =========================================================
-   RENDER: GRID DE PRODUCTOS
+   RENDER: FILTROS DE CATEGORÍA + GRID DE PRODUCTOS
 ========================================================= */
+const CATEGORIES = ["Todos", ...new Set(products.map(p => p.category).filter(Boolean))];
+let currentCategory = "Todos";
+
+const filtersContainer = document.getElementById("category-filters");
 const grid = document.getElementById("product-grid");
-grid.innerHTML = products.map(p => `
-  <div class="card-hover bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col cursor-pointer" onclick="openModal(${p.id})">
-    <div class="relative aspect-square bg-slate-100 overflow-hidden">
-      <img src="${p.imagen}" alt="${p.title}" class="w-full h-full object-cover cursor-zoom-in" onclick="event.stopPropagation(); openLightbox('${p.imagen}', '${p.title.replace(/'/g, "\\'")}')">
-      <span class="absolute top-3 left-3 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">${p.badge}</span>
-    </div>
-    <div class="p-4 flex flex-col flex-1">
-      <h3 class="font-heading font-bold text-sm sm:text-base text-dark mb-2 leading-snug flex-1">${p.title}</h3>
-      <div class="flex items-baseline gap-2 mb-1">
-        <span class="text-slate-400 line-through text-xs">${formatL(p.originalPrice)}</span>
-        <span class="text-primary font-heading font-extrabold text-lg">${formatL(p.price)}</span>
+
+function renderFilters() {
+  filtersContainer.innerHTML = CATEGORIES.map(cat => `
+    <button type="button" onclick="selectCategory('${cat.replace(/'/g, "\\'")}')"
+      class="category-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold border-2 transition-colors ${cat === currentCategory ? 'bg-primary border-primary text-white' : 'bg-white border-slate-200 text-slate-600 hover:border-primary/50'}">
+      ${cat}
+    </button>
+  `).join("");
+}
+
+function selectCategory(cat) {
+  currentCategory = cat;
+  renderFilters();
+  renderGrid();
+}
+
+function renderGrid() {
+  const filtered = currentCategory === "Todos" ? products : products.filter(p => p.category === currentCategory);
+  grid.innerHTML = filtered.map(p => `
+    <div class="card-hover bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col cursor-pointer" onclick="openModal(${p.id})">
+      <div class="relative aspect-square bg-slate-100 overflow-hidden">
+        <img src="${p.imagen}" alt="${p.title}" class="w-full h-full object-cover cursor-zoom-in" onclick="event.stopPropagation(); openLightbox('${p.imagen}', '${p.title.replace(/'/g, "\\'")}')">
+        <span class="absolute top-3 left-3 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">${p.badge}</span>
       </div>
-      <span class="inline-block w-fit bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase mb-3">Envío Gratis</span>
-      <button class="w-full bg-accent hover:bg-orange-600 text-white font-heading font-bold text-xs sm:text-sm py-3 rounded-xl transition-colors">
-        COMPRAR CONTRA ENTREGA
-      </button>
+      <div class="p-4 flex flex-col flex-1">
+        <h3 class="font-heading font-bold text-sm sm:text-base text-dark mb-2 leading-snug flex-1">${p.title}</h3>
+        <div class="flex items-baseline gap-2 mb-1">
+          <span class="text-slate-400 line-through text-xs">${formatL(p.originalPrice)}</span>
+          <span class="text-primary font-heading font-extrabold text-lg">${formatL(p.price)}</span>
+        </div>
+        <span class="inline-block w-fit bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase mb-3">Envío Gratis</span>
+        <button class="w-full bg-accent hover:bg-orange-600 text-white font-heading font-bold text-xs sm:text-sm py-3 rounded-xl transition-colors">
+          COMPRAR CONTRA ENTREGA
+        </button>
+      </div>
     </div>
-  </div>
-`).join("");
+  `).join("");
+}
+
+renderFilters();
+renderGrid();
 
 /* =========================================================
    SELECT DE DEPARTAMENTOS
