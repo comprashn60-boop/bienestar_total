@@ -31,8 +31,8 @@ const products = [
     category: "FITNESS",
     badge: "Más Vendido",
     originalPrice: 890,
-    price: 549,
-    imagen: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+    price: 650,
+    imagen: "images/faja-reductora-termica-colombiana-1.webp",
     benefits: [
       "Moldea la figura al instante",
       "Tejido térmico transpirable",
