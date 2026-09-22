@@ -103,6 +103,22 @@ const products = [
       "Fáciles y cómodos de colocar",
       "Ideal para complementar tu rutina de bienestar"
     ]
+  },
+  {
+    id: 9,
+    title: "Tabla de Flexiones Multifunción",
+    category: "FITNESS",
+    badge: "Oferta",
+    originalPrice: 850,
+    price: 650,
+    description: "Entrena cuerpo completo desde casa: pecho, brazos, abdomen y espalda con un solo equipo.",
+    imagen: "images/tabla-flexiones-multifuncion-1.webp",
+    benefits: [
+      "Fortalece y tonifica pecho, brazos, abdomen y espalda",
+      "Ideal para entrenar en casa",
+      "Diferentes posiciones de entrenamiento",
+      "Práctica, resistente y portátil"
+    ]
   }
 ];
 
