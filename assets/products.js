@@ -87,6 +87,22 @@ const products = [
       "Reduce la tensión y mejora la circulación",
       "Ligero, cómodo y portátil para usar en casa o donde quieras"
     ]
+  },
+  {
+    id: 8,
+    title: "Parches Kinoki para Pies",
+    category: "BIENESTAR CORPORAL",
+    badge: "Oferta",
+    originalPrice: 450,
+    price: 450,
+    description: "10 almohadillas adhesivas para usar durante la noche. Fáciles y cómodas de colocar, ideales para complementar tu rutina de bienestar.",
+    imagen: "images/parches-kinoki-pies-1.webp",
+    benefits: [
+      "Incluye 10 almohadillas adhesivas",
+      "Úsalos durante la noche",
+      "Fáciles y cómodos de colocar",
+      "Ideal para complementar tu rutina de bienestar"
+    ]
   }
 ];
 
