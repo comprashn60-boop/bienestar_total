@@ -135,6 +135,22 @@ const products = [
       "Entrena cuando quieras, donde quieras",
       "Plegable y fácil de guardar"
     ]
+  },
+  {
+    id: 11,
+    title: "Body Gym de 4 Cuerdas",
+    category: "FITNESS",
+    badge: "Oferta",
+    originalPrice: 870,
+    price: 750,
+    description: "Entrena todo tu cuerpo desde casa con 4 cuerdas de alta resistencia. Fácil de usar y transportar.",
+    imagen: "images/body-gym-4-cuerdas-1.jpg",
+    benefits: [
+      "Ideal para abdominales y glúteos",
+      "Tonifica brazos y piernas",
+      "4 cuerdas de alta resistencia",
+      "Fácil de usar y transportar"
+    ]
   }
 ];
 
