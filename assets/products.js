@@ -119,6 +119,22 @@ const products = [
       "Diferentes posiciones de entrenamiento",
       "Práctica, resistente y portátil"
     ]
+  },
+  {
+    id: 10,
+    title: "Tabla de Pilates Multifunción",
+    category: "FITNESS",
+    badge: "Oferta",
+    originalPrice: 1800,
+    price: 1500,
+    description: "Entrena todo tu cuerpo desde casa. Plegable y fácil de guardar, tu aliada para un cuerpo más fuerte, saludable y fit.",
+    imagen: "images/tabla-pilates-multifuncion-1.webp",
+    benefits: [
+      "Tonifica abdomen, brazos, piernas y glúteos",
+      "Fortalece y mejora tu flexibilidad",
+      "Entrena cuando quieras, donde quieras",
+      "Plegable y fácil de guardar"
+    ]
   }
 ];
 
