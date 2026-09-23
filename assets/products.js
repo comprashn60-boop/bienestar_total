@@ -151,6 +151,22 @@ const products = [
       "4 cuerdas de alta resistencia",
       "Fácil de usar y transportar"
     ]
+  },
+  {
+    id: 12,
+    title: "Faja Moldeadora Reloj de Arena",
+    category: "FITNESS",
+    badge: "Oferta",
+    originalPrice: 750,
+    price: 650,
+    description: "Define tu figura, realza tu belleza. Moldea tu cintura con efecto reloj de arena.",
+    imagen: "images/faja-moldeadora-reloj-arena-1.webp",
+    benefits: [
+      "Moldea y define tu cintura",
+      "Ayuda a estilizar tu silueta",
+      "Cierre de ganchos ajustables",
+      "Disponible en color negro, tallas S a 4XL"
+    ]
   }
 ];
 
