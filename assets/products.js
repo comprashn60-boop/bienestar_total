@@ -167,6 +167,21 @@ const products = [
       "Cierre de ganchos ajustables",
       "Disponible en color negro, tallas S a 4XL"
     ]
+  },
+  {
+    id: 13,
+    title: "Cuerda para Entrenar Brazos, Espalda y Pecho",
+    category: "FITNESS",
+    badge: "Oferta",
+    originalPrice: 450,
+    price: 350,
+    description: "Entrena desde casa y define brazos, espalda y pecho de forma práctica y sencilla.",
+    imagen: "images/cuerda-entrenar-brazos-espalda-pecho-1.webp",
+    benefits: [
+      "Ayuda a definir brazos, espalda y pecho",
+      "Ideal para entrenar desde casa",
+      "Práctica y fácil de usar"
+    ]
   }
 ];
 
