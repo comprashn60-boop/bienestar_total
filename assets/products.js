@@ -198,6 +198,22 @@ const products = [
       "Diseño reversible 2 en 1",
       "Control práctico incluido"
     ]
+  },
+  {
+    id: 16,
+    title: "Corrector de Juanetes Ajustable",
+    category: "BIENESTAR CORPORAL",
+    badge: "Oferta",
+    originalPrice: 400,
+    price: 400,
+    description: "Ayuda a mejorar la alineación del dedo gordo, reduce las molestias y brinda mayor comodidad al caminar. Diseño suave y ajustable.",
+    imagen: "images/corrector-juanetes-1.webp",
+    benefits: [
+      "Alivia el dolor de juanetes",
+      "Ayuda a corregir la posición del dedo",
+      "Diseño suave y confortable",
+      "Ajuste de ángulo personalizable"
+    ]
   }
 ];
 
