@@ -48,7 +48,7 @@ const products = [
     originalPrice: 850,
     price: 700,
     description: "Entrena ahorra tiempo: tonifica y fortalece brazos, abdomen, glúteos y piernas desde casa y donde quieras.",
-    imagen: "images/2-bandas-entrenar.webp",
+    imagen: "images/2-bandas-entrenar-2.jpg",
     benefits: [
       "Incluye 1 banda de pedal + 1 banda para brazos",
       "Tonifica y fortalece brazos, abdomen, glúteos y piernas",
