@@ -182,6 +182,22 @@ const products = [
       "Ideal para toda la familia: niños y adultos",
       "Diversión y ejercicio desde casa"
     ]
+  },
+  {
+    id: 15,
+    title: "Colchoneta de Masaje con Calor",
+    category: "BIENESTAR CORPORAL",
+    badge: "Oferta",
+    originalPrice: 1300,
+    price: 950,
+    description: "Relájate desde casa y disfruta de un descanso renovador con 9 zonas de masaje, calor relajante y diseño reversible 2 en 1.",
+    imagen: "images/colchoneta-masaje-calor-1.webp",
+    benefits: [
+      "9 zonas de masaje",
+      "Calor relajante",
+      "Diseño reversible 2 en 1",
+      "Control práctico incluido"
+    ]
   }
 ];
 
