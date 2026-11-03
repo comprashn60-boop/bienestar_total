@@ -214,6 +214,22 @@ const products = [
       "Diseño suave y confortable",
       "Ajuste de ángulo personalizable"
     ]
+  },
+  {
+    id: 17,
+    title: "Ejercitador de Muslos 4 en 1",
+    category: "FITNESS",
+    badge: "Oferta",
+    originalPrice: 550,
+    price: 450,
+    description: "Tonifica y fortalece tu cuerpo desde casa. Ideal para ejercitar brazos, pecho, espalda, piernas y glúteos, sin necesidad de ir al gimnasio.",
+    imagen: "images/ejercitador-muslos-4en1-1.webp",
+    benefits: [
+      "Tonifica brazos, pecho y espalda",
+      "Moldea piernas y glúteos",
+      "Fortalece muslos y zona interna",
+      "Define y mejora tu postura"
+    ]
   }
 ];
 
