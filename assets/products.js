@@ -166,6 +166,22 @@ const products = [
       "Ideal para entrenar desde casa",
       "Práctica y fácil de usar"
     ]
+  },
+  {
+    id: 14,
+    title: "Máquina de Boxeo Inteligente",
+    category: "FITNESS",
+    badge: "Oferta",
+    originalPrice: 1700,
+    price: 1500,
+    description: "Con conexión Bluetooth y música integrada. Entrena velocidad, coordinación y reflejos. Ideal para toda la familia.",
+    imagen: "images/maquina-boxeo-inteligente-1.webp",
+    benefits: [
+      "Conexión Bluetooth con música integrada",
+      "Entrena velocidad, coordinación y reflejos",
+      "Ideal para toda la familia: niños y adultos",
+      "Diversión y ejercicio desde casa"
+    ]
   }
 ];
 
