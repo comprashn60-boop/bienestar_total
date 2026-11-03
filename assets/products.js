@@ -46,7 +46,7 @@ const products = [
     category: "FITNESS",
     badge: "Oferta",
     originalPrice: 850,
-    price: 500,
+    price: 700,
     description: "Entrena ahorra tiempo: tonifica y fortalece brazos, abdomen, glúteos y piernas desde casa y donde quieras.",
     imagen: "images/2-bandas-entrenar.webp",
     benefits: [
