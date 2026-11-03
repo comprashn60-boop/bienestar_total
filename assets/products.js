@@ -122,7 +122,7 @@ const products = [
   },
   {
     id: 11,
-    title: "Body Gym de 6 Tubos",
+    title: "Banda de Pedal de 6 Tubos",
     category: "FITNESS",
     badge: "Oferta",
     originalPrice: 870,
