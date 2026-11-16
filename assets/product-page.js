@@ -49,8 +49,19 @@ function renderReviews(product) {
   `).join("");
 }
 
+/* Lee el ID del producto de forma robusta: Netlify reescribe /producto/:id
+   hacia este archivo SIN cambiar la URL visible en el navegador, así que
+   location.search nunca trae "?id=". Por eso se busca primero en el path
+   (/producto/5) y se usa el query string (?id=5) solo como respaldo para
+   cuando la página se abre directamente como producto.html?id=5. */
+function getRequestedProductId() {
+  const pathMatch = location.pathname.match(/\/producto\/(\d+)/);
+  if (pathMatch) return parseInt(pathMatch[1], 10);
+  return parseInt(new URLSearchParams(location.search).get("id"), 10);
+}
+
 function initProductPage() {
-  const productId = parseInt(new URLSearchParams(location.search).get("id"), 10);
+  const productId = getRequestedProductId();
   const product = products.find(p => p.id === productId);
 
   if (!product) {
