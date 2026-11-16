@@ -23,115 +23,149 @@
 </div>
 
 <!-- HEADER -->
-<header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
-    <a href="/" class="flex items-center gap-2.5">
-      <div class="w-11 h-11 rounded-xl bg-primary flex items-center justify-center text-white font-heading font-black text-lg shrink-0">
-        BT
-      </div>
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+    <a href="/" class="flex items-center gap-2.5 shrink-0">
+      <div class="leaf-logo"><span></span><span></span></div>
       <div class="leading-tight">
-        <p class="font-heading font-extrabold text-lg sm:text-xl text-dark">Bienestar Total</p>
-        <p class="text-[10px] sm:text-xs text-primary font-semibold uppercase tracking-widest">Catálogo Oficial Honduras</p>
+        <p class="font-heading font-extrabold text-base sm:text-lg text-dark whitespace-nowrap">Bienestar Total</p>
+        <p class="text-[10px] text-slate-500 font-semibold tracking-wide hidden sm:block">Salud &bull; Bienestar &bull; Fitness</p>
       </div>
     </a>
+
+    <nav class="hidden md:flex items-center gap-1">
+      <a href="/" class="header-nav-link active">Inicio</a>
+      <a href="/fitness" class="header-nav-link">Fitness</a>
+      <a href="/suplementos" class="header-nav-link">Suplementos</a>
+      <a href="/bienestar-corporal" class="header-nav-link">Bienestar Corporal</a>
+    </nav>
+
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+      <button type="button" onclick="toggleSearch()" aria-label="Buscar productos"
+        class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-primary transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" /></svg>
+      </button>
+      <a href="https://wa.me/50487353593?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20sus%20productos" target="_blank" rel="noopener"
+        class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.39a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.13-.98-.32-1.69-.62-2.97-1.28-4.91-4.27-5.06-4.47-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.52.25.6.86 2.08.93 2.23.08.15.13.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.06 1.14 1.02 2.1 1.33 2.39 1.48.29.15.46.13.63-.08.17-.2.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.13.07.75-.18 1.45z"/></svg>
+        WhatsApp
+      </a>
+      <button type="button" onclick="toggleMobileMenu()" aria-label="Abrir menú"
+        class="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-slate-600 hover:bg-slate-100 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menu movil -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-4 py-3 space-y-1">
+    <a href="/" class="block header-nav-link-mobile active">Inicio</a>
+    <a href="/fitness" class="block header-nav-link-mobile">Fitness</a>
+    <a href="/suplementos" class="block header-nav-link-mobile">Suplementos</a>
+    <a href="/bienestar-corporal" class="block header-nav-link-mobile">Bienestar Corporal</a>
     <a href="https://wa.me/50487353593?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20sus%20productos" target="_blank" rel="noopener"
-      class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold text-sm px-5 py-2.5 rounded-full transition-colors">
+      class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold text-sm px-5 py-3 rounded-full transition-colors mt-2">
       WhatsApp
     </a>
   </div>
 
-  <!-- BARRA DE CATEGORIAS -->
-  <nav class="border-t border-slate-100 bg-white">
-    <div class="max-w-7xl mx-auto px-2 sm:px-6 flex items-center justify-center gap-1 overflow-x-auto">
-      <a href="/" class="category-nav-link active">Inicio</a>
-      <a href="/fitness" class="category-nav-link">Fitness</a>
-      <a href="/suplementos" class="category-nav-link">Suplementos</a>
-      <a href="/bienestar-corporal" class="category-nav-link">Bienestar Corporal</a>
-    </div>
-  </nav>
-
-  <!-- BARRA DE CONFIANZA -->
-  <div class="border-t border-slate-100 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 grid grid-cols-3 gap-2 text-center">
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-[10px] sm:text-xs font-semibold text-slate-600">
-        <span class="text-base">🚀</span><span>Envío Rápido</span>
+  <!-- Buscador -->
+  <div id="search-panel" class="hidden border-t border-slate-200 bg-white px-4 sm:px-6 py-4">
+    <div class="max-w-2xl mx-auto">
+      <div class="relative">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" /></svg>
+        <input id="search-input" type="text" placeholder="Buscar productos..." autocomplete="off"
+          class="w-full border border-slate-300 rounded-full pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
       </div>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-[10px] sm:text-xs font-semibold text-slate-600 border-x border-slate-200">
-        <span class="text-base">🛡️</span><span>Garantía de Calidad</span>
-      </div>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-[10px] sm:text-xs font-semibold text-slate-600">
-        <span class="text-base">🔒</span><span>Pago 100% Seguro</span>
-      </div>
+      <div id="search-results" class="mt-2 max-h-80 overflow-y-auto"></div>
     </div>
   </div>
 </header>
 
 <main>
   <!-- HERO -->
-  <section class="bg-gradient-to-b from-primary/10 to-slate-50 px-4 sm:px-6 py-10 sm:py-14 text-center">
-    <h1 class="font-heading font-black text-2xl sm:text-4xl text-dark mb-3 leading-tight">
-      Elige tu producto y <span class="text-primary">paga cuando lo recibas</span>
-    </h1>
-    <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
-      Sin tarjetas, sin adelantos. Ordena hoy y te lo llevamos hasta la puerta de tu casa en cualquier parte de Honduras.
-    </p>
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-white to-white">
+    <div class="pointer-events-none absolute -bottom-28 -right-28 w-80 h-80 sm:w-[30rem] sm:h-[30rem] bg-primary/15 rounded-full"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="text-center md:text-left">
+        <h1 class="font-heading font-black text-3xl sm:text-5xl text-primary-dark mb-4 leading-tight">
+          Productos para tu <span class="text-dark">salud y bienestar</span>
+        </h1>
+        <p class="text-slate-600 text-base sm:text-lg mb-7 max-w-md mx-auto md:mx-0">
+          Suplementos, fitness y cuidado corporal en un solo lugar.
+        </p>
+        <button type="button" onclick="document.getElementById('categorias').scrollIntoView({behavior:'smooth'})"
+          class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-heading font-extrabold text-base px-8 py-4 rounded-full transition-colors shadow-lg shadow-primary/30">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m-10 4a1 1 0 100 2 1 1 0 000-2zm10 0a1 1 0 100 2 1 1 0 000-2z" /></svg>
+          Ver catálogo
+        </button>
+      </div>
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80"
+          alt="Bienestar y salud" class="relative z-10 w-full aspect-[4/5] sm:aspect-square md:aspect-[4/5] object-cover rounded-3xl shadow-xl">
+      </div>
+    </div>
+  </section>
+
+  <!-- BARRA DE BENEFICIOS -->
+  <section class="bg-white border-y border-slate-200 py-6 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg shrink-0">🚚</div>
+        <span class="text-xs sm:text-sm font-bold text-dark leading-tight">Envíos a todo Honduras</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg shrink-0">💵</div>
+        <span class="text-xs sm:text-sm font-bold text-dark leading-tight">Pago Contra Entrega</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg shrink-0">🛡️</div>
+        <span class="text-xs sm:text-sm font-bold text-dark leading-tight">Compra Segura</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg shrink-0">✅</div>
+        <span class="text-xs sm:text-sm font-bold text-dark leading-tight">Productos de Calidad</span>
+      </div>
+    </div>
   </section>
 
   <!-- CATEGORIAS -->
-  <section id="categorias" class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+  <section id="categorias" class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
     <div class="text-center mb-8 sm:mb-10">
-      <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-dark">Explora por Categoría</h2>
+      <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-dark">Explora nuestras categorías</h2>
       <p class="text-slate-500 text-sm mt-1">Elige la categoría que buscas y encuentra tu producto ideal</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
-      <a href="/fitness" class="card-hover group bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col p-6 sm:p-8 text-center">
-        <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4 text-3xl">🏋️</div>
-        <h3 class="font-heading font-extrabold text-lg text-dark mb-2 uppercase tracking-wide">Fitness</h3>
-        <p class="text-slate-500 text-sm mb-5 flex-1">Fajas, bandas de resistencia y accesorios para entrenar en casa.</p>
-        <span class="inline-flex items-center justify-center gap-1 text-primary font-bold text-sm">
-          Ver productos <span aria-hidden="true">→</span>
-        </span>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+      <a href="/fitness" class="card-hover group flex items-center gap-4 bg-primary/5 hover:bg-primary/10 rounded-2xl p-4 sm:p-5">
+        <img src="images/alfombra-yoga-ejercicios-1.webp" alt="Fitness" class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover shrink-0">
+        <div class="flex-1 min-w-0">
+          <div class="w-9 h-9 rounded-full bg-primary/15 text-primary flex items-center justify-center text-base mb-1.5">🏋️</div>
+          <h3 class="font-heading font-extrabold text-base sm:text-lg text-dark">Fitness</h3>
+          <p class="text-slate-500 text-xs sm:text-sm">Fajas, bandas y accesorios para entrenar en casa.</p>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 group-hover:bg-primary-dark transition-colors" aria-hidden="true">→</div>
       </a>
 
-      <a href="/suplementos" class="card-hover group bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col p-6 sm:p-8 text-center">
-        <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4 text-3xl">💊</div>
-        <h3 class="font-heading font-extrabold text-lg text-dark mb-2 uppercase tracking-wide">Suplementos</h3>
-        <p class="text-slate-500 text-sm mb-5 flex-1">Próximamente nuevos productos para tu nutrición y energía diaria.</p>
-        <span class="inline-flex items-center justify-center gap-1 text-primary font-bold text-sm">
-          Ver categoría <span aria-hidden="true">→</span>
-        </span>
+      <a href="/suplementos" class="card-hover group flex items-center gap-4 bg-primary/5 hover:bg-primary/10 rounded-2xl p-4 sm:p-5">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-primary/15 text-primary flex items-center justify-center text-4xl shrink-0">💊</div>
+        <div class="flex-1 min-w-0">
+          <div class="w-9 h-9 rounded-full bg-primary/15 text-primary flex items-center justify-center text-base mb-1.5">💊</div>
+          <h3 class="font-heading font-extrabold text-base sm:text-lg text-dark">Suplementos</h3>
+          <p class="text-slate-500 text-xs sm:text-sm">Próximamente para tu nutrición y energía diaria.</p>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 group-hover:bg-primary-dark transition-colors" aria-hidden="true">→</div>
       </a>
 
-      <a href="/bienestar-corporal" class="card-hover group bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col p-6 sm:p-8 text-center">
-        <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4 text-3xl">🧘</div>
-        <h3 class="font-heading font-extrabold text-lg text-dark mb-2 uppercase tracking-wide">Bienestar Corporal</h3>
-        <p class="text-slate-500 text-sm mb-5 flex-1">Próximamente nuevos productos para tu cuidado y relajación.</p>
-        <span class="inline-flex items-center justify-center gap-1 text-primary font-bold text-sm">
-          Ver categoría <span aria-hidden="true">→</span>
-        </span>
+      <a href="/bienestar-corporal" class="card-hover group flex items-center gap-4 bg-primary/5 hover:bg-primary/10 rounded-2xl p-4 sm:p-5">
+        <img src="images/colchoneta-masaje-calor-1.webp" alt="Bienestar Corporal" class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover shrink-0">
+        <div class="flex-1 min-w-0">
+          <div class="w-9 h-9 rounded-full bg-primary/15 text-primary flex items-center justify-center text-base mb-1.5">🧘</div>
+          <h3 class="font-heading font-extrabold text-base sm:text-lg text-dark">Bienestar Corporal</h3>
+          <p class="text-slate-500 text-xs sm:text-sm">Cuidado, relajación y descanso para tu cuerpo.</p>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 group-hover:bg-primary-dark transition-colors" aria-hidden="true">→</div>
       </a>
-    </div>
-  </section>
-
-  <!-- BENEFICIOS -->
-  <section class="bg-white border-y border-slate-200 py-10 px-4 sm:px-6">
-    <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-      <div>
-        <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3 text-2xl">💵</div>
-        <h3 class="font-heading font-bold text-dark mb-1">Pago Contra Entrega</h3>
-        <p class="text-slate-500 text-xs">Paga en efectivo cuando el paquete llegue a tus manos.</p>
-      </div>
-      <div>
-        <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3 text-2xl">🚚</div>
-        <h3 class="font-heading font-bold text-dark mb-1">Envíos a Todo el País</h3>
-        <p class="text-slate-500 text-xs">Cubrimos los 18 departamentos de Honduras.</p>
-      </div>
-      <div>
-        <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3 text-2xl">✅</div>
-        <h3 class="font-heading font-bold text-dark mb-1">Garantía de Satisfacción</h3>
-        <p class="text-slate-500 text-xs">Si no te gusta, te ayudamos con el cambio.</p>
-      </div>
     </div>
   </section>
 </main>
@@ -152,5 +186,10 @@
   </div>
 </footer>
 
+<script src="assets/products.js"></script>
+<script src="assets/header.js"></script>
+<script>
+  initHeader();
+</script>
 </body>
 </html>
