@@ -122,26 +122,13 @@ function initCatalogPage(category, gridId) {
   });
 
   form.addEventListener("submit", handleOrderSubmit);
-
-  /* Enlace directo a un producto: ?producto=ID (usado en anuncios) */
-  const requestedId = parseInt(new URLSearchParams(location.search).get("producto"), 10);
-  if (!Number.isNaN(requestedId)) {
-    const requestedProduct = products.find(p => p.id === requestedId && p.category === category);
-    if (requestedProduct) openModal(requestedProduct.id);
-  }
 }
 
-/* URL directa y compartible para un producto (incluye su página de categoría) */
+/* URL directa y compartible de la página dedicada de un producto (para anuncios) */
 function getProductShareUrl(productId) {
   const product = products.find(p => p.id === productId);
   if (!product) return null;
-  const categoryPaths = {
-    "FITNESS": "/fitness",
-    "SUPLEMENTOS": "/suplementos",
-    "BIENESTAR CORPORAL": "/bienestar-corporal"
-  };
-  const path = categoryPaths[product.category] || "/";
-  return `${location.origin}${path}?producto=${product.id}`;
+  return `${location.origin}/producto/${product.id}`;
 }
 
 function copyProductLink() {
@@ -282,9 +269,10 @@ function isPhoneValid(value) {
   return /^\d{8}$/.test(value.replace(/\D/g, ""));
 }
 
-function handleOrderSubmit(e) {
-  e.preventDefault();
-
+/* Valida los campos del formulario de pedido, marcando errores visualmente.
+   Devuelve { valid, nameEl, addressEl, referenceEl } para que el caller
+   pueda leer los valores ya validados. */
+function validateOrderForm() {
   const nameEl = document.getElementById("field-name");
   const addressEl = document.getElementById("field-address");
   const referenceEl = document.getElementById("field-reference");
@@ -312,42 +300,56 @@ function handleOrderSubmit(e) {
     }
   });
 
+  return { valid, nameEl, addressEl, referenceEl };
+}
+
+/* Arma el texto del pedido en el formato que llega a WhatsApp Business */
+function buildOrderWhatsAppMessage(product, tier, finalTotal, customer) {
+  const orderMessage =
+    `🛒 *Nuevo Pedido - Pago Contra Entrega*\n\n` +
+    `*Producto:* ${product.title}\n` +
+    `*Cantidad:* ${tier.qty}\n` +
+    `*Total a pagar:* ${formatL(finalTotal)}\n\n` +
+    `*Nombre:* ${customer.name}\n` +
+    `*Teléfono:* ${customer.phone}\n` +
+    `*Departamento:* ${customer.department}\n` +
+    `*Municipio:* ${customer.municipality}\n` +
+    `*Dirección exacta:* ${customer.address}\n` +
+    `*Punto de referencia:* ${customer.reference}`;
+
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(orderMessage)}`;
+}
+
+function handleOrderSubmit(e) {
+  e.preventDefault();
+
+  const { valid, nameEl, addressEl, referenceEl } = validateOrderForm();
   if (!valid) return;
 
   const tier = QTY_TIERS[currentQtyIndex];
   const unitTotal = currentProduct.price * tier.qty;
   const finalTotal = unitTotal - (tier.discountAmount || 0);
 
-  const customerName = nameEl.value.trim();
-  const customerPhone = phoneInput.value.trim();
-  const customerLocation = `${municipalitySelect.value}, ${departmentSelect.value}`;
-  const customerAddress = addressEl.value.trim();
-  const customerReference = referenceEl.value.trim();
+  const customer = {
+    name: nameEl.value.trim(),
+    phone: phoneInput.value.trim(),
+    department: departmentSelect.value,
+    municipality: municipalitySelect.value,
+    address: addressEl.value.trim(),
+    reference: referenceEl.value.trim()
+  };
 
   document.getElementById("success-product").textContent = `${currentProduct.title} (x${tier.qty})`;
-  document.getElementById("success-name").textContent = customerName;
-  document.getElementById("success-phone").textContent = customerPhone;
-  document.getElementById("success-location").textContent = customerLocation;
+  document.getElementById("success-name").textContent = customer.name;
+  document.getElementById("success-phone").textContent = customer.phone;
+  document.getElementById("success-location").textContent = `${customer.municipality}, ${customer.department}`;
   document.getElementById("success-total").textContent = formatL(finalTotal);
 
   viewPurchase.classList.add("hidden");
   viewSuccess.classList.remove("hidden");
   document.getElementById("modal-panel").scrollTop = 0;
 
-  /* Redacta el pedido y redirige automáticamente a WhatsApp Business */
-  const orderMessage =
-    `🛒 *Nuevo Pedido - Pago Contra Entrega*\n\n` +
-    `*Producto:* ${currentProduct.title}\n` +
-    `*Cantidad:* ${tier.qty}\n` +
-    `*Total a pagar:* ${formatL(finalTotal)}\n\n` +
-    `*Nombre:* ${customerName}\n` +
-    `*Teléfono:* ${customerPhone}\n` +
-    `*Departamento:* ${departmentSelect.value}\n` +
-    `*Municipio:* ${municipalitySelect.value}\n` +
-    `*Dirección exacta:* ${customerAddress}\n` +
-    `*Punto de referencia:* ${customerReference}`;
-
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(orderMessage)}`;
+  const whatsappUrl = buildOrderWhatsAppMessage(currentProduct, tier, finalTotal, customer);
   document.getElementById("whatsapp-redirect-link").href = whatsappUrl;
   window.open(whatsappUrl, "_blank");
 }

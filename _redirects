@@ -1,3 +1,4 @@
 /fitness              /fitness.html              200
 /suplementos          /suplementos.html          200
 /bienestar-corporal   /bienestar-corporal.html   200
+/producto/:id         /producto.html?id=:id      200

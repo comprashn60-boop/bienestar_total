@@ -245,3 +245,37 @@ const QTY_TIERS = [
 function formatL(n) {
   return "L. " + n.toLocaleString("es-HN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
+
+/* =========================================================
+   RESEÑAS: plantillas por categoría para la página de producto
+   ({producto} se reemplaza por el nombre real del producto)
+========================================================= */
+const CATEGORY_REVIEWS = {
+  "FITNESS": [
+    { name: "María José Flores", text: "Ya llevo un mes usando {producto} y los resultados se notan. Fácil de usar y no ocupa espacio en casa." },
+    { name: "Carlos Martínez", text: "Excelente calidad, uso {producto} todos los días para entrenar. Llegó rápido y el pago contra entrega fue súper fácil." },
+    { name: "Daniela Reyes", text: "{producto} me ayudó a retomar la rutina de ejercicio sin ir al gimnasio. 100% recomendado." },
+    { name: "Luis Fernando Paz", text: "Buen material, bien resistente. {producto} superó mis expectativas por el precio." }
+  ],
+  "BIENESTAR CORPORAL": [
+    { name: "Gabriela Mejía", text: "Uso {producto} en las noches y siento un alivio increíble. Vale cada lempira." },
+    { name: "Fátima Cálix", text: "{producto} llegó a mi casa sin problema y es tal cual la foto. Muy conforme con la compra." },
+    { name: "José Antonio Lagos", text: "Mi esposa está encantada con {producto}, se lo recomienda a todas sus amigas." },
+    { name: "Karla Núñez", text: "Fácil de usar y {producto} realmente ayuda a relajar el cuerpo después de un día largo." }
+  ],
+  "SUPLEMENTOS": [
+    { name: "Óscar Hernández", text: "Empecé a tomar {producto} hace unas semanas y ya siento más energía en el día a día." },
+    { name: "Ana Lucía Rodríguez", text: "{producto} es fácil de incorporar a mi rutina diaria y el envío fue muy rápido." },
+    { name: "Jorge Alberto Zelaya", text: "Buena calidad, se nota la diferencia desde las primeras semanas usando {producto}." },
+    { name: "Pedro Martínez", text: "Recomiendo {producto}, el pago contra entrega me dio mucha confianza para comprar." }
+  ]
+};
+
+function getProductReviews(product) {
+  const templates = CATEGORY_REVIEWS[product.category] || CATEGORY_REVIEWS["FITNESS"];
+  return templates.map(t => ({
+    name: t.name,
+    rating: 5,
+    text: t.text.replace(/\{producto\}/g, product.title)
+  }));
+}
