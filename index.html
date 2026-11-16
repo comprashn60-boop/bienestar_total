@@ -24,7 +24,7 @@
 
 <!-- HEADER -->
 <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+  <div class="site-header-row">
     <a href="/" class="flex items-center gap-2.5 shrink-0">
       <div class="leaf-logo"><span></span><span></span></div>
       <div class="leading-tight">
@@ -33,7 +33,7 @@
       </div>
     </a>
 
-    <nav class="hidden md:flex items-center gap-1">
+    <nav class="site-header-nav">
       <a href="/" class="header-nav-link active">Inicio</a>
       <a href="/fitness" class="header-nav-link">Fitness</a>
       <a href="/suplementos" class="header-nav-link">Suplementos</a>
@@ -84,9 +84,9 @@
 
 <main>
   <!-- HERO -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-white to-white">
-    <div class="pointer-events-none absolute -bottom-28 -right-28 w-80 h-80 sm:w-[30rem] sm:h-[30rem] bg-primary/15 rounded-full"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+  <section class="hero-section">
+    <div class="hero-blob"></div>
+    <div class="hero-grid">
       <div class="text-center md:text-left">
         <h1 class="font-heading font-black text-3xl sm:text-5xl text-primary-dark mb-4 leading-tight">
           Productos para tu <span class="text-dark">salud y bienestar</span>
@@ -100,71 +100,71 @@
           Ver catálogo
         </button>
       </div>
-      <div class="relative">
+      <div>
         <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80"
-          alt="Bienestar y salud" class="relative z-10 w-full aspect-[4/5] sm:aspect-square md:aspect-[4/5] object-cover rounded-3xl shadow-xl">
+          alt="Bienestar y salud" class="hero-img">
       </div>
     </div>
   </section>
 
   <!-- BARRA DE BENEFICIOS -->
-  <section class="bg-white border-y border-slate-200 py-6 px-4 sm:px-6">
-    <div class="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-6">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg shrink-0">🚚</div>
+  <section class="bg-white border-y border-slate-200">
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">🚚</div>
         <span class="text-xs sm:text-sm font-bold text-dark leading-tight">Envíos a todo Honduras</span>
       </div>
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg shrink-0">💵</div>
+      <div class="benefit-item">
+        <div class="benefit-icon">💵</div>
         <span class="text-xs sm:text-sm font-bold text-dark leading-tight">Pago Contra Entrega</span>
       </div>
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg shrink-0">🛡️</div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🛡️</div>
         <span class="text-xs sm:text-sm font-bold text-dark leading-tight">Compra Segura</span>
       </div>
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg shrink-0">✅</div>
+      <div class="benefit-item">
+        <div class="benefit-icon">✅</div>
         <span class="text-xs sm:text-sm font-bold text-dark leading-tight">Productos de Calidad</span>
       </div>
     </div>
   </section>
 
   <!-- CATEGORIAS -->
-  <section id="categorias" class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-    <div class="text-center mb-8 sm:mb-10">
+  <section id="categorias">
+    <div class="text-center pt-12 sm:pt-16 px-4">
       <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-dark">Explora nuestras categorías</h2>
       <p class="text-slate-500 text-sm mt-1">Elige la categoría que buscas y encuentra tu producto ideal</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-      <a href="/fitness" class="card-hover group flex items-center gap-4 bg-primary/5 hover:bg-primary/10 rounded-2xl p-4 sm:p-5">
-        <img src="images/alfombra-yoga-ejercicios-1.webp" alt="Fitness" class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover shrink-0">
+    <div class="category-grid">
+      <a href="/fitness" class="category-card group">
+        <img src="images/alfombra-yoga-ejercicios-1.webp" alt="Fitness" class="category-card-media">
         <div class="flex-1 min-w-0">
           <div class="w-9 h-9 rounded-full bg-primary/15 text-primary flex items-center justify-center text-base mb-1.5">🏋️</div>
           <h3 class="font-heading font-extrabold text-base sm:text-lg text-dark">Fitness</h3>
           <p class="text-slate-500 text-xs sm:text-sm">Fajas, bandas y accesorios para entrenar en casa.</p>
         </div>
-        <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 group-hover:bg-primary-dark transition-colors" aria-hidden="true">→</div>
+        <div class="category-arrow-btn" aria-hidden="true">→</div>
       </a>
 
-      <a href="/suplementos" class="card-hover group flex items-center gap-4 bg-primary/5 hover:bg-primary/10 rounded-2xl p-4 sm:p-5">
-        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-primary/15 text-primary flex items-center justify-center text-4xl shrink-0">💊</div>
+      <a href="/suplementos" class="category-card group">
+        <div class="category-card-media category-card-icon">💊</div>
         <div class="flex-1 min-w-0">
           <div class="w-9 h-9 rounded-full bg-primary/15 text-primary flex items-center justify-center text-base mb-1.5">💊</div>
           <h3 class="font-heading font-extrabold text-base sm:text-lg text-dark">Suplementos</h3>
           <p class="text-slate-500 text-xs sm:text-sm">Próximamente para tu nutrición y energía diaria.</p>
         </div>
-        <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 group-hover:bg-primary-dark transition-colors" aria-hidden="true">→</div>
+        <div class="category-arrow-btn" aria-hidden="true">→</div>
       </a>
 
-      <a href="/bienestar-corporal" class="card-hover group flex items-center gap-4 bg-primary/5 hover:bg-primary/10 rounded-2xl p-4 sm:p-5">
-        <img src="images/colchoneta-masaje-calor-1.webp" alt="Bienestar Corporal" class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover shrink-0">
+      <a href="/bienestar-corporal" class="category-card group">
+        <img src="images/colchoneta-masaje-calor-1.webp" alt="Bienestar Corporal" class="category-card-media">
         <div class="flex-1 min-w-0">
           <div class="w-9 h-9 rounded-full bg-primary/15 text-primary flex items-center justify-center text-base mb-1.5">🧘</div>
           <h3 class="font-heading font-extrabold text-base sm:text-lg text-dark">Bienestar Corporal</h3>
           <p class="text-slate-500 text-xs sm:text-sm">Cuidado, relajación y descanso para tu cuerpo.</p>
         </div>
-        <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 group-hover:bg-primary-dark transition-colors" aria-hidden="true">→</div>
+        <div class="category-arrow-btn" aria-hidden="true">→</div>
       </a>
     </div>
   </section>
