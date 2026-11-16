@@ -122,6 +122,40 @@ function initCatalogPage(category, gridId) {
   });
 
   form.addEventListener("submit", handleOrderSubmit);
+
+  /* Enlace directo a un producto: ?producto=ID (usado en anuncios) */
+  const requestedId = parseInt(new URLSearchParams(location.search).get("producto"), 10);
+  if (!Number.isNaN(requestedId)) {
+    const requestedProduct = products.find(p => p.id === requestedId && p.category === category);
+    if (requestedProduct) openModal(requestedProduct.id);
+  }
+}
+
+/* URL directa y compartible para un producto (incluye su página de categoría) */
+function getProductShareUrl(productId) {
+  const product = products.find(p => p.id === productId);
+  if (!product) return null;
+  const categoryPaths = {
+    "FITNESS": "/fitness",
+    "SUPLEMENTOS": "/suplementos",
+    "BIENESTAR CORPORAL": "/bienestar-corporal"
+  };
+  const path = categoryPaths[product.category] || "/";
+  return `${location.origin}${path}?producto=${product.id}`;
+}
+
+function copyProductLink() {
+  if (!currentProduct) return;
+  const url = getProductShareUrl(currentProduct.id);
+  const label = document.getElementById("copy-link-label");
+  const restoreLabel = () => { if (label) label.textContent = "Copiar enlace de este producto"; };
+
+  navigator.clipboard.writeText(url).then(() => {
+    if (label) label.textContent = "¡Enlace copiado!";
+    setTimeout(restoreLabel, 2000);
+  }).catch(() => {
+    window.prompt("Copia este enlace:", url);
+  });
 }
 
 /* =========================================================
