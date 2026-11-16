@@ -30,21 +30,55 @@ input:invalid.touched, select:invalid.touched {
   border-color: #ef4444;
 }
 
-.category-nav-link {
-  padding: 0.75rem 1rem;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  color: #475569;
-  border-bottom: 2px solid transparent;
+.header-nav-link {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #334155;
   white-space: nowrap;
-  transition: color .2s ease, border-color .2s ease;
+  transition: background-color .2s ease, color .2s ease;
 }
-.category-nav-link:hover {
-  color: #0d9464;
+.header-nav-link:hover {
+  background-color: #f1f5f9;
 }
-.category-nav-link.active {
-  color: #0d9464;
-  border-bottom-color: #0d9464;
+.header-nav-link.active {
+  background-color: #ecfdf5;
+  color: #0a744f;
+}
+
+.header-nav-link-mobile {
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #334155;
+}
+.header-nav-link-mobile.active {
+  background-color: #ecfdf5;
+  color: #0a744f;
+}
+
+.leaf-logo {
+  position: relative;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+}
+.leaf-logo span {
+  position: absolute;
+  top: 0;
+  width: 1.2rem;
+  height: 2rem;
+  border-radius: 0 100% 0 100%;
+}
+.leaf-logo span:first-child {
+  left: 0.05rem;
+  background: #0d9464;
+  transform: rotate(-18deg);
+}
+.leaf-logo span:last-child {
+  right: 0.05rem;
+  background: #0a744f;
+  transform: rotate(18deg) scaleX(-1);
 }
