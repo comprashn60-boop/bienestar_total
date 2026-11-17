@@ -42,17 +42,18 @@ const products = [
   },
   {
     id: 5,
-    title: "2 Bandas para Entrenar de 6 Tubos (1 Banda de Pedal + 1 Banda para Brazos)",
+    title: "Banda Body Gym Original de 6 Cuerdas",
     category: "FITNESS",
     badge: "Oferta",
     originalPrice: 850,
-    price: 570,
+    price: 700,
     description: "Set completo de entrenamiento de alta resistencia. Incluye 1 Banda de Pedal de 6 tubos y 1 Banda elástica para brazos, pecho y espalda. Ideal para tonificar todo el cuerpo en casa o en el gimnasio. Material de látex duradero con asas de espuma antideslizantes.",
-    imagen: "images/2-bandas-6-tubos-1.jpg",
+    imagen: "images/banda-body-gym-6-cuerdas-1.webp",
     imagenes: [
-      "images/2-bandas-6-tubos-1.jpg",
-      "images/2-bandas-6-tubos-2.webp",
-      "images/2-bandas-6-tubos-3.jpg"
+      "images/banda-body-gym-6-cuerdas-1.webp",
+      "images/banda-body-gym-6-cuerdas-2.jpg",
+      "images/banda-body-gym-6-cuerdas-3.jpg",
+      "images/banda-body-gym-6-cuerdas-4.jpg"
     ],
     benefits: [
       "Tonifica abdomen, piernas, brazos y espalda",
