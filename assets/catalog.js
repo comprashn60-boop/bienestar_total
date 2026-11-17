@@ -68,6 +68,14 @@ function initOffersPage(gridId) {
   initLightbox();
 }
 
+/* =========================================================
+   INICIALIZACION DEL CATALOGO COMPLETO (todos los productos)
+========================================================= */
+function initFullCatalogPage(gridId) {
+  renderProductGrid(gridId || "product-grid", () => true);
+  initLightbox();
+}
+
 function initLightbox() {
   lightboxOverlay = document.getElementById("lightbox-overlay");
   lightboxImg = document.getElementById("lightbox-img");

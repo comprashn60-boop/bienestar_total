@@ -2,4 +2,5 @@
 /suplementos          /suplementos.html          200
 /bienestar-corporal   /bienestar-corporal.html   200
 /ofertas              /ofertas.html              200
+/catalogo             /catalogo.html             200
 /producto/:id         /producto.html             200

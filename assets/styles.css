@@ -14,6 +14,7 @@ body { font-family: 'Inter', sans-serif; }
 @media (min-width: 640px) {
   .sm\:inline-flex { display: inline-flex !important; }
   .sm\:flex { display: flex !important; }
+  .sm\:block { display: block !important; }
 }
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #f1f5f9; }
@@ -46,20 +47,31 @@ input:invalid.touched, select:invalid.touched {
 }
 
 .header-nav-link {
-  padding: 0.5rem 1rem;
+  padding: 0.55rem 1.1rem;
   border-radius: 9999px;
   font-size: 0.875rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
   color: #334155;
   white-space: nowrap;
-  transition: background-color .2s ease, color .2s ease;
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
 }
 .header-nav-link:hover {
   background-color: #f1f5f9;
+  color: #0a744f;
 }
 .header-nav-link.active {
   background-color: #ecfdf5;
   color: #0a744f;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px rgba(13,148,100,.18);
+}
+
+.header-actions-divider {
+  width: 1px;
+  height: 1.5rem;
+  background: #e2e8f0;
+  flex-shrink: 0;
 }
 
 .header-nav-link-mobile {
