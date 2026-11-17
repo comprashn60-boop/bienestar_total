@@ -324,6 +324,23 @@ input:invalid.touched, select:invalid.touched {
   .reviews-grid-responsive { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* Cintillo de promoción (regalía / oferta especial) cerca del precio
+   y del botón de compra en la página de producto. */
+.promo-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(to right, #fef3c7, #fde68a);
+  border: 1px solid #f59e0b;
+  color: #92400e;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
 .category-grid {
   display: grid;
   grid-template-columns: 1fr;
