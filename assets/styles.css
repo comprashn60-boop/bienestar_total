@@ -1,3 +1,5 @@
+*, *::before, *::after { box-sizing: border-box; }
+
 body { font-family: 'Inter', sans-serif; }
 .font-heading { font-family: 'Montserrat', sans-serif; }
 
@@ -118,13 +120,29 @@ input:invalid.touched, select:invalid.touched {
    inicio siempre se vean bien alineados aunque el CDN tarde
    o falle en cargar).
 ========================================================= */
+
+/* Contenedor global: mismo ancho máximo y márgenes centrados en
+   todo el sitio. Úsala en cualquier sección nueva que necesite
+   alinearse con el resto de la página. */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media (min-width: 640px) {
+  .container { padding: 0 1.5rem; }
+}
+
+/* HEADER: grid real de 3 columnas (1fr / auto / 1fr), así la
+   columna del centro queda matemáticamente centrada sin importar
+   cuánto pesen el logo o los botones de la derecha. */
 .site-header-row {
-  position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 0.75rem;
-  max-width: 80rem;
+  max-width: 1280px;
   margin: 0 auto;
   height: 4rem;
   padding: 0 1rem;
@@ -132,15 +150,14 @@ input:invalid.touched, select:invalid.touched {
 @media (min-width: 640px) {
   .site-header-row { padding: 0 1.5rem; }
 }
+.site-header-row > a:first-child { justify-self: start; }
+.site-header-row > .site-header-nav { justify-self: center; }
+.site-header-row > div:last-child { justify-self: end; }
 
 .site-header-nav {
   display: none;
   align-items: center;
   gap: 0.25rem;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
 @media (min-width: 768px) {
   .site-header-nav { display: flex; }
@@ -171,7 +188,7 @@ input:invalid.touched, select:invalid.touched {
   grid-template-columns: 1fr;
   gap: 2.5rem;
   align-items: center;
-  max-width: 80rem;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 3rem 1rem;
 }
@@ -193,7 +210,7 @@ input:invalid.touched, select:invalid.touched {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
-  max-width: 72rem;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 1.5rem 1rem;
 }
@@ -223,7 +240,7 @@ input:invalid.touched, select:invalid.touched {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
-  max-width: 72rem;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 3rem 1rem;
 }
