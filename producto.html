@@ -102,13 +102,13 @@
 <main id="product-main" class="hidden">
 
   <!-- BREADCRUMB -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-4">
+  <div class="product-container pt-4">
     <a href="/catalogo" class="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-primary">← Volver al catálogo</a>
   </div>
 
   <!-- ===================== HERO: GALERIA + INFO ===================== -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+  <section class="product-container py-6 sm:py-10">
+    <div class="product-hero-grid">
 
       <!-- Galeria -->
       <div>
@@ -145,7 +145,7 @@
 
   <!-- ===================== GALERIA COMPLETA EN SECUENCIA ===================== -->
   <section class="bg-slate-50 py-10 sm:py-14 px-4 sm:px-6">
-    <div class="max-w-xl mx-auto space-y-5" id="gallery-sequence"></div>
+    <div id="gallery-sequence"></div>
   </section>
 
   <!-- ===================== ENVIO, PAGO Y GARANTIA ===================== -->
@@ -173,7 +173,7 @@
         <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-dark">Reseñas de Clientes Satisfechos</h2>
         <p class="text-slate-500 text-sm mt-1">Esto opinan quienes ya lo compraron</p>
       </div>
-      <div id="reviews-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-5"></div>
+      <div id="reviews-grid" class="reviews-grid-responsive"></div>
     </div>
   </section>
 

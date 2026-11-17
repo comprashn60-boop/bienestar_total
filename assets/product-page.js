@@ -38,7 +38,7 @@ function renderGallery(product) {
 function renderGallerySequence(product) {
   const images = (product.imagenes && product.imagenes.length ? product.imagenes : [product.imagen]);
   document.getElementById("gallery-sequence").innerHTML = images.map((src, i) => `
-    <img src="${src}" alt="${product.title} ${i + 1}" class="w-full rounded-2xl shadow-sm cursor-zoom-in" onclick="openLightbox('${src}', '${product.title.replace(/'/g, "\\'")}')">
+    <img src="${src}" alt="${product.title} ${i + 1}" class="gallery-sequence-img cursor-zoom-in" onclick="openLightbox('${src}', '${product.title.replace(/'/g, "\\'")}')">
   `).join("");
 }
 

@@ -269,6 +269,61 @@ input:invalid.touched, select:invalid.touched {
   .trust-grid .benefit-item { flex-direction: row; align-items: center; }
 }
 
+/* =========================================================
+   PAGINA DE PRODUCTO: responsividad explícita (no depende del
+   CDN de Tailwind) para PC, tablet y celular.
+========================================================= */
+
+/* Contenedor principal: 1200px en PC, 100% del ancho con
+   márgenes limpios en tablet y celular. */
+.product-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media (min-width: 640px) {
+  .product-container { padding: 0 1.5rem; }
+}
+
+/* Encabezado superior: galería a la izquierda e info a la derecha
+   en PC/tablet grande; apilado en una sola columna en celular. */
+.product-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .product-hero-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+}
+/* Evita que una imagen de gran tamaño natural empuje la columna de la
+   galería más allá de su 1fr y desborde la cuadrícula. */
+.product-hero-grid > div { min-width: 0; }
+.product-hero-grid img { max-width: 100%; }
+
+/* Galería vertical estilo Shopify: cada foto se centra sola y se
+   reduce proporcionalmente sin deformarse. */
+.gallery-sequence-img {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px -2px rgba(0,0,0,.08);
+}
+
+/* Reseñas: 1 columna en celular, 2 en pantallas más anchas. */
+.reviews-grid-responsive {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 640px) {
+  .reviews-grid-responsive { grid-template-columns: repeat(2, 1fr); }
+}
+
 .category-grid {
   display: grid;
   grid-template-columns: 1fr;
