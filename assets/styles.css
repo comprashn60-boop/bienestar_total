@@ -248,6 +248,27 @@ input:invalid.touched, select:invalid.touched {
   flex-shrink: 0;
 }
 
+/* Franja de confianza de 3 elementos (envío, pago, garantía) en la
+   página de producto: apilada en móvil, en fila a partir de sm. */
+.trust-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.trust-grid .benefit-item {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+@media (min-width: 640px) {
+  .trust-grid { grid-template-columns: repeat(3, 1fr); text-align: left; }
+  .trust-grid .benefit-item { flex-direction: row; align-items: center; }
+}
+
 .category-grid {
   display: grid;
   grid-template-columns: 1fr;

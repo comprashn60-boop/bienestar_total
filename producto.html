@@ -103,7 +103,7 @@
 
   <!-- BREADCRUMB -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-4">
-    <a id="breadcrumb-link" href="/" class="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-primary">← Volver a la categoría</a>
+    <a href="/catalogo" class="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-primary">← Volver al catálogo</a>
   </div>
 
   <!-- ===================== HERO: GALERIA + INFO ===================== -->
@@ -136,9 +136,32 @@
 
         <button type="button" onclick="document.getElementById('order-section').scrollIntoView({behavior:'smooth'})"
           class="pulse-cta w-full bg-accent hover:bg-orange-600 text-white font-heading font-extrabold text-base py-4 rounded-xl transition-colors shadow-lg shadow-accent/30 flex items-center justify-center gap-2">
-          <span>🛒 HACER PEDIDO AHORA</span>
+          <span>¡HACER PEDIDO AHORA!</span>
         </button>
         <p class="text-center text-[11px] text-slate-400 mt-2">💵 Pago contra entrega · 🚚 Envío gratis a todo Honduras</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALERIA COMPLETA EN SECUENCIA ===================== -->
+  <section class="bg-slate-50 py-10 sm:py-14 px-4 sm:px-6">
+    <div class="max-w-xl mx-auto space-y-5" id="gallery-sequence"></div>
+  </section>
+
+  <!-- ===================== ENVIO, PAGO Y GARANTIA ===================== -->
+  <section class="bg-white border-y border-slate-200">
+    <div class="trust-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">🚚</div>
+        <span class="text-sm font-bold text-dark leading-tight">Envío Gratis a toda Honduras</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">💵</div>
+        <span class="text-sm font-bold text-dark leading-tight">Pago 100% Contra Entrega<br><span class="font-normal text-slate-500 text-xs">Pagas cuando recibes en tu puerta</span></span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🛡️</div>
+        <span class="text-sm font-bold text-dark leading-tight">Garantía de Calidad</span>
       </div>
     </div>
   </section>
@@ -154,20 +177,14 @@
     </div>
   </section>
 
-  <!-- ===================== CIERRE DE VENTA ===================== -->
-  <section class="bg-gradient-to-b from-primary/10 to-slate-50 py-10 sm:py-14 px-4 sm:px-6 text-center">
-    <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-dark mb-2">¿Listo para ordenar el tuyo?</h2>
-    <p class="text-slate-600 text-sm sm:text-base mb-6">Paga en efectivo cuando lo recibas en la puerta de tu casa.</p>
-    <button type="button" onclick="document.getElementById('order-section').scrollIntoView({behavior:'smooth'})"
-      class="pulse-cta inline-flex items-center gap-2 bg-accent hover:bg-orange-600 text-white font-heading font-extrabold text-base px-10 py-4 rounded-xl transition-colors shadow-lg shadow-accent/30">
-      🛒 HACER PEDIDO AHORA
-    </button>
-  </section>
-
-  <!-- ===================== FORMULARIO DE PEDIDO ===================== -->
-  <section id="order-section" class="max-w-2xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
-    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-5 sm:p-8">
-      <h2 class="font-heading font-extrabold text-xl text-dark mb-1">Formulario de Pedido</h2>
+  <!-- ===================== CIERRE DE VENTA + FORMULARIO ===================== -->
+  <section id="order-section" class="bg-gradient-to-b from-primary/10 to-slate-50 px-4 sm:px-6 py-10 sm:py-14">
+    <div class="text-center mb-8">
+      <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-dark mb-2">¿Listo para ordenar el tuyo?</h2>
+      <p class="text-slate-600 text-sm sm:text-base">Paga en efectivo cuando lo recibas en la puerta de tu casa.</p>
+    </div>
+    <div class="max-w-2xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-sm p-5 sm:p-8">
+      <h3 class="font-heading font-extrabold text-xl text-dark mb-1">Formulario de Pedido</h3>
       <p id="order-product-label" class="text-slate-500 text-sm mb-5"></p>
 
       <!-- Selector de cantidad -->

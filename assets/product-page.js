@@ -2,12 +2,6 @@
    PAGINA DEDICADA DE PRODUCTO (/producto/:id)
    Pensada como landing page individual para anuncios (Meta Ads).
 ========================================================= */
-const CATEGORY_PATHS = {
-  "FITNESS": "/fitness",
-  "SUPLEMENTOS": "/suplementos",
-  "BIENESTAR CORPORAL": "/bienestar-corporal"
-};
-
 const CATEGORY_LABELS = {
   "FITNESS": "Fitness",
   "SUPLEMENTOS": "Suplementos",
@@ -35,6 +29,16 @@ function renderGallery(product) {
       class="rounded-lg overflow-hidden border-2 ${i === 0 ? 'border-primary' : 'border-transparent'}">
       <img src="${src}" alt="${product.title} ${i + 1}" class="thumb-img w-full aspect-square object-cover ${i === 0 ? 'active' : ''}">
     </button>
+  `).join("");
+}
+
+/* Muestra todas las fotos del producto, grandes y una debajo de otra,
+   como una mini landing page al estilo Shopify. Si solo hay una foto,
+   la sección igual se muestra con esa única imagen. */
+function renderGallerySequence(product) {
+  const images = (product.imagenes && product.imagenes.length ? product.imagenes : [product.imagen]);
+  document.getElementById("gallery-sequence").innerHTML = images.map((src, i) => `
+    <img src="${src}" alt="${product.title} ${i + 1}" class="w-full rounded-2xl shadow-sm cursor-zoom-in" onclick="openLightbox('${src}', '${product.title.replace(/'/g, "\\'")}')">
   `).join("");
 }
 
@@ -78,12 +82,6 @@ function initProductPage() {
   document.title = `${product.title} — Bienestar Total`;
   document.getElementById("page-description").setAttribute("content", product.description || product.title);
 
-  /* Breadcrumb */
-  const categoryPath = CATEGORY_PATHS[product.category] || "/";
-  const breadcrumb = document.getElementById("breadcrumb-link");
-  breadcrumb.href = categoryPath;
-  breadcrumb.textContent = `← Volver a ${CATEGORY_LABELS[product.category] || "Inicio"}`;
-
   /* Info del producto */
   document.getElementById("product-category-label").textContent = CATEGORY_LABELS[product.category] || "";
   document.getElementById("product-title").textContent = product.title;
@@ -101,6 +99,7 @@ function initProductPage() {
   `).join("");
 
   renderGallery(product);
+  renderGallerySequence(product);
   renderReviews(product);
 
   /* Select de departamentos */
