@@ -11,6 +11,7 @@ body { font-family: 'Inter', sans-serif; }
 }
 @media (min-width: 640px) {
   .sm\:inline-flex { display: inline-flex !important; }
+  .sm\:flex { display: flex !important; }
 }
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #f1f5f9; }
@@ -69,6 +70,22 @@ input:invalid.touched, select:invalid.touched {
 .header-nav-link-mobile.active {
   background-color: #ecfdf5;
   color: #0a744f;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.section-heading-line {
+  height: 1px;
+  width: 2.5rem;
+  background: rgba(13,148,100,.35);
+  flex-shrink: 0;
+}
+@media (min-width: 640px) {
+  .section-heading-line { width: 4rem; }
 }
 
 .leaf-logo {
