@@ -25,10 +25,10 @@ function renderProductCard(p) {
 `;
 }
 
-function renderCategoryGrid(category, containerId) {
+function renderProductGrid(containerId, filterFn) {
   const container = document.getElementById(containerId);
   if (!container) return;
-  const items = products.filter(p => p.category === category);
+  const items = products.filter(filterFn);
 
   if (items.length === 0) {
     container.innerHTML = `
@@ -56,9 +56,19 @@ let form, phoneInput;
    INICIALIZACION DE UNA PAGINA DE CATEGORIA
 ========================================================= */
 function initCatalogPage(category, gridId) {
-  renderCategoryGrid(category, gridId || "product-grid");
+  renderProductGrid(gridId || "product-grid", p => p.category === category);
+  initLightbox();
+}
 
-  /* Lightbox (zoom de la foto en la tarjeta) */
+/* =========================================================
+   INICIALIZACION DE LA PAGINA DE OFERTAS
+========================================================= */
+function initOffersPage(gridId) {
+  renderProductGrid(gridId || "product-grid", p => p.badge === "Oferta");
+  initLightbox();
+}
+
+function initLightbox() {
   lightboxOverlay = document.getElementById("lightbox-overlay");
   lightboxImg = document.getElementById("lightbox-img");
   document.addEventListener("keydown", (e) => {
