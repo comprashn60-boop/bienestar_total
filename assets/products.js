@@ -46,14 +46,19 @@ const products = [
     category: "FITNESS",
     badge: "Oferta",
     originalPrice: 850,
-    price: 700,
-    description: "Entrena ahorra tiempo: tonifica y fortalece brazos, abdomen, glúteos y piernas desde casa y donde quieras.",
-    imagen: "images/2-bandas-entrenar-2.jpg",
+    price: 570,
+    description: "Set completo de entrenamiento de alta resistencia. Incluye 1 Banda de Pedal de 6 tubos y 1 Banda elástica para brazos, pecho y espalda. Ideal para tonificar todo el cuerpo en casa o en el gimnasio. Material de látex duradero con asas de espuma antideslizantes.",
+    imagen: "images/2-bandas-6-tubos-1.jpg",
+    imagenes: [
+      "images/2-bandas-6-tubos-1.jpg",
+      "images/2-bandas-6-tubos-2.webp",
+      "images/2-bandas-6-tubos-3.jpg"
+    ],
     benefits: [
-      "Incluye 1 banda de pedal de 6 tubos + 1 banda para brazos",
-      "Tonifica y fortalece brazos, abdomen, glúteos y piernas",
-      "Ligera, portátil y fácil de usar",
-      "Envío Gratis y pago contra entrega"
+      "Tonifica abdomen, piernas, brazos y espalda",
+      "Diseño de 6 tubos de alta resistencia y durabilidad",
+      "Mangos de espuma cómodos y antideslizantes",
+      "Ligero, portátil y fácil de usar en casa"
     ]
   },
   {
