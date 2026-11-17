@@ -53,13 +53,17 @@ const products = [
       "images/banda-body-gym-6-cuerdas-1.webp",
       "images/banda-body-gym-6-cuerdas-2.jpg",
       "images/banda-body-gym-6-cuerdas-3.jpg",
-      "images/banda-body-gym-6-cuerdas-4.jpg"
+      "images/banda-body-gym-6-cuerdas-4.jpg",
+      "images/banda-body-gym-6-cuerdas-regalo.jpg"
     ],
+    promo: "🎁 ¡OFERTA ESPECIAL HOY! Por tu compra, llévate una Regalía: Una banda para ejercitar brazos GRATIS",
     benefits: [
       "Tonifica abdomen, piernas, brazos y espalda",
       "Diseño de 6 tubos de alta resistencia y durabilidad",
       "Mangos de espuma cómodos y antideslizantes",
-      "Ligero, portátil y fácil de usar en casa"
+      "Ligero, portátil y fácil de usar en casa",
+      "Realiza ejercicios de brazos, piernas y espalda",
+      "Incluye de regalo una banda extra para ejercitar brazos"
     ]
   },
   {
