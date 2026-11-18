@@ -243,8 +243,13 @@ const products = [
   }
 ];
 
-/* Número de WhatsApp Business (solo dígitos, con código de país) donde llegan los pedidos */
+/* Número de WhatsApp Business (solo dígitos, con código de país); se usa como
+   contacto general y como respaldo manual si el pedido no se pudo enviar. */
 const WHATSAPP_NUMBER = "50487353593";
+
+/* Apps Script (Google Sheets) que guarda el pedido en la hoja y envía la
+   alerta a Telegram. Los pedidos del formulario se envían aquí. */
+const ORDER_ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbzBUHD--xe7p4Z0gPSice3aNfMEcUEJ7qdykyAUYNxCHzWDu9QdlChpx6oVhf77U4s1og/exec";
 
 /* Descuentos por cantidad: 1 = normal, 2 = L.200 de descuento fijo */
 const QTY_TIERS = [

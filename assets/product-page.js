@@ -163,7 +163,7 @@ function initProductPage() {
   form.addEventListener("submit", handleProductPageOrderSubmit);
 }
 
-function handleProductPageOrderSubmit(e) {
+async function handleProductPageOrderSubmit(e) {
   e.preventDefault();
 
   const { valid, nameEl, addressEl, referenceEl } = validateOrderForm();
@@ -182,25 +182,58 @@ function handleProductPageOrderSubmit(e) {
     reference: referenceEl.value.trim()
   };
 
-  document.getElementById("success-product").textContent = `${currentProduct.title} (x${tier.qty})`;
-  document.getElementById("success-name").textContent = customer.name;
-  document.getElementById("success-phone").textContent = customer.phone;
-  document.getElementById("success-location").textContent = `${customer.municipality}, ${customer.department}`;
-  document.getElementById("success-total").textContent = formatL(finalTotal);
+  const errorEl = document.getElementById("order-submit-error");
+  const submitBtn = document.getElementById("submit-order-btn");
+  errorEl.classList.add("hidden");
+  submitBtn.disabled = true;
+  submitBtn.querySelector("span").textContent = "Enviando pedido...";
 
-  const whatsappUrl = buildOrderWhatsAppMessage(currentProduct, tier, finalTotal, customer);
-  document.getElementById("whatsapp-redirect-link").href = whatsappUrl;
+  const fullAddress = customer.reference
+    ? `${customer.address} (Referencia: ${customer.reference})`
+    : customer.address;
 
-  const overlayEl = document.getElementById("modal-overlay");
-  const panelEl = document.getElementById("modal-panel");
-  overlayEl.classList.remove("hidden");
-  document.body.style.overflow = "hidden";
-  requestAnimationFrame(() => {
-    overlayEl.classList.remove("opacity-0");
-    panelEl.classList.remove("opacity-0", "translate-y-6", "sm:scale-95");
-  });
+  try {
+    const response = await fetch(ORDER_ENDPOINT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        producto: currentProduct.title,
+        cantidad: tier.qty,
+        total: finalTotal,
+        nombre: customer.name,
+        telefono: customer.phone,
+        departamento: customer.department,
+        municipio: customer.municipality,
+        direccion: fullAddress
+      })
+    });
+    if (!response.ok) throw new Error("La hoja de pedidos respondió con un error.");
 
-  window.open(whatsappUrl, "_blank");
+    document.getElementById("success-product").textContent = `${currentProduct.title} (x${tier.qty})`;
+    document.getElementById("success-name").textContent = customer.name;
+    document.getElementById("success-phone").textContent = customer.phone;
+    document.getElementById("success-location").textContent = `${customer.municipality}, ${customer.department}`;
+    document.getElementById("success-total").textContent = formatL(finalTotal);
+
+    const overlayEl = document.getElementById("modal-overlay");
+    const panelEl = document.getElementById("modal-panel");
+    overlayEl.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+    requestAnimationFrame(() => {
+      overlayEl.classList.remove("opacity-0");
+      panelEl.classList.remove("opacity-0", "translate-y-6", "sm:scale-95");
+    });
+
+    form.reset();
+    municipalitySelect.disabled = true;
+  } catch (err) {
+    const whatsappUrl = buildOrderWhatsAppMessage(currentProduct, tier, finalTotal, customer);
+    errorEl.innerHTML = `No pudimos enviar tu pedido automáticamente. Por favor intenta de nuevo o <a href="${whatsappUrl}" target="_blank" rel="noopener" class="underline font-bold">complétalo por WhatsApp</a>.`;
+    errorEl.classList.remove("hidden");
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.querySelector("span").textContent = "CONFIRMAR Y PAGAR AL RECIBIR (EFECTIVO)";
+  }
 }
 
 function closeSuccessOverlay() {
