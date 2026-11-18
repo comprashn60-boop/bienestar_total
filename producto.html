@@ -136,7 +136,7 @@
         <h2 class="font-heading font-bold text-sm text-dark mb-2 uppercase tracking-wide">Beneficios clave</h2>
         <ul id="product-benefits" class="space-y-2 mb-6"></ul>
 
-        <button type="button" onclick="document.getElementById('order-section').scrollIntoView({behavior:'smooth'})"
+        <button type="button" onclick="openOrderModal()"
           class="pulse-cta w-full bg-accent hover:bg-orange-600 text-white font-heading font-extrabold text-base py-4 rounded-xl transition-colors shadow-lg shadow-accent/30 flex items-center justify-center gap-2">
           <span>¡HACER PEDIDO AHORA!</span>
         </button>
@@ -179,15 +179,60 @@
     </div>
   </section>
 
-  <!-- ===================== CIERRE DE VENTA + FORMULARIO ===================== -->
-  <section id="order-section" class="bg-gradient-to-b from-primary/10 to-slate-50 px-4 sm:px-6 py-10 sm:py-14">
-    <div class="text-center mb-8">
+  <!-- ===================== CIERRE DE VENTA ===================== -->
+  <section class="bg-gradient-to-b from-primary/10 to-slate-50 px-4 sm:px-6 py-10 sm:py-14 text-center">
+    <div class="product-container">
       <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-dark mb-2">¿Listo para ordenar el tuyo?</h2>
-      <p class="text-slate-600 text-sm sm:text-base">Paga en efectivo cuando lo recibas en la puerta de tu casa.</p>
+      <p class="text-slate-600 text-sm sm:text-base mb-6">Paga en efectivo cuando lo recibas en la puerta de tu casa.</p>
+      <button type="button" onclick="openOrderModal()"
+        class="pulse-cta w-full sm:w-auto sm:px-12 inline-flex items-center justify-center gap-2 bg-accent hover:bg-orange-600 text-white font-heading font-extrabold text-base py-4 rounded-xl transition-colors shadow-lg shadow-accent/30">
+        ¡HACER PEDIDO AHORA!
+      </button>
     </div>
-    <div class="max-w-2xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-sm p-5 sm:p-8">
-      <h3 class="font-heading font-extrabold text-xl text-dark mb-1">Formulario de Pedido</h3>
-      <p id="order-product-label" class="text-slate-500 text-sm mb-5"></p>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-slate-300 py-10 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto flex flex-col items-center gap-6 text-center">
+    <div>
+      <p class="font-heading font-extrabold text-white text-lg mb-1">Bienestar Total</p>
+      <p class="text-xs text-slate-400">© 2026 Bienestar Total Honduras. Todos los derechos reservados.</p>
+    </div>
+    <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold uppercase tracking-wide">
+      <a href="/" class="hover:text-white transition-colors">Inicio</a>
+      <a href="/fitness" class="hover:text-white transition-colors">Fitness</a>
+      <a href="/suplementos" class="hover:text-white transition-colors">Suplementos</a>
+      <a href="/bienestar-corporal" class="hover:text-white transition-colors">Bienestar Corporal</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ===================== MODAL DE PEDIDO ===================== -->
+<div id="modal-overlay" class="modal-overlay hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 flex items-center justify-center p-4 overflow-y-auto" onclick="if (event.target === this) closeOrderModal()">
+  <div id="modal-panel" class="modal-panel opacity-0 translate-y-6 sm:scale-95 bg-white w-full sm:max-w-lg sm:rounded-2xl shadow-2xl relative my-8 max-h-none sm:max-h-[92vh] flex flex-col overflow-hidden">
+
+    <button type="button" onclick="closeOrderModal()" aria-label="Cerrar"
+      class="modal-close-btn absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-white/90 hover:bg-slate-100 shadow border border-slate-200 text-slate-500 hover:text-dark flex items-center justify-center transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+
+    <!-- VISTA: FORMULARIO DE PEDIDO -->
+    <div id="view-order-form" class="p-5 sm:p-8 overflow-y-auto">
+      <h2 class="font-heading font-extrabold text-xl text-dark mb-4 pr-8">Completa tu Pedido</h2>
+
+      <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-200">
+        <img id="modal-product-thumb" src="" alt="" class="w-16 h-16 rounded-lg object-cover border border-slate-200 shrink-0">
+        <div class="min-w-0">
+          <p id="modal-product-title" class="font-heading font-bold text-sm text-dark leading-snug"></p>
+          <div class="flex items-baseline gap-2 mt-0.5">
+            <span id="modal-product-original-price" class="text-slate-400 line-through text-xs"></span>
+            <span id="modal-product-price" class="text-primary font-heading font-extrabold text-base"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="modal-product-promo" class="hidden promo-banner"></div>
 
       <!-- Selector de cantidad -->
       <p class="font-heading font-bold text-sm text-dark mb-2">Elige tu cantidad</p>
@@ -274,29 +319,8 @@
         <p class="text-center text-[11px] text-slate-400">🔒 Tus datos están seguros. No se realiza ningún cobro en línea.</p>
       </form>
     </div>
-  </section>
-</main>
 
-<!-- FOOTER -->
-<footer class="bg-dark text-slate-300 py-10 px-4 sm:px-6">
-  <div class="max-w-7xl mx-auto flex flex-col items-center gap-6 text-center">
-    <div>
-      <p class="font-heading font-extrabold text-white text-lg mb-1">Bienestar Total</p>
-      <p class="text-xs text-slate-400">© 2026 Bienestar Total Honduras. Todos los derechos reservados.</p>
-    </div>
-    <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold uppercase tracking-wide">
-      <a href="/" class="hover:text-white transition-colors">Inicio</a>
-      <a href="/fitness" class="hover:text-white transition-colors">Fitness</a>
-      <a href="/suplementos" class="hover:text-white transition-colors">Suplementos</a>
-      <a href="/bienestar-corporal" class="hover:text-white transition-colors">Bienestar Corporal</a>
-    </nav>
-  </div>
-</footer>
-
-<!-- ===================== CONFIRMACION DE PEDIDO (overlay) ===================== -->
-<div id="modal-overlay" class="modal-overlay hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 flex items-center justify-center p-4 overflow-y-auto">
-  <div id="modal-panel" class="modal-panel opacity-0 translate-y-6 sm:scale-95 bg-white w-full sm:max-w-md sm:rounded-2xl shadow-2xl relative my-8 max-h-none sm:max-h-[92vh] flex flex-col overflow-hidden">
-    <div id="view-success" class="p-6 sm:p-8 text-center overflow-y-auto">
+    <div id="view-success" class="hidden p-6 sm:p-8 text-center overflow-y-auto">
       <div class="w-20 h-20 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-5">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-11 h-11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
       </div>
@@ -329,7 +353,7 @@
         </div>
       </div>
 
-      <button id="success-close-btn" onclick="closeSuccessOverlay()"
+      <button id="success-close-btn" onclick="closeOrderModal()"
         class="mt-5 text-slate-500 hover:text-dark font-semibold text-sm px-8 py-2 rounded-full transition-colors underline">
         Cerrar
       </button>

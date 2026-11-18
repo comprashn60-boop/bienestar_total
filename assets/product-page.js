@@ -89,7 +89,6 @@ function initProductPage() {
   document.getElementById("product-badge").textContent = product.badge;
   document.getElementById("product-original-price").textContent = formatL(product.originalPrice);
   document.getElementById("product-price").textContent = formatL(product.price);
-  document.getElementById("order-product-label").textContent = product.title;
 
   const promoEl = document.getElementById("product-promo");
   if (product.promo) {
@@ -97,6 +96,22 @@ function initProductPage() {
     promoEl.classList.remove("hidden");
   } else {
     promoEl.classList.add("hidden");
+  }
+
+  /* Resumen del producto dentro del modal de pedido */
+  const images = (product.imagenes && product.imagenes.length ? product.imagenes : [product.imagen]);
+  document.getElementById("modal-product-thumb").src = images[0];
+  document.getElementById("modal-product-thumb").alt = product.title;
+  document.getElementById("modal-product-title").textContent = product.title;
+  document.getElementById("modal-product-original-price").textContent = formatL(product.originalPrice);
+  document.getElementById("modal-product-price").textContent = formatL(product.price);
+
+  const modalPromoEl = document.getElementById("modal-product-promo");
+  if (product.promo) {
+    modalPromoEl.textContent = product.promo;
+    modalPromoEl.classList.remove("hidden");
+  } else {
+    modalPromoEl.classList.add("hidden");
   }
 
   document.getElementById("product-benefits").innerHTML = product.benefits.map(b => `
@@ -141,7 +156,9 @@ function initProductPage() {
   lightboxOverlay = document.getElementById("lightbox-overlay");
   lightboxImg = document.getElementById("lightbox-img");
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !lightboxOverlay.classList.contains("hidden")) closeLightbox();
+    if (e.key !== "Escape") return;
+    if (!lightboxOverlay.classList.contains("hidden")) closeLightbox();
+    else if (!document.getElementById("modal-overlay").classList.contains("hidden")) closeOrderModal();
   });
 
   /* Formulario de pedido */
@@ -161,6 +178,32 @@ function initProductPage() {
   updateOrderSummary();
 
   form.addEventListener("submit", handleProductPageOrderSubmit);
+}
+
+/* Abre el modal de pedido (botón "¡HACER PEDIDO AHORA!"). Los datos del
+   producto ya están cargados en el modal desde initProductPage(), así que
+   solo falta mostrarlo con su vista de formulario. */
+function openOrderModal() {
+  document.getElementById("view-order-form").classList.remove("hidden");
+  document.getElementById("view-success").classList.add("hidden");
+
+  const overlayEl = document.getElementById("modal-overlay");
+  const panelEl = document.getElementById("modal-panel");
+  overlayEl.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+  requestAnimationFrame(() => {
+    overlayEl.classList.remove("opacity-0");
+    panelEl.classList.remove("opacity-0", "translate-y-6", "sm:scale-95");
+  });
+}
+
+function closeOrderModal() {
+  const overlayEl = document.getElementById("modal-overlay");
+  const panelEl = document.getElementById("modal-panel");
+  overlayEl.classList.add("opacity-0");
+  panelEl.classList.add("opacity-0", "translate-y-6", "sm:scale-95");
+  document.body.style.overflow = "";
+  setTimeout(() => overlayEl.classList.add("hidden"), 250);
 }
 
 async function handleProductPageOrderSubmit(e) {
@@ -215,14 +258,9 @@ async function handleProductPageOrderSubmit(e) {
     document.getElementById("success-location").textContent = `${customer.municipality}, ${customer.department}`;
     document.getElementById("success-total").textContent = formatL(finalTotal);
 
-    const overlayEl = document.getElementById("modal-overlay");
-    const panelEl = document.getElementById("modal-panel");
-    overlayEl.classList.remove("hidden");
-    document.body.style.overflow = "hidden";
-    requestAnimationFrame(() => {
-      overlayEl.classList.remove("opacity-0");
-      panelEl.classList.remove("opacity-0", "translate-y-6", "sm:scale-95");
-    });
+    document.getElementById("view-order-form").classList.add("hidden");
+    document.getElementById("view-success").classList.remove("hidden");
+    document.getElementById("modal-panel").scrollTo(0, 0);
 
     form.reset();
     municipalitySelect.disabled = true;
@@ -234,13 +272,4 @@ async function handleProductPageOrderSubmit(e) {
     submitBtn.disabled = false;
     submitBtn.querySelector("span").textContent = "CONFIRMAR Y PAGAR AL RECIBIR (EFECTIVO)";
   }
-}
-
-function closeSuccessOverlay() {
-  const overlayEl = document.getElementById("modal-overlay");
-  const panelEl = document.getElementById("modal-panel");
-  overlayEl.classList.add("opacity-0");
-  panelEl.classList.add("opacity-0", "translate-y-6", "sm:scale-95");
-  document.body.style.overflow = "";
-  setTimeout(() => overlayEl.classList.add("hidden"), 250);
 }
