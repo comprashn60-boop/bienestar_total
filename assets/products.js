@@ -48,13 +48,13 @@ const products = [
     originalPrice: 850,
     price: 700,
     description: "Set completo de entrenamiento de alta resistencia. Incluye 1 Banda de Pedal de 6 tubos y 1 Banda elástica para brazos, pecho y espalda. Ideal para tonificar todo el cuerpo en casa o en el gimnasio. Material de látex duradero con asas de espuma antideslizantes.",
-    imagen: "images/banda-body-gym-6-cuerdas-1.webp",
+    imagen: "images/banda-body-gym-6-cuerdas-regalo.jpg",
     imagenes: [
+      "images/banda-body-gym-6-cuerdas-regalo.jpg",
       "images/banda-body-gym-6-cuerdas-1.webp",
       "images/banda-body-gym-6-cuerdas-2.jpg",
       "images/banda-body-gym-6-cuerdas-3.jpg",
-      "images/banda-body-gym-6-cuerdas-4.jpg",
-      "images/banda-body-gym-6-cuerdas-regalo.jpg"
+      "images/banda-body-gym-6-cuerdas-4.jpg"
     ],
     promo: "🎁 ¡OFERTA ESPECIAL HOY! Por tu compra, llévate una Regalía: Una banda para ejercitar brazos GRATIS",
     benefits: [
